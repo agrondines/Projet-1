@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services Avicoles Grondines Associés</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1a1a1a;
+      background: #ffffff;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      border-bottom: 1px solid #e8e8e8;
+      background: #ffffff;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #1a1a1a;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: #666;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: #1a1a1a;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 72px 40px;
+      background: #f7f7f5;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 99px;
+      background: #eaf3de;
+      color: #27500a;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.4;
+      max-width: 580px;
+      margin: 0 auto 16px;
+      color: #1a1a1a;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: #555;
+      max-width: 500px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #1a1a1a;
+      background: #ffffff;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #f0f0f0;
+    }
+
+    /* Services */
+    .section {
+      padding: 48px 40px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .card-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #639922;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* À propos */
+    .about {
+      padding: 48px 40px;
+      border-top: 1px solid #e8e8e8;
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h2 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 14px;
+      color: #1a1a1a;
+    }
+
+    .about-text p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-width: 150px;
+    }
+
+    .stat {
+      background: #f7f7f5;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .stat-num {
+      font-size: 24px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 22px 40px;
+      border-top: 1px solid #e8e8e8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #888;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .nav-links { gap: 16px; }
+      .hero { padding: 48px 20px; }
+      .hero h1 { font-size: 22px; }
+      .section { padding: 36px 20px; }
+      .about { flex-direction: column; padding: 36px 20px; }
+      .about-stats { flex-direction: row; }
+      footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">SAGA</span>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="services.html">Services</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-tag">Services-conseils · Volaille · Québec</div>
+    <h1>Des experts à vos côtés pour optimiser votre production avicole</h1>
+    <p>Services Avicoles Grondines Associés accompagne les producteurs de volaille du Québec avec des conseils personnalisés, des analyses financières et un accès aux subventions disponibles.</p>
+    <a href="contact.html" class="btn">Nous contacter</a>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Nos services</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-dot"></div>
+        <h3>Subventions</h3>
+        <p>Nous vous aidons à identifier et à obtenir les subventions auxquelles vous avez droit.</p>
+      </div>
+      <div class="card">
+        <div class="card-dot"></div>
+        <h3>Coûts de production</h3>
+        <p>Analyse détaillée de vos coûts pour maximiser votre rentabilité.</p>
+      </div>
+      <div class="card">
+        <div class="card-dot"></div>
+        <h3>Comparaison provinciale</h3>
+        <p>Positionnez-vous par rapport à la moyenne des producteurs québécois.</p>
+      </div>
+      <div class="card">
+        <div class="card-dot"></div>
+        <h3>Budgets</h3>
+        <p>Planification budgétaire adaptée à votre exploitation avicole.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about">
+    <div class="about-text">
+      <h2>Pourquoi choisir SAGA?</h2>
+      <p>Notre équipe connaît les réalités du milieu avicole québécois. Que vous soyez un nouveau producteur ou un exploitant établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Spécialisé volaille</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">QC</div>
+        <div class="stat-label">Partout au Québec</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Services Avicoles Grondines Associés</span>
+    <span>Grondines, Québec</span>
+  </footer>
+
+</body>
+</html>
