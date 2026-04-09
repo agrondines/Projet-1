@@ -24,7 +24,6 @@
       top: 0;
       z-index: 100;
     }
-
     .nav-logo {
       font-size: 26px;
       font-weight: 700;
@@ -51,7 +50,6 @@
       84%  { background-position: 80% 5%; }
       100% { background-position: 0% 80%; }
     }
-
     .nav-links { display: flex; gap: 28px; }
     .nav-links a {
       font-size: 13px;
@@ -63,12 +61,40 @@
     }
     .nav-links a:hover { color: #ffffff; }
 
-    /* ── Hero ── */
+    /* ── Hero avec vidéo ── */
     .hero {
+      position: relative;
       padding: 80px 40px;
-      background: #2b2b2b;
       text-align: center;
       border-bottom: 1px solid #3a3a3a;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.62);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
     .hero-tag {
       display: inline-block;
@@ -90,7 +116,7 @@
     }
     .hero p {
       font-size: 15px;
-      color: #aaa;
+      color: #ddd;
       max-width: 480px;
       margin: 0 auto 36px;
       line-height: 1.8;
@@ -164,18 +190,6 @@
       border-right: 1px solid #333;
       white-space: nowrap;
     }
-
-    /*
-      LOGOS DES COLLABORATEURS
-      Pour ajouter un vrai logo :
-      1. Créez un dossier "logos" dans votre repo GitHub
-      2. Uploadez votre image (ex: rbc.png) dans ce dossier
-      3. Remplacez le texte (ex: "RBC") par :
-         <img src="logos/rbc.png" alt="RBC">
-      Pour ajouter un nouveau collaborateur :
-      Copiez un bloc .marquee-item et collez-le dans
-      la 1re ET la 2e moitié (pour garder la boucle fluide)
-    */
     .logo-box {
       width: 44px;
       height: 44px;
@@ -272,7 +286,7 @@
       .nav-logo { font-size: 20px; }
       .nav-links { gap: 16px; }
       .nav-links a { font-size: 12px; }
-      .hero { padding: 48px 20px; }
+      .hero { padding: 48px 20px; min-height: 380px; }
       .hero h1 { font-size: 22px; }
       .section, .why, .team, .contact { padding: 40px 20px; }
       footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
@@ -295,10 +309,16 @@
   <!-- ── ACCUEIL ── -->
   <div id="accueil">
     <div class="hero">
-      <div class="hero-tag">Certifié par l'Ordre des agronomes du Québec</div>
-      <h1>Vos projets prennent vie à nos côtés</h1>
-      <p>Notre priorité est de faciliter vos démarches financières, que ce soit pour un budget, une subvention, un démarrage ou un plan à long terme. Nous sommes à vos côtés.</p>
-      <a class="btn-wave" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Nous contacter</a>
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="videos/sagabackground.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tag">Certifié par l'Ordre des agronomes du Québec</div>
+        <h1>Vos projets prennent vie à nos côtés</h1>
+        <p>Notre priorité est de faciliter vos démarches financières, que ce soit pour un budget, une subvention, un démarrage ou un plan à long terme. Nous sommes à vos côtés.</p>
+        <a class="btn-wave" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Nous contacter</a>
+      </div>
     </div>
 
     <!-- BANDEROLE COLLABORATEURS -->
