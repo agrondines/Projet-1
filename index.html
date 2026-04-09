@@ -170,11 +170,13 @@
     }
     .marquee-label {
       text-align: center;
-      font-size: 11px;
-      color: #666;
+      font-size: 12px;
+      color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 16px;
+      font-family: Calibri, 'Gill Sans', sans-serif;
+      font-weight: 700;
     }
     .marquee-track {
       display: flex;
@@ -185,27 +187,34 @@
     .marquee-item {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       padding: 0 36px;
       border-right: 1px solid #333;
       white-space: nowrap;
     }
     .logo-box {
-      width: 44px;
-      height: 44px;
+      width: 52px;
+      height: 52px;
       border-radius: 8px;
       border: 1px solid #3a3a3a;
-      background: #2b2b2b;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
-      font-weight: 700;
-      color: #7eb8f7;
       overflow: hidden;
+      padding: 4px;
     }
-    .logo-box img { width: 100%; height: 100%; object-fit: contain; }
-    .collab-name { font-size: 13px; color: #ccc; }
+    .logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .collab-name {
+      font-size: 13px;
+      color: #ffffff;
+      font-family: Calibri, 'Gill Sans', sans-serif;
+      font-weight: 600;
+    }
     @keyframes defilement {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -326,19 +335,55 @@
       <div class="marquee-label">Nos collaborateurs</div>
       <div class="marquee-track">
         <!-- 1re moitié -->
-        <div class="marquee-item"><div class="logo-box">BNC</div><span class="collab-name">Banque Nationale du Canada</span></div>
-        <div class="marquee-item"><div class="logo-box">CS</div><span class="collab-name">Couvoirs Scott</span></div>
-        <div class="marquee-item"><div class="logo-box">FAC</div><span class="collab-name">Financière agricole du Canada</span></div>
-        <div class="marquee-item"><div class="logo-box">EVQ</div><span class="collab-name">Éleveurs de volaille du Québec</span></div>
-        <div class="marquee-item"><div class="logo-box">DJ</div><span class="collab-name">Desjardins Entreprises</span></div>
-        <div class="marquee-item"><div class="logo-box">RBC</div><span class="collab-name">Banque Royale du Canada</span></div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/bnc.png" alt="Banque Nationale du Canada"></div>
+          <span class="collab-name">Banque Nationale du Canada</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/couvoirs-scott.png" alt="Couvoirs Scott"></div>
+          <span class="collab-name">Couvoirs Scott</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/fac.png" alt="Financière agricole du Canada"></div>
+          <span class="collab-name">Financière agricole du Canada</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/evq.png" alt="Éleveurs de volaille du Québec"></div>
+          <span class="collab-name">Éleveurs de volaille du Québec</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/desjardins.png" alt="Desjardins Entreprises"></div>
+          <span class="collab-name">Desjardins Entreprises</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/rbc.png" alt="Banque Royale du Canada"></div>
+          <span class="collab-name">Banque Royale du Canada</span>
+        </div>
         <!-- 2e moitié — copie identique pour la boucle fluide -->
-        <div class="marquee-item"><div class="logo-box">BNC</div><span class="collab-name">Banque Nationale du Canada</span></div>
-        <div class="marquee-item"><div class="logo-box">CS</div><span class="collab-name">Couvoirs Scott</span></div>
-        <div class="marquee-item"><div class="logo-box">FAC</div><span class="collab-name">Financière agricole du Canada</span></div>
-        <div class="marquee-item"><div class="logo-box">EVQ</div><span class="collab-name">Éleveurs de volaille du Québec</span></div>
-        <div class="marquee-item"><div class="logo-box">DJ</div><span class="collab-name">Desjardins Entreprises</span></div>
-        <div class="marquee-item"><div class="logo-box">RBC</div><span class="collab-name">Banque Royale du Canada</span></div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/bnc.png" alt="Banque Nationale du Canada"></div>
+          <span class="collab-name">Banque Nationale du Canada</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/couvoirs-scott.png" alt="Couvoirs Scott"></div>
+          <span class="collab-name">Couvoirs Scott</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/fac.png" alt="Financière agricole du Canada"></div>
+          <span class="collab-name">Financière agricole du Canada</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/evq.png" alt="Éleveurs de volaille du Québec"></div>
+          <span class="collab-name">Éleveurs de volaille du Québec</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/desjardins.png" alt="Desjardins Entreprises"></div>
+          <span class="collab-name">Desjardins Entreprises</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box"><img src="logos/rbc.png" alt="Banque Royale du Canada"></div>
+          <span class="collab-name">Banque Royale du Canada</span>
+        </div>
       </div>
     </div>
   </div>
