@@ -8,274 +8,358 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #1a1a1a;
-      background: #ffffff;
+      font-family: 'Times New Roman', Times, serif;
+      background: #f4f4f4;
+      color: #2b2b2b;
     }
 
-    /* Navigation */
+    /* ── Navigation ── */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 40px;
-      border-bottom: 1px solid #e8e8e8;
-      background: #ffffff;
+      padding: 18px 36px;
+      background: #2b2b2b;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .nav-logo {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: #1a1a1a;
+      font-size: 26px;
+      font-weight: 700;
+      font-family: 'Times New Roman', Times, serif;
+      letter-spacing: 0.1em;
+      background: linear-gradient(115deg,
+        #1a3a5c 0%, #1a3a5c 15%,
+        #e0f0ff 28%, #a8d4f8 38%, #d0eaff 48%,
+        #1a3a5c 62%, #1a3a5c 75%,
+        #7eb8f7 88%, #ffffff 94%, #1a3a5c 100%
+      );
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: logoSpotlight 7s ease-in-out infinite;
+    }
+    @keyframes logoSpotlight {
+      0%   { background-position: 0% 80%; }
+      18%  { background-position: 90% 10%; }
+      35%  { background-position: 15% 95%; }
+      52%  { background-position: 100% 30%; }
+      68%  { background-position: 45% 60%; }
+      84%  { background-position: 80% 5%; }
+      100% { background-position: 0% 80%; }
     }
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-    }
-
+    .nav-links { display: flex; gap: 28px; }
     .nav-links a {
-      font-size: 14px;
-      color: #666;
+      font-size: 13px;
+      color: #aaa;
       text-decoration: none;
+      transition: color 0.2s;
+      cursor: pointer;
+      font-family: 'Times New Roman', Times, serif;
     }
+    .nav-links a:hover { color: #ffffff; }
 
-    .nav-links a:hover {
-      color: #1a1a1a;
-    }
-
-    /* Hero */
+    /* ── Hero ── */
     .hero {
-      padding: 72px 40px;
-      background: #f7f7f5;
+      padding: 80px 40px;
+      background: #2b2b2b;
       text-align: center;
+      border-bottom: 1px solid #3a3a3a;
     }
-
     .hero-tag {
       display: inline-block;
-      font-size: 12px;
+      font-size: 11px;
       padding: 5px 14px;
       border-radius: 99px;
-      background: #eaf3de;
-      color: #27500a;
+      background: #1a3a5c;
+      color: #7eb8f7;
       margin-bottom: 20px;
+      letter-spacing: 0.06em;
     }
-
     .hero h1 {
       font-size: 30px;
-      font-weight: 500;
+      font-weight: 700;
       line-height: 1.4;
-      max-width: 580px;
+      max-width: 540px;
       margin: 0 auto 16px;
-      color: #1a1a1a;
+      color: #ffffff;
     }
-
     .hero p {
-      font-size: 16px;
-      color: #555;
-      max-width: 500px;
-      margin: 0 auto 32px;
-      line-height: 1.7;
+      font-size: 15px;
+      color: #aaa;
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.8;
     }
 
-    .btn {
+    /* ── Bouton effet projecteur bleu ── */
+    .btn-wave {
       display: inline-block;
-      padding: 12px 28px;
-      border: 1px solid #ccc;
+      padding: 13px 38px;
       border-radius: 8px;
-      font-size: 14px;
-      color: #1a1a1a;
-      background: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: Calibri, 'Gill Sans', sans-serif;
+      color: #1a3a5c;
       text-decoration: none;
-      transition: background 0.2s;
+      cursor: pointer;
+      border: 1.5px solid #7eb8f7;
+      background: linear-gradient(115deg,
+        #ffffff 0%, #ffffff 18%,
+        #e0f0ff 30%, #a8d4f8 40%,
+        #d0eaff 50%, #ffffff 65%,
+        #f0f8ff 78%, #c0e0ff 88%,
+        #ffffff 100%
+      );
+      background-size: 400% 400%;
+      animation: btnSpotlight 7s ease-in-out infinite;
+      transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+    }
+    .btn-wave:hover {
+      background: #1976d2;
+      color: #ffffff;
+      border-color: #1976d2;
+      animation-play-state: paused;
+    }
+    @keyframes btnSpotlight {
+      0%   { background-position: 0% 80%; }
+      18%  { background-position: 90% 10%; }
+      35%  { background-position: 15% 95%; }
+      52%  { background-position: 100% 30%; }
+      68%  { background-position: 45% 60%; }
+      84%  { background-position: 80% 5%; }
+      100% { background-position: 0% 80%; }
     }
 
-    .btn:hover {
-      background: #f0f0f0;
+    /* ── Banderole défilante ── */
+    .marquee-section {
+      padding: 26px 0;
+      background: #222222;
+      overflow: hidden;
+      border-bottom: 1px solid #333;
     }
-
-    /* Services */
-    .section {
-      padding: 48px 40px;
-    }
-
-    .section-label {
-      font-size: 12px;
-      color: #888;
+    .marquee-label {
+      text-align: center;
+      font-size: 11px;
+      color: #666;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
-      margin-bottom: 20px;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: defilement 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 36px;
+      border-right: 1px solid #333;
+      white-space: nowrap;
     }
 
+    /*
+      LOGOS DES COLLABORATEURS
+      Pour ajouter un vrai logo :
+      1. Créez un dossier "logos" dans votre repo GitHub
+      2. Uploadez votre image (ex: rbc.png) dans ce dossier
+      3. Remplacez le texte (ex: "RBC") par :
+         <img src="logos/rbc.png" alt="RBC">
+      Pour ajouter un nouveau collaborateur :
+      Copiez un bloc .marquee-item et collez-le dans
+      la 1re ET la 2e moitié (pour garder la boucle fluide)
+    */
+    .logo-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      border: 1px solid #3a3a3a;
+      background: #2b2b2b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #7eb8f7;
+      overflow: hidden;
+    }
+    .logo-box img { width: 100%; height: 100%; object-fit: contain; }
+    .collab-name { font-size: 13px; color: #ccc; }
+    @keyframes defilement {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Services ── */
+    .section { padding: 56px 40px; background: #f4f4f4; }
+    .section-label {
+      font-size: 11px;
+      color: #1976d2;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 28px;
+    }
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 14px;
     }
-
     .card {
       background: #ffffff;
-      border: 1px solid #e8e8e8;
+      border: 1px solid #e0e0e0;
       border-radius: 12px;
       padding: 22px;
     }
-
-    .card-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #639922;
+    .card-accent {
+      width: 28px;
+      height: 3px;
+      border-radius: 99px;
+      background: #1976d2;
       margin-bottom: 14px;
     }
+    .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #2b2b2b; }
+    .card p { font-size: 13px; color: #777; line-height: 1.6; }
 
-    .card h3 {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 8px;
-      color: #1a1a1a;
-    }
+    /* ── Pourquoi nous choisir ── */
+    .why { padding: 56px 40px; background: #2b2b2b; }
+    .why .section-label { color: #7eb8f7; }
+    .why .section-title { color: #ffffff; margin-bottom: 14px; }
+    .why p { font-size: 15px; color: #aaa; line-height: 1.8; max-width: 560px; }
 
-    .card p {
+    /* ── Équipe ── */
+    .team { padding: 56px 40px; background: #f4f4f4; }
+    .team-placeholder {
+      background: #ffffff;
+      border: 1px dashed #ccc;
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
       font-size: 13px;
-      color: #666;
-      line-height: 1.6;
+      color: #aaa;
     }
 
-    /* À propos */
-    .about {
-      padding: 48px 40px;
-      border-top: 1px solid #e8e8e8;
-      display: flex;
-      gap: 48px;
-      align-items: flex-start;
-    }
+    /* ── Contact ── */
+    .contact { padding: 56px 40px; background: #1a3a5c; text-align: center; }
+    .contact h2 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 12px; }
+    .contact p { font-size: 15px; color: #7eb8f7; margin-bottom: 28px; line-height: 1.7; }
 
-    .about-text {
-      flex: 1;
-    }
-
-    .about-text h2 {
-      font-size: 20px;
-      font-weight: 500;
-      margin-bottom: 14px;
-      color: #1a1a1a;
-    }
-
-    .about-text p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.7;
-    }
-
-    .about-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      min-width: 150px;
-    }
-
-    .stat {
-      background: #f7f7f5;
-      border-radius: 8px;
-      padding: 16px;
-    }
-
-    .stat-num {
-      font-size: 24px;
-      font-weight: 500;
-      color: #1a1a1a;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: #888;
-      margin-top: 4px;
-    }
-
-    /* Footer */
+    /* ── Pied de page ── */
     footer {
-      padding: 22px 40px;
-      border-top: 1px solid #e8e8e8;
+      padding: 20px 40px;
+      background: #1a1a1a;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      color: #888;
+      font-size: 11px;
+      color: #555;
     }
 
-    /* Responsive */
+    /* ── Responsive mobile ── */
     @media (max-width: 640px) {
-      nav { padding: 16px 20px; }
+      nav { padding: 14px 20px; }
+      .nav-logo { font-size: 20px; }
       .nav-links { gap: 16px; }
+      .nav-links a { font-size: 12px; }
       .hero { padding: 48px 20px; }
       .hero h1 { font-size: 22px; }
-      .section { padding: 36px 20px; }
-      .about { flex-direction: column; padding: 36px 20px; }
-      .about-stats { flex-direction: row; }
+      .section, .why, .team, .contact { padding: 40px 20px; }
       footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- ── NAVIGATION ── -->
   <nav>
     <span class="nav-logo">SAGA</span>
     <div class="nav-links">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services</a>
-      <a href="apropos.html">À propos</a>
-      <a href="contact.html">Contact</a>
+      <a onclick="document.getElementById('accueil').scrollIntoView({behavior:'smooth'})">Accueil</a>
+      <a onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</a>
+      <a onclick="document.getElementById('equipe').scrollIntoView({behavior:'smooth'})">Équipe</a>
+      <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
     </div>
   </nav>
 
-  <div class="hero">
-    <div class="hero-tag">Services-conseils · Volaille · Québec</div>
-    <h1>Des experts à vos côtés pour optimiser votre production avicole</h1>
-    <p>Services Avicoles Grondines Associés accompagne les producteurs de volaille du Québec avec des conseils personnalisés, des analyses financières et un accès aux subventions disponibles.</p>
-    <a href="contact.html" class="btn">Nous contacter</a>
-  </div>
+  <!-- ── ACCUEIL ── -->
+  <div id="accueil">
+    <div class="hero">
+      <div class="hero-tag">Certifié par l'Ordre des agronomes du Québec</div>
+      <h1>Vos projets prennent vie à nos côtés</h1>
+      <p>Notre priorité est de faciliter vos démarches financières, que ce soit pour un budget, une subvention, un démarrage ou un plan à long terme. Nous sommes à vos côtés.</p>
+      <a class="btn-wave" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Nous contacter</a>
+    </div>
 
-  <div class="section">
-    <div class="section-label">Nos services</div>
-    <div class="cards">
-      <div class="card">
-        <div class="card-dot"></div>
-        <h3>Subventions</h3>
-        <p>Nous vous aidons à identifier et à obtenir les subventions auxquelles vous avez droit.</p>
-      </div>
-      <div class="card">
-        <div class="card-dot"></div>
-        <h3>Coûts de production</h3>
-        <p>Analyse détaillée de vos coûts pour maximiser votre rentabilité.</p>
-      </div>
-      <div class="card">
-        <div class="card-dot"></div>
-        <h3>Comparaison provinciale</h3>
-        <p>Positionnez-vous par rapport à la moyenne des producteurs québécois.</p>
-      </div>
-      <div class="card">
-        <div class="card-dot"></div>
-        <h3>Budgets</h3>
-        <p>Planification budgétaire adaptée à votre exploitation avicole.</p>
+    <!-- BANDEROLE COLLABORATEURS -->
+    <div class="marquee-section">
+      <div class="marquee-label">Nos collaborateurs</div>
+      <div class="marquee-track">
+        <!-- 1re moitié -->
+        <div class="marquee-item"><div class="logo-box">BNC</div><span class="collab-name">Banque Nationale du Canada</span></div>
+        <div class="marquee-item"><div class="logo-box">CS</div><span class="collab-name">Couvoirs Scott</span></div>
+        <div class="marquee-item"><div class="logo-box">FAC</div><span class="collab-name">Financière agricole du Canada</span></div>
+        <div class="marquee-item"><div class="logo-box">EVQ</div><span class="collab-name">Éleveurs de volaille du Québec</span></div>
+        <div class="marquee-item"><div class="logo-box">DJ</div><span class="collab-name">Desjardins Entreprises</span></div>
+        <div class="marquee-item"><div class="logo-box">RBC</div><span class="collab-name">Banque Royale du Canada</span></div>
+        <!-- 2e moitié — copie identique pour la boucle fluide -->
+        <div class="marquee-item"><div class="logo-box">BNC</div><span class="collab-name">Banque Nationale du Canada</span></div>
+        <div class="marquee-item"><div class="logo-box">CS</div><span class="collab-name">Couvoirs Scott</span></div>
+        <div class="marquee-item"><div class="logo-box">FAC</div><span class="collab-name">Financière agricole du Canada</span></div>
+        <div class="marquee-item"><div class="logo-box">EVQ</div><span class="collab-name">Éleveurs de volaille du Québec</span></div>
+        <div class="marquee-item"><div class="logo-box">DJ</div><span class="collab-name">Desjardins Entreprises</span></div>
+        <div class="marquee-item"><div class="logo-box">RBC</div><span class="collab-name">Banque Royale du Canada</span></div>
       </div>
     </div>
   </div>
 
-  <div class="about">
-    <div class="about-text">
-      <h2>Pourquoi choisir SAGA?</h2>
+  <!-- ── SERVICES ── -->
+  <div id="services">
+    <div class="section">
+      <div class="section-label">Nos services</div>
+      <div class="section-title">Ce que nous offrons</div>
+      <div class="cards">
+        <div class="card"><div class="card-accent"></div><h3>Subventions</h3><p>Identification et obtention des subventions auxquelles vous avez droit.</p></div>
+        <div class="card"><div class="card-accent"></div><h3>Coûts de production</h3><p>Analyse détaillée de vos coûts pour maximiser votre rentabilité.</p></div>
+        <div class="card"><div class="card-accent"></div><h3>Comparaison provinciale</h3><p>Positionnez-vous par rapport à la moyenne des producteurs québécois.</p></div>
+        <div class="card"><div class="card-accent"></div><h3>Budgets</h3><p>Planification budgétaire adaptée à votre exploitation avicole.</p></div>
+      </div>
+    </div>
+
+    <div class="why">
+      <div class="section-label">Pourquoi nous choisir</div>
+      <div class="section-title">Une expertise au cœur du milieu avicole</div>
       <p>Notre équipe connaît les réalités du milieu avicole québécois. Que vous soyez un nouveau producteur ou un exploitant établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
     </div>
-    <div class="about-stats">
-      <div class="stat">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Spécialisé volaille</div>
+  </div>
+
+  <!-- ── ÉQUIPE ── -->
+  <div id="equipe">
+    <div class="team">
+      <div class="section-label" style="font-size:11px;color:#1976d2;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Notre équipe</div>
+      <div class="section-title">Les gens derrière SAGA</div>
+      <div class="team-placeholder">
+        Les membres de l'équipe seront ajoutés ici — photos, noms et titres.
       </div>
-      <div class="stat">
-        <div class="stat-num">QC</div>
-        <div class="stat-label">Partout au Québec</div>
-      </div>
+    </div>
+  </div>
+
+  <!-- ── CONTACT ── -->
+  <div id="contact">
+    <div class="contact">
+      <h2>Parlons de votre projet</h2>
+      <p>Vous avez une question ou souhaitez être accompagné?<br>Contactez-nous et nous vous répondrons rapidement.</p>
+      <a class="btn-wave" href="mailto:info@saga-avicole.ca">info@saga-avicole.ca</a>
     </div>
   </div>
 
