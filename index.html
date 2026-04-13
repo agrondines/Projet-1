@@ -7,28 +7,27 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: 'Times New Roman', Times, serif;
-      background: #ffffff;
-      color: #1a1a2e;
+    body { background: #ffffff; }
+
+    .bg-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
     }
+
+    .site { font-family: 'Times New Roman', Times, serif; color: #1a1a2e; position: relative; z-index: 1; }
 
     /* ── Navigation ── */
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: sticky; top: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 18px 36px;
-      background: #ffffff;
-      border-bottom: 1px solid #e0eaf5;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: transparent;
     }
     .nav-logo {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      font-size: 26px; font-weight: 700; letter-spacing: 0.1em;
       background: linear-gradient(115deg,
         #0d47a1 0%, #0d47a1 20%,
         #90caf9 35%, #42a5f5 45%, #90caf9 55%,
@@ -36,9 +35,7 @@
         #42a5f5 90%, #bbdefb 96%, #0d47a1 100%
       );
       background-size: 600% 600%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       animation: logoSpotlight 14s ease-in-out infinite;
       animation-delay: 3s;
     }
@@ -52,61 +49,37 @@
     }
     .nav-links { display: flex; gap: 28px; }
     .nav-links a {
-      font-size: 13px;
-      color: #555;
-      text-decoration: none;
-      transition: color 0.2s;
-      cursor: pointer;
+      font-size: 13px; color: #444; text-decoration: none;
+      cursor: pointer; transition: color 0.2s;
       font-family: 'Times New Roman', Times, serif;
     }
     .nav-links a:hover { color: #0d47a1; }
 
-    /* ── Hero ── */
+    /* ── Hero — 100% transparent ── */
     .hero {
+      position: relative; z-index: 5;
       padding: 80px 40px 60px;
       text-align: center;
-      background: #e8f1fb;
-      border-bottom: 1px solid #e0eaf5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background: transparent;
+      border: none;
+      display: flex; flex-direction: column; align-items: center;
     }
-    .hero-logo {
-      width: 90px;
-      height: auto;
-      margin-bottom: 24px;
-    }
+    .hero-logo { width: 90px; height: auto; margin-bottom: 24px; }
     .hero h1 {
-      font-size: 30px;
-      font-weight: 700;
-      line-height: 1.4;
-      max-width: 540px;
-      margin: 0 auto 32px;
-      color: #0d2b6b;
+      font-size: 30px; font-weight: 700; line-height: 1.4;
+      max-width: 540px; margin: 0 auto 32px; color: #0d2b6b;
     }
     .hero-tag {
-      display: inline-block;
-      font-size: 11px;
-      padding: 5px 14px;
-      border-radius: 99px;
-      background: #bbdefb;
-      color: #0d47a1;
-      margin-top: 18px;
-      letter-spacing: 0.06em;
+      display: inline-block; font-size: 11px; padding: 5px 14px;
+      border-radius: 99px; background: rgba(187,222,251,0.6);
+      color: #0d47a1; margin-top: 18px; letter-spacing: 0.06em;
     }
 
     /* ── Bouton effet projecteur bleu ── */
     .btn-wave {
-      display: inline-block;
-      padding: 13px 38px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 700;
-      font-family: Calibri, 'Gill Sans', sans-serif;
-      color: #ffffff;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
+      display: inline-block; padding: 13px 38px; border-radius: 8px;
+      font-size: 15px; font-weight: 700; font-family: Calibri, 'Gill Sans', sans-serif;
+      color: #ffffff; text-decoration: none; cursor: pointer; border: none;
       background: linear-gradient(115deg,
         #1565c0 0%, #1565c0 20%,
         #42a5f5 32%, #90caf9 42%,
@@ -130,200 +103,98 @@
       100% { background-position: 0% 80%; }
     }
 
-    /* ── Banderole défilante ── */
+    /* ── Banderole défilante — bleu foncé ── */
     .marquee-section {
+      position: relative; z-index: 5;
       padding: 26px 0;
-      background: #f0f6ff;
+      background: #0d2b6b;
       overflow: hidden;
-      border-bottom: 1px solid #e0eaf5;
     }
     .marquee-label {
-      text-align: center;
-      font-size: 12px;
-      color: #0d47a1;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-      font-family: Calibri, 'Gill Sans', sans-serif;
-      font-weight: 700;
+      text-align: center; font-size: 12px; color: #ffffff;
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;
+      font-family: Calibri, 'Gill Sans', sans-serif; font-weight: 700;
     }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: defilement 30s linear infinite;
-    }
+    .marquee-track { display: flex; width: max-content; animation: defilement 30s linear infinite; }
     .marquee-track:hover { animation-play-state: paused; }
     .marquee-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 0 36px;
-      border-right: 1px solid #c8dcf5;
+      display: flex; align-items: center; gap: 14px;
+      padding: 0 36px; border-right: 1px solid rgba(255,255,255,0.15);
       white-space: nowrap;
     }
-    .logo-box {
-      width: 52px;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .logo-box img { width: 100%; height: 100%; object-fit: contain; }
-    .collab-name {
-      font-size: 13px;
-      color: #1a3a6b;
-      font-family: Calibri, 'Gill Sans', sans-serif;
-      font-weight: 600;
-    }
-    @keyframes defilement {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+    .logo-box { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .logo-box img { width: 100%; height: 100%; object-fit: contain; filter: brightness(10); }
+    .collab-name { font-size: 13px; color: #ffffff; font-family: Calibri, 'Gill Sans', sans-serif; font-weight: 600; }
+    @keyframes defilement { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* ── Services ── */
-    .section { padding: 56px 40px; background: #ffffff; }
-    .section-label {
-      font-size: 11px;
-      color: #1565c0;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-    }
-    .section-title {
-      font-size: 22px;
-      font-weight: 700;
-      color: #0d2b6b;
-      margin-bottom: 28px;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
+    .section { position: relative; z-index: 5; padding: 56px 40px; background: rgba(255,255,255,0.82); }
+    .section-label { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .section-title { font-size: 22px; font-weight: 700; color: #0d2b6b; margin-bottom: 28px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .card {
-      background: #f0f6ff;
-      border: 1px solid #c8dcf5;
-      border-radius: 12px;
-      padding: 22px;
-      cursor: pointer;
+      background: rgba(240,246,255,0.92); border: 1px solid #c8dcf5;
+      border-radius: 12px; padding: 22px; cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: #1565c0;
-      box-shadow: 0 8px 24px rgba(21,101,192,0.12);
-    }
-    .card-accent {
-      width: 28px;
-      height: 3px;
-      border-radius: 99px;
-      background: #1565c0;
-      margin-bottom: 14px;
-    }
+    .card:hover { transform: translateY(-4px); border-color: #1565c0; box-shadow: 0 8px 24px rgba(21,101,192,0.12); }
+    .card-accent { width: 28px; height: 3px; border-radius: 99px; background: #1565c0; margin-bottom: 14px; }
     .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #0d2b6b; }
     .card p { font-size: 13px; color: #3a5068; line-height: 1.6; }
     .card-clic { font-size: 11px; color: #1565c0; margin-top: 14px; font-family: Calibri, sans-serif; }
 
     /* ── Modales ── */
     .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(13, 43, 107, 0.55);
-      z-index: 500;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      display: none; position: fixed; inset: 0;
+      background: rgba(13,43,107,0.55); z-index: 500;
+      align-items: center; justify-content: center; padding: 20px;
     }
     .modal-overlay.active { display: flex; }
-    .modal {
-      background: #ffffff;
-      border-radius: 16px;
-      max-width: 560px;
-      width: 100%;
-      overflow: hidden;
-      animation: modalIn 0.25s ease;
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    .modal { background: #ffffff; border-radius: 16px; max-width: 560px; width: 100%; overflow: hidden; animation: modalIn 0.25s ease; }
+    @keyframes modalIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .modal-photo {
-      width: 100%;
-      height: 200px;
-      background: #e8f1fb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      color: #5585b5;
-      font-family: Calibri, sans-serif;
-      border-bottom: 1px solid #e0eaf5;
-      overflow: hidden;
+      width: 100%; height: 200px; background: #e8f1fb;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: #5585b5; font-family: Calibri, sans-serif;
+      border-bottom: 1px solid #e0eaf5; overflow: hidden;
     }
     .modal-photo img { width: 100%; height: 100%; object-fit: cover; }
     .modal-body { padding: 28px 32px; }
-    .modal-tag {
-      font-size: 11px;
-      color: #1565c0;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
-      font-family: Calibri, sans-serif;
-    }
+    .modal-tag { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; font-family: Calibri, sans-serif; }
     .modal-title { font-size: 20px; font-weight: 700; color: #0d2b6b; margin-bottom: 14px; }
     .modal-text { font-size: 14px; color: #3a5068; line-height: 1.8; }
     .modal-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 32px;
-      border-top: 1px solid #e0eaf5;
-      background: #f8fbff;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 32px; border-top: 1px solid #e0eaf5; background: #f8fbff;
     }
-    .btn-close {
-      font-size: 13px;
-      color: #888;
-      cursor: pointer;
-      font-family: Calibri, sans-serif;
-      background: none;
-      border: none;
-      padding: 0;
-    }
+    .btn-close { font-size: 13px; color: #888; cursor: pointer; font-family: Calibri, sans-serif; background: none; border: none; }
     .btn-close:hover { color: #333; }
 
     /* ── Pourquoi nous choisir ── */
-    .why { padding: 56px 40px; background: #1565c0; }
+    .why { position: relative; z-index: 5; padding: 56px 40px; background: rgba(21,101,192,0.93); }
     .why .section-label { color: #bbdefb; }
     .why .section-title { color: #ffffff; margin-bottom: 14px; }
     .why p { font-size: 15px; color: #c8dcf5; line-height: 1.8; max-width: 560px; }
 
     /* ── Équipe ── */
-    .team { padding: 56px 40px; background: #ffffff; }
+    .team { position: relative; z-index: 5; padding: 56px 40px; background: rgba(255,255,255,0.82); }
     .team-placeholder {
-      background: #f0f6ff;
-      border: 1px dashed #90caf9;
-      border-radius: 12px;
-      padding: 40px;
-      text-align: center;
-      font-size: 13px;
-      color: #5585b5;
+      background: rgba(240,246,255,0.92); border: 1px dashed #90caf9;
+      border-radius: 12px; padding: 40px; text-align: center;
+      font-size: 13px; color: #5585b5;
     }
 
     /* ── Contact ── */
-    .contact { padding: 56px 40px; background: #e8f1fb; text-align: center; }
+    .contact { position: relative; z-index: 5; padding: 56px 40px; background: rgba(255,255,255,0.82); text-align: center; }
     .contact h2 { font-size: 22px; font-weight: 700; color: #0d2b6b; margin-bottom: 12px; }
     .contact p { font-size: 15px; color: #3a5068; margin-bottom: 28px; line-height: 1.7; }
 
     /* ── Pied de page ── */
     footer {
-      padding: 20px 40px;
-      background: #0d2b6b;
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: #90caf9;
+      position: relative; z-index: 5;
+      padding: 20px 40px; background: #0d2b6b;
+      display: flex; justify-content: space-between;
+      font-size: 11px; color: #90caf9;
     }
 
     /* ── Responsive mobile ── */
@@ -341,129 +212,136 @@
 </head>
 <body>
 
-  <!-- ── NAVIGATION ── -->
-  <nav>
-    <span class="nav-logo">SAGA</span>
-    <div class="nav-links">
-      <a onclick="document.getElementById('accueil').scrollIntoView({behavior:'smooth'})">Accueil</a>
-      <a onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</a>
-      <a onclick="document.getElementById('equipe').scrollIntoView({behavior:'smooth'})">Équipe</a>
-      <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
-    </div>
-  </nav>
+  <!-- ── LIGNES COURBES EN ARRIÈRE-PLAN ── -->
+  <canvas class="bg-canvas" id="bgCanvas"></canvas>
 
-  <!-- ── ACCUEIL ── -->
-  <div id="accueil">
-    <div class="hero">
-      <!-- Logo SAGA — fichier à uploader dans logos/BLEU3-GROS.png -->
-      <img class="hero-logo" src="logos/BLEU3-GROS.png" alt="Logo SAGA">
-      <h1>Vos projets prennent vie à nos côtés</h1>
-      <a class="btn-wave" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Nous contacter</a>
-      <div class="hero-tag">Certifié par l'Ordre des agronomes du Québec</div>
-    </div>
+  <div class="site">
 
-    <!-- BANDEROLE COLLABORATEURS -->
-    <div class="marquee-section">
-      <div class="marquee-label">Reconnu par l'industrie</div>
-      <div class="marquee-track">
-        <!-- 1re moitié -->
-        <div class="marquee-item"><div class="logo-box"><img src="logos/bnc.png" alt="BNC"></div><span class="collab-name">Banque Nationale du Canada</span></div>
-        <div class="marquee-item"><div class="logo-box"><img src="logos/couvoirs-scott.png" alt="Couvoirs Scott"></div><span class="collab-name">Couvoirs Scott</span></div>
-        <div class="marquee-item"><div class="logo-box"><img src="logos/fac.png" alt="FAC"></div><span class="collab-name">Financière agricole du Canada</span></div>
-        <div class="marquee-item"><div class="logo-box"><img src="logos/evq.png" alt="EVQ"></div><span class="collab-name">Éleveurs de volaille du Québec</span></div>
-        <div class="marquee-item"><div class="logo-box"><img src="logos/desjardins.png" alt="Desjardins"></div><span class="collab-name">Desjardins Entreprises</span></div>
-        <div class="marquee-item"><div class="logo-box"><img src="logos/rbc.png" alt="RBC"></div><span class="collab-name">Banque Royale du Canada</span></div>
-        <!-- 2e moitié — copie identique pour la boucle fluide -->
-        <div class="marquee-item"><div class="logo-box"><img src="logos/bnc.png" alt="BNC"></div><span class="collab-name">Banque Nationale du Canada</span></div>
-        <div class="marquee-item"><div class="logo-box"><img src="logos/couvoirs-scott.png" alt="Couvoirs Scott"></div><span class="collab-name">Couvoirs Scott</span></div>
-        <div class="marquee-item"><div class="logo-box"><img src="logos/fac.png" alt="FAC"></div><span class="collab-name">Financière agricole du Canada</span></div>
-        <div class="marquee-item"><div class="logo-box"><img src="logos/evq.png" alt="EVQ"></div><span class="collab-name">Éleveurs de volaille du Québec</span></div>
-        <div class="marquee-item"><div class="logo-box"><img src="logos/desjardins.png" alt="Desjardins"></div><span class="collab-name">Desjardins Entreprises</span></div>
-        <div class="marquee-item"><div class="logo-box"><img src="logos/rbc.png" alt="RBC"></div><span class="collab-name">Banque Royale du Canada</span></div>
+    <!-- ── NAVIGATION ── -->
+    <nav>
+      <span class="nav-logo">SAGA</span>
+      <div class="nav-links">
+        <a onclick="document.getElementById('accueil').scrollIntoView({behavior:'smooth'})">Accueil</a>
+        <a onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</a>
+        <a onclick="document.getElementById('equipe').scrollIntoView({behavior:'smooth'})">Équipe</a>
+        <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
       </div>
-    </div>
-  </div>
+    </nav>
 
-  <!-- ── SERVICES ── -->
-  <div id="services">
-    <div class="section">
-      <div class="section-label">Nos services</div>
-      <div class="section-title">Ce que nous offrons</div>
-      <div class="cards">
-        <div class="card" onclick="openModal('subventions')">
-          <div class="card-accent"></div>
-          <h3>Subventions</h3>
-          <p>Identification et obtention des subventions auxquelles vous avez droit.</p>
-          <div class="card-clic">Cliquer pour en savoir plus →</div>
-        </div>
-        <div class="card" onclick="openModal('couts')">
-          <div class="card-accent"></div>
-          <h3>Coûts de production</h3>
-          <p>Analyse détaillée de vos coûts pour maximiser votre rentabilité.</p>
-          <div class="card-clic">Cliquer pour en savoir plus →</div>
-        </div>
-        <div class="card" onclick="openModal('comparaison')">
-          <div class="card-accent"></div>
-          <h3>Comparaison provinciale</h3>
-          <p>Positionnez-vous par rapport à la moyenne des producteurs québécois.</p>
-          <div class="card-clic">Cliquer pour en savoir plus →</div>
-        </div>
-        <div class="card" onclick="openModal('budgets')">
-          <div class="card-accent"></div>
-          <h3>Budgets</h3>
-          <p>Planification budgétaire adaptée à votre exploitation avicole.</p>
-          <div class="card-clic">Cliquer pour en savoir plus →</div>
-        </div>
-        <div class="card" onclick="openModal('service5')">
-          <div class="card-accent"></div>
-          <h3>Service à venir</h3>
-          <p>Description courte de ce service — à compléter prochainement.</p>
-          <div class="card-clic">Cliquer pour en savoir plus →</div>
-        </div>
-        <div class="card" onclick="openModal('service6')">
-          <div class="card-accent"></div>
-          <h3>Service à venir</h3>
-          <p>Description courte de ce service — à compléter prochainement.</p>
-          <div class="card-clic">Cliquer pour en savoir plus →</div>
+    <!-- ── ACCUEIL ── -->
+    <div id="accueil">
+      <div class="hero">
+        <!-- Logo — uploader logos/BLEU3-GROS.png sur GitHub -->
+        <img class="hero-logo" src="logos/BLEU3-GROS.png" alt="Logo SAGA">
+        <h1>Vos projets prennent vie à nos côtés</h1>
+        <a class="btn-wave" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Nous contacter</a>
+        <div class="hero-tag">Certifié par l'Ordre des agronomes du Québec</div>
+      </div>
+
+      <!-- BANDEROLE COLLABORATEURS -->
+      <div class="marquee-section">
+        <div class="marquee-label">Reconnu par l'industrie</div>
+        <div class="marquee-track">
+          <!-- 1re moitié -->
+          <div class="marquee-item"><div class="logo-box"><img src="logos/bnc.png" alt="BNC"></div><span class="collab-name">Banque Nationale du Canada</span></div>
+          <div class="marquee-item"><div class="logo-box"><img src="logos/couvoirs-scott.png" alt="Couvoirs Scott"></div><span class="collab-name">Couvoirs Scott</span></div>
+          <div class="marquee-item"><div class="logo-box"><img src="logos/fac.png" alt="FAC"></div><span class="collab-name">Financière agricole du Canada</span></div>
+          <div class="marquee-item"><div class="logo-box"><img src="logos/evq.png" alt="EVQ"></div><span class="collab-name">Éleveurs de volaille du Québec</span></div>
+          <div class="marquee-item"><div class="logo-box"><img src="logos/desjardins.png" alt="Desjardins"></div><span class="collab-name">Desjardins Entreprises</span></div>
+          <div class="marquee-item"><div class="logo-box"><img src="logos/rbc.png" alt="RBC"></div><span class="collab-name">Banque Royale du Canada</span></div>
+          <!-- 2e moitié — copie identique pour la boucle fluide -->
+          <div class="marquee-item"><div class="logo-box"><img src="logos/bnc.png" alt="BNC"></div><span class="collab-name">Banque Nationale du Canada</span></div>
+          <div class="marquee-item"><div class="logo-box"><img src="logos/couvoirs-scott.png" alt="Couvoirs Scott"></div><span class="collab-name">Couvoirs Scott</span></div>
+          <div class="marquee-item"><div class="logo-box"><img src="logos/fac.png" alt="FAC"></div><span class="collab-name">Financière agricole du Canada</span></div>
+          <div class="marquee-item"><div class="logo-box"><img src="logos/evq.png" alt="EVQ"></div><span class="collab-name">Éleveurs de volaille du Québec</span></div>
+          <div class="marquee-item"><div class="logo-box"><img src="logos/desjardins.png" alt="Desjardins"></div><span class="collab-name">Desjardins Entreprises</span></div>
+          <div class="marquee-item"><div class="logo-box"><img src="logos/rbc.png" alt="RBC"></div><span class="collab-name">Banque Royale du Canada</span></div>
         </div>
       </div>
     </div>
 
-    <div class="why">
-      <div class="section-label">Pourquoi nous choisir</div>
-      <div class="section-title">Une expertise au cœur du milieu avicole</div>
-      <p>Notre équipe connaît les réalités du milieu avicole québécois. Que vous soyez un nouveau producteur ou un exploitant établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
-    </div>
-  </div>
+    <!-- ── SERVICES ── -->
+    <div id="services">
+      <div class="section">
+        <div class="section-label">Nos services</div>
+        <div class="section-title">Ce que nous offrons</div>
+        <div class="cards">
+          <div class="card" onclick="openModal('subventions')">
+            <div class="card-accent"></div>
+            <h3>Subventions</h3>
+            <p>Identification et obtention des subventions auxquelles vous avez droit.</p>
+            <div class="card-clic">Cliquer pour en savoir plus →</div>
+          </div>
+          <div class="card" onclick="openModal('couts')">
+            <div class="card-accent"></div>
+            <h3>Coûts de production</h3>
+            <p>Analyse détaillée de vos coûts pour maximiser votre rentabilité.</p>
+            <div class="card-clic">Cliquer pour en savoir plus →</div>
+          </div>
+          <div class="card" onclick="openModal('comparaison')">
+            <div class="card-accent"></div>
+            <h3>Comparaison provinciale</h3>
+            <p>Positionnez-vous par rapport à la moyenne des producteurs québécois.</p>
+            <div class="card-clic">Cliquer pour en savoir plus →</div>
+          </div>
+          <div class="card" onclick="openModal('budgets')">
+            <div class="card-accent"></div>
+            <h3>Budgets</h3>
+            <p>Planification budgétaire adaptée à votre exploitation avicole.</p>
+            <div class="card-clic">Cliquer pour en savoir plus →</div>
+          </div>
+          <div class="card" onclick="openModal('service5')">
+            <div class="card-accent"></div>
+            <h3>Service à venir</h3>
+            <p>Description courte de ce service — à compléter prochainement.</p>
+            <div class="card-clic">Cliquer pour en savoir plus →</div>
+          </div>
+          <div class="card" onclick="openModal('service6')">
+            <div class="card-accent"></div>
+            <h3>Service à venir</h3>
+            <p>Description courte de ce service — à compléter prochainement.</p>
+            <div class="card-clic">Cliquer pour en savoir plus →</div>
+          </div>
+        </div>
+      </div>
 
-  <!-- ── ÉQUIPE ── -->
-  <div id="equipe">
-    <div class="team">
-      <div class="section-label" style="font-size:11px;color:#1565c0;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Notre équipe</div>
-      <div class="section-title">Les gens derrière SAGA</div>
-      <div class="team-placeholder">
-        Les membres de l'équipe seront ajoutés ici — photos, noms et titres.
+      <div class="why">
+        <div class="section-label">Pourquoi nous choisir</div>
+        <div class="section-title">Une expertise au cœur du milieu avicole</div>
+        <p>Notre équipe connaît les réalités du milieu avicole québécois. Que vous soyez un nouveau producteur ou un exploitant établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
       </div>
     </div>
-  </div>
 
-  <!-- ── CONTACT ── -->
-  <div id="contact">
-    <div class="contact">
-      <h2>Parlons de votre projet</h2>
-      <p>Vous avez une question ou souhaitez être accompagné?<br>Contactez-nous et nous vous répondrons rapidement.</p>
-      <a class="btn-wave" href="mailto:info@saga-avicole.ca">info@saga-avicole.ca</a>
+    <!-- ── ÉQUIPE ── -->
+    <div id="equipe">
+      <div class="team">
+        <div class="section-label" style="font-size:11px;color:#1565c0;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Notre équipe</div>
+        <div class="section-title">Les gens derrière SAGA</div>
+        <div class="team-placeholder">
+          Les membres de l'équipe seront ajoutés ici — photos, noms et titres.
+        </div>
+      </div>
     </div>
-  </div>
 
-  <footer>
-    <span>© 2026 Services Avicoles Grondines Associés</span>
-    <span>Grondines, Québec</span>
-  </footer>
+    <!-- ── CONTACT ── -->
+    <div id="contact">
+      <div class="contact">
+        <h2>Parlons de votre projet</h2>
+        <p>Vous avez une question ou souhaitez être accompagné?<br>Contactez-nous et nous vous répondrons rapidement.</p>
+        <a class="btn-wave" href="mailto:info@saga-avicole.ca">info@saga-avicole.ca</a>
+      </div>
+    </div>
+
+    <footer>
+      <span>© 2026 Services Avicoles Grondines Associés</span>
+      <span>Grondines, Québec</span>
+    </footer>
+
+  </div>
 
   <!-- ── MODALES ── -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
-    <div class="modal" id="modalBox">
+    <div class="modal">
       <div class="modal-photo" id="modalPhoto">Photo du service — à ajouter plus tard</div>
       <div class="modal-body">
         <div class="modal-tag" id="modalTag">Service</div>
@@ -478,6 +356,55 @@
   </div>
 
   <script>
+    /* ── Lignes courbes en arrière-plan ── */
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      draw();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const w = canvas.width;
+      const h = canvas.height;
+      const n = 18;
+
+      for (let i = 0; i < n; i++) {
+        const t = i / (n - 1);
+        ctx.strokeStyle = `rgba(13,71,161,${0.04 + t * 0.08})`;
+        ctx.lineWidth = 0.9;
+        ctx.beginPath();
+        ctx.moveTo(w * (-0.15 + t * 0.75), 0);
+        ctx.bezierCurveTo(
+          w * (0.05 + t * 0.3), h * 0.3,
+          w * (0.4 + t * 0.35), h * 0.6,
+          w * (0.2 + t * 0.9), h
+        );
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < n; i++) {
+        const t = i / (n - 1);
+        ctx.strokeStyle = `rgba(13,71,161,${0.03 + t * 0.06})`;
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(0, h * (-0.1 + t * 0.75));
+        ctx.bezierCurveTo(
+          w * 0.3, h * (0.05 + t * 0.35),
+          w * 0.6, h * (0.4 + t * 0.3),
+          w, h * (0.15 + t * 0.9)
+        );
+        ctx.stroke();
+      }
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    /* ── Modales ── */
     const services = {
       subventions: { tag: 'Financement', title: 'Subventions', text: 'Placeholder — Décrivez ici votre service de recherche et d\'obtention de subventions. Programmes disponibles, processus d\'accompagnement, bénéfices concrets pour le producteur.', photo: null },
       couts: { tag: 'Analyse financière', title: 'Coûts de production', text: 'Placeholder — Décrivez ici votre service d\'analyse des coûts de production. Comment vous aidez le producteur à identifier les postes de dépenses et trouver des pistes d\'optimisation.', photo: null },
