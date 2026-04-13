@@ -6,78 +6,30 @@
   <title>Services Avicoles Grondines Associés</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body { background: #ffffff; }
 
-    .bg-canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
+    .bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
     .site { font-family: 'Times New Roman', Times, serif; color: #1a1a2e; position: relative; z-index: 1; }
 
     /* ── Navigation ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 36px;
-      background: transparent;
-    }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 18px 36px; background: transparent; }
     .nav-logo {
-      font-size: 26px; font-weight: 700; letter-spacing: 0.1em;
-      background: linear-gradient(115deg,
-        #0d47a1 0%, #0d47a1 20%,
-        #90caf9 35%, #42a5f5 45%, #90caf9 55%,
-        #0d47a1 70%, #0d47a1 80%,
-        #42a5f5 90%, #bbdefb 96%, #0d47a1 100%
-      );
-      background-size: 600% 600%;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      font-size: 34px; font-weight: 700; letter-spacing: 0.1em;
+      background: linear-gradient(115deg, #0d47a1 0%, #0d47a1 20%, #90caf9 35%, #42a5f5 45%, #90caf9 55%, #0d47a1 70%, #0d47a1 80%, #42a5f5 90%, #bbdefb 96%, #0d47a1 100%);
+      background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       animation: logoSpotlight 14s ease-in-out infinite; animation-delay: 3s;
     }
-    @keyframes logoSpotlight {
-      0%   { background-position: 0% 80%; }
-      20%  { background-position: 90% 10%; }
-      40%  { background-position: 15% 95%; }
-      60%  { background-position: 100% 30%; }
-      80%  { background-position: 45% 60%; }
-      100% { background-position: 0% 80%; }
-    }
+    @keyframes logoSpotlight { 0% { background-position: 0% 80%; } 20% { background-position: 90% 10%; } 40% { background-position: 15% 95%; } 60% { background-position: 100% 30%; } 80% { background-position: 45% 60%; } 100% { background-position: 0% 80%; } }
     .nav-links { display: flex; gap: 28px; }
-    .nav-links a {
-      font-size: 13px; color: #444; text-decoration: none;
-      cursor: pointer; transition: color 0.2s;
-      font-family: 'Times New Roman', Times, serif;
-    }
+    .nav-links a { font-size: 16px; color: #444; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'Times New Roman', Times, serif; }
     .nav-links a:hover { color: #0d47a1; }
 
     /* ── Hero ── */
-    .hero {
-      position: relative; z-index: 5;
-      padding: 80px 40px 60px;
-      text-align: center;
-      background: transparent;
-      display: flex; flex-direction: column; align-items: center;
-    }
+    .hero { position: relative; z-index: 5; padding: 80px 40px 60px; text-align: center; background: transparent; display: flex; flex-direction: column; align-items: center; }
     .hero-logo { width: 90px; height: auto; margin-bottom: 24px; }
-    .hero h1 {
-      font-size: 30px; font-weight: 700; line-height: 1.4;
-      max-width: 540px; margin: 0 auto 32px; color: #0d2b6b;
-    }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 11px; padding: 5px 14px;
-      border-radius: 99px; background: rgba(187,222,251,0.6);
-      color: #0d47a1; margin-top: 18px; letter-spacing: 0.06em;
-    }
-    .hero-tag .check {
-      width: 14px; height: 14px; border-radius: 50%;
-      background: #0d47a1; display: flex; align-items: center;
-      justify-content: center; flex-shrink: 0;
-    }
+    .hero h1 { font-size: 42px; font-weight: 700; line-height: 1.3; max-width: 640px; margin: 0 auto 32px; color: #0d2b6b; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; padding: 5px 14px; border-radius: 99px; background: rgba(187,222,251,0.6); color: #0d47a1; margin-top: 18px; letter-spacing: 0.06em; }
+    .hero-tag .check { width: 14px; height: 14px; border-radius: 50%; background: #0d47a1; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .hero-tag .check svg { width: 8px; height: 8px; }
 
     /* ── Bouton ── */
@@ -85,47 +37,21 @@
       display: inline-block; padding: 13px 38px; border-radius: 8px;
       font-size: 15px; font-weight: 700; font-family: Calibri, 'Gill Sans', sans-serif;
       color: #ffffff; text-decoration: none; cursor: pointer; border: none;
-      background: linear-gradient(115deg,
-        #1565c0 0%, #1565c0 20%,
-        #42a5f5 32%, #90caf9 42%,
-        #42a5f5 52%, #1565c0 68%,
-        #1976d2 80%, #64b5f6 90%,
-        #1565c0 100%
-      );
-      background-size: 600% 600%;
-      animation: btnSpotlight 12s ease-in-out infinite; animation-delay: 1.5s;
-      transition: opacity 0.3s ease;
+      background: linear-gradient(115deg, #1565c0 0%, #1565c0 20%, #42a5f5 32%, #90caf9 42%, #42a5f5 52%, #1565c0 68%, #1976d2 80%, #64b5f6 90%, #1565c0 100%);
+      background-size: 600% 600%; animation: btnSpotlight 12s ease-in-out infinite; animation-delay: 1.5s; transition: opacity 0.3s ease;
     }
     .btn-wave:hover { opacity: 0.85; animation-play-state: paused; }
-    @keyframes btnSpotlight {
-      0%   { background-position: 0% 80%; }
-      20%  { background-position: 85% 15%; }
-      38%  { background-position: 20% 90%; }
-      55%  { background-position: 100% 25%; }
-      72%  { background-position: 40% 65%; }
-      88%  { background-position: 75% 10%; }
-      100% { background-position: 0% 80%; }
-    }
+    @keyframes btnSpotlight { 0% { background-position: 0% 80%; } 20% { background-position: 85% 15%; } 38% { background-position: 20% 90%; } 55% { background-position: 100% 25%; } 72% { background-position: 40% 65%; } 88% { background-position: 75% 10%; } 100% { background-position: 0% 80%; } }
 
     /* ── Banderole ── */
-    .marquee-section {
-      position: relative; z-index: 5;
-      padding: 26px 0; background: #0d2b6b; overflow: hidden;
-    }
-    .marquee-label {
-      text-align: center; font-size: 12px; color: #ffffff;
-      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;
-      font-family: Calibri, 'Gill Sans', sans-serif; font-weight: 700;
-    }
+    .marquee-section { position: relative; z-index: 5; padding: 26px 0; background: #0d2b6b; overflow: hidden; }
+    .marquee-label { text-align: center; font-size: 12px; color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; font-family: Calibri, sans-serif; font-weight: 700; }
     .marquee-track { display: flex; width: max-content; animation: defilement 50s linear infinite; }
     .marquee-track:hover { animation-play-state: paused; }
-    .marquee-item {
-      display: flex; align-items: center; gap: 14px;
-      padding: 0 36px; border-right: 1px solid rgba(255,255,255,0.15); white-space: nowrap;
-    }
+    .marquee-item { display: flex; align-items: center; gap: 14px; padding: 0 36px; border-right: 1px solid rgba(255,255,255,0.15); white-space: nowrap; }
     .logo-box { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .logo-box img { width: 100%; height: 100%; object-fit: contain; }
-    .collab-name { font-size: 13px; color: #ffffff; font-family: Calibri, 'Gill Sans', sans-serif; font-weight: 600; }
+    .collab-name { font-size: 13px; color: #ffffff; font-family: Calibri, sans-serif; font-weight: 600; }
     @keyframes defilement { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* ── Services ── */
@@ -133,94 +59,108 @@
     .section-label { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
     .section-title { font-size: 22px; font-weight: 700; color: #0d2b6b; margin-bottom: 28px; }
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .card {
-      background: rgba(240,246,255,0.92); border: 1px solid #c8dcf5;
-      border-radius: 12px; padding: 22px; cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    }
+    .card { background: rgba(240,246,255,0.92); border: 1px solid #c8dcf5; border-radius: 12px; padding: 22px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
     .card:hover { transform: translateY(-4px); border-color: #1565c0; box-shadow: 0 8px 24px rgba(21,101,192,0.12); }
     .card-accent { width: 28px; height: 3px; border-radius: 99px; background: #1565c0; margin-bottom: 14px; }
     .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #0d2b6b; }
     .card p { font-size: 13px; color: #3a5068; line-height: 1.6; }
     .card-clic { font-size: 11px; color: #1565c0; margin-top: 14px; font-family: Calibri, sans-serif; }
 
-    /* ── Modales ── */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(13,43,107,0.55); z-index: 500;
-      align-items: center; justify-content: center; padding: 20px;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal { background: #ffffff; border-radius: 16px; max-width: 560px; width: 100%; overflow: hidden; animation: modalIn 0.25s ease; }
-    @keyframes modalIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* Photo remplacée par bloc bleu foncé */
-    .modal-header {
-      width: 100%; padding: 28px 32px;
-      background: #0d2b6b;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .modal-header-title {
-      font-size: 22px; font-weight: 700; color: #ffffff;
-      font-family: 'Times New Roman', Times, serif; text-align: center;
-    }
-
-    .modal-body { padding: 24px 32px; }
-    .modal-tag { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; font-family: Calibri, sans-serif; }
-    .modal-intro { font-size: 14px; color: #3a5068; line-height: 1.8; margin-bottom: 16px; }
-
-    /* Bullets checkmarks */
-    .modal-bullets { list-style: none; padding: 0; margin: 0; }
-    .modal-bullets li {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: 14px; color: #3a5068; line-height: 1.7; margin-bottom: 10px;
-    }
-    .modal-bullets li .chk {
-      width: 18px; height: 18px; border-radius: 50%;
-      background: #0d2b6b; display: flex; align-items: center;
-      justify-content: center; flex-shrink: 0; margin-top: 2px;
-    }
-    .modal-bullets li .chk svg { width: 10px; height: 10px; }
-
-    .modal-footer {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 16px 32px; border-top: 1px solid #e0eaf5; background: #f8fbff;
-    }
-    .btn-close { font-size: 13px; color: #888; cursor: pointer; font-family: Calibri, sans-serif; background: none; border: none; }
-    .btn-close:hover { color: #333; }
-
-    /* ── Pourquoi nous choisir ── */
-    .why { position: relative; z-index: 5; padding: 56px 40px; background: rgba(21,101,192,0.93); }
+    /* ── Pourquoi nous choisir avec stats ── */
+    .why { position: relative; z-index: 5; padding: 56px 40px; background: rgba(21,101,192,0.93); display: flex; gap: 48px; align-items: center; }
+    .why-stats { display: flex; flex-direction: column; gap: 24px; min-width: 200px; }
+    .stat-item { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .stat-item.visible { opacity: 1; transform: translateY(0); }
+    .stat-num { font-size: 32px; font-weight: 700; color: #ffffff; font-family: 'Times New Roman', Times, serif; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.7); font-family: Calibri, sans-serif; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .why-divider { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; }
+    .why-text { flex: 1; }
     .why .section-label { color: #bbdefb; }
     .why .section-title { color: #ffffff; margin-bottom: 14px; }
-    .why p { font-size: 15px; color: #c8dcf5; line-height: 1.8; max-width: 560px; }
+    .why p { font-size: 15px; color: #c8dcf5; line-height: 1.8; }
 
     /* ── Équipe ── */
     .team { position: relative; z-index: 5; padding: 56px 40px; background: rgba(255,255,255,0.82); }
-    .team-placeholder {
-      background: rgba(240,246,255,0.92); border: 1px dashed #90caf9;
-      border-radius: 12px; padding: 40px; text-align: center; font-size: 13px; color: #5585b5;
+    .team-grid { display: flex; gap: 16px; justify-content: center; flex-wrap: nowrap; }
+    .team-card {
+      display: flex; flex-direction: column; align-items: center;
+      cursor: pointer; flex: 1; max-width: 180px;
+      transition: transform 0.2s;
     }
-
-    /* ── Contact ── */
-    .contact { position: relative; z-index: 5; padding: 56px 40px; background: rgba(255,255,255,0.82); text-align: center; }
-    .contact h2 { font-size: 22px; font-weight: 700; color: #0d2b6b; margin-bottom: 12px; }
-    .contact p { font-size: 15px; color: #3a5068; margin-bottom: 28px; line-height: 1.7; }
-
-    footer {
-      position: relative; z-index: 5;
-      padding: 20px 40px; background: #0d2b6b;
-      display: flex; justify-content: space-between;
-      font-size: 11px; color: #90caf9;
+    .team-card:hover { transform: translateY(-4px); }
+    .team-photo {
+      width: 100%; aspect-ratio: 1; border-radius: 12px;
+      background: #e8f1fb; border: 1px solid #c8dcf5;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: #5585b5; font-family: Calibri, sans-serif;
+      text-align: center; overflow: hidden; margin-bottom: 10px;
     }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .team-name { font-size: 14px; font-weight: 700; color: #0d2b6b; text-align: center; }
+    .team-role { font-size: 12px; color: #5585b5; font-family: Calibri, sans-serif; text-align: center; margin-top: 2px; }
 
-    @media (max-width: 640px) {
+    /* ── Formulaire contact ── */
+    .contact { position: relative; z-index: 5; padding: 56px 40px; background: rgba(255,255,255,0.82); }
+    .contact h2 { font-size: 22px; font-weight: 700; color: #0d2b6b; margin-bottom: 8px; }
+    .contact-sub { font-size: 14px; color: #5585b5; margin-bottom: 32px; font-family: Calibri, sans-serif; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 12px; color: #0d2b6b; font-weight: 700; font-family: Calibri, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 10px 14px; border: 1px solid #c8dcf5; border-radius: 8px;
+      font-size: 14px; font-family: 'Times New Roman', Times, serif;
+      color: #1a1a2e; background: rgba(240,246,255,0.6);
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #1565c0; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-full { grid-column: 1 / -1; }
+    .form-submit { margin-top: 8px; }
+
+    /* ── Modales services ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(13,43,107,0.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
+    .modal-overlay.active { display: flex; }
+    .modal { background: #ffffff; border-radius: 16px; max-width: 560px; width: 100%; overflow: hidden; animation: modalIn 0.25s ease; }
+    @keyframes modalIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-header { width: 100%; padding: 28px 32px; background: #0d2b6b; display: flex; align-items: center; justify-content: center; }
+    .modal-header-title { font-size: 22px; font-weight: 700; color: #ffffff; font-family: 'Times New Roman', Times, serif; text-align: center; }
+    .modal-body { padding: 24px 32px; }
+    .modal-tag { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; font-family: Calibri, sans-serif; }
+    .modal-intro { font-size: 14px; color: #3a5068; line-height: 1.8; margin-bottom: 16px; }
+    .modal-bullets { list-style: none; padding: 0; margin: 0; }
+    .modal-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #3a5068; line-height: 1.7; margin-bottom: 10px; }
+    .modal-bullets li .chk { width: 18px; height: 18px; border-radius: 50%; background: #0d2b6b; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .modal-bullets li .chk svg { width: 10px; height: 10px; }
+    .modal-footer { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-top: 1px solid #e0eaf5; background: #f8fbff; }
+    .btn-close { font-size: 13px; color: #888; cursor: pointer; font-family: Calibri, sans-serif; background: none; border: none; }
+    .btn-close:hover { color: #333; }
+
+    /* ── Modale équipe ── */
+    .team-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(13,43,107,0.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
+    .team-modal-overlay.active { display: flex; }
+    .team-modal { background: #ffffff; border-radius: 16px; max-width: 420px; width: 100%; overflow: hidden; animation: modalIn 0.25s ease; }
+    .team-modal-photo { width: 100%; height: 220px; background: #e8f1fb; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #5585b5; font-family: Calibri, sans-serif; overflow: hidden; }
+    .team-modal-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .team-modal-body { padding: 24px 28px; }
+    .team-modal-name { font-size: 20px; font-weight: 700; color: #0d2b6b; margin-bottom: 4px; }
+    .team-modal-title { font-size: 13px; color: #1565c0; font-family: Calibri, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+    .team-modal-desc { font-size: 14px; color: #3a5068; line-height: 1.8; }
+    .team-modal-footer { display: flex; justify-content: flex-end; padding: 14px 28px; border-top: 1px solid #e0eaf5; background: #f8fbff; }
+
+    footer { position: relative; z-index: 5; padding: 20px 40px; background: #0d2b6b; display: flex; justify-content: space-between; font-size: 11px; color: #90caf9; }
+
+    @media (max-width: 768px) {
       nav { padding: 14px 20px; }
-      .nav-logo { font-size: 20px; }
-      .nav-links { gap: 16px; }
+      .nav-logo { font-size: 24px; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 13px; }
       .hero { padding: 48px 20px 40px; }
-      .hero h1 { font-size: 22px; }
+      .hero h1 { font-size: 28px; }
       .cards { grid-template-columns: 1fr; }
+      .why { flex-direction: column; }
+      .why-divider { display: none; }
+      .team-grid { flex-wrap: wrap; }
+      .form-grid { grid-template-columns: 1fr; }
       .section, .why, .team, .contact { padding: 40px 20px; }
       footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
     }
@@ -248,9 +188,7 @@
         <h1>Votre projet avicole prend vie ici</h1>
         <a class="btn-wave" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Nous contacter</a>
         <div class="hero-tag">
-          <div class="check">
-            <svg viewBox="0 0 8 8" fill="none"><polyline points="1,4 3,6 7,2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+          <div class="check"><svg viewBox="0 0 8 8" fill="none"><polyline points="1,4 3,6 7,2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           Membre de l'Ordre des Agronomes du Québec
         </div>
       </div>
@@ -295,70 +233,125 @@
       </div>
     </div>
 
+    <!-- ── SERVICES ── -->
     <div id="services">
       <div class="section">
         <div class="section-label">Nos services</div>
         <div class="section-title">Ce que nous offrons</div>
         <div class="cards">
-          <div class="card" onclick="openModal('couts')">
-            <div class="card-accent"></div>
-            <h3>Coût de production</h3>
-            <p>Établissement des revenus et dépenses avicoles avec comparaison sectorielle détaillée.</p>
-            <div class="card-clic">Cliquer pour en savoir plus →</div>
-          </div>
-          <div class="card" onclick="openModal('demarrage')">
-            <div class="card-accent"></div>
-            <h3>Programme de démarrage</h3>
-            <p>Assistance auprès de la relève agricole pour les programmes de démarrage admissibles.</p>
-            <div class="card-clic">Cliquer pour en savoir plus →</div>
-          </div>
-          <div class="card" onclick="openModal('budget')">
-            <div class="card-accent"></div>
-            <h3>Budget</h3>
-            <p>Planification budgétaire et gestion de croissance adaptées à votre exploitation avicole.</p>
-            <div class="card-clic">Cliquer pour en savoir plus →</div>
-          </div>
-          <div class="card" onclick="openModal('subvention')">
-            <div class="card-accent"></div>
-            <h3>Subvention</h3>
-            <p>Identification et accompagnement dans vos demandes de subventions agricoles.</p>
-            <div class="card-clic">Cliquer pour en savoir plus →</div>
-          </div>
-          <div class="card" onclick="openModal('pifvo')">
-            <div class="card-accent"></div>
-            <h3>PIFVO</h3>
-            <p>Programme d'investissement pour fermes de volailles et d'œufs — jusqu'à 70% de remboursement.</p>
-            <div class="card-clic">Cliquer pour en savoir plus →</div>
-          </div>
-          <div class="card" onclick="openModal('autres')">
-            <div class="card-accent"></div>
-            <h3>Autres</h3>
-            <p>Description courte de ce service — à compléter prochainement.</p>
-            <div class="card-clic">Cliquer pour en savoir plus →</div>
-          </div>
+          <div class="card" onclick="openModal('couts')"><div class="card-accent"></div><h3>Coût de production</h3><p>Établissement des revenus et dépenses avicoles avec comparaison sectorielle détaillée.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+          <div class="card" onclick="openModal('demarrage')"><div class="card-accent"></div><h3>Programme de démarrage</h3><p>Assistance auprès de la relève agricole pour les programmes de démarrage admissibles.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+          <div class="card" onclick="openModal('budget')"><div class="card-accent"></div><h3>Budget</h3><p>Planification budgétaire et gestion de croissance adaptées à votre exploitation avicole.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+          <div class="card" onclick="openModal('subvention')"><div class="card-accent"></div><h3>Subvention</h3><p>Identification et accompagnement dans vos demandes de subventions agricoles.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+          <div class="card" onclick="openModal('pifvo')"><div class="card-accent"></div><h3>PIFVO</h3><p>Programme d'investissement pour fermes de volailles et d'œufs — jusqu'à 70% de remboursement.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+          <div class="card" onclick="openModal('autres')"><div class="card-accent"></div><h3>Autres services</h3><p>Contactez-nous pour discuter de vos besoins spécifiques.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
         </div>
       </div>
 
+      <!-- Pourquoi nous choisir avec stats -->
       <div class="why">
-        <div class="section-label">Pourquoi nous choisir</div>
-        <div class="section-title">Une expertise au cœur du milieu avicole</div>
-        <p>Notre équipe connaît les réalités du milieu avicole québécois. Que vous soyez un nouveau producteur ou un exploitant établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
+        <div class="why-stats">
+          <div class="stat-item" id="stat0">
+            <div class="stat-num">20 ans</div>
+            <div class="stat-label">D'expérience</div>
+          </div>
+          <div class="stat-item" id="stat1">
+            <div class="stat-num">+100</div>
+            <div class="stat-label">Producteurs accompagnés</div>
+          </div>
+          <div class="stat-item" id="stat2">
+            <div class="stat-num">+300</div>
+            <div class="stat-label">Dossiers complétés</div>
+          </div>
+          <div class="stat-item" id="stat3">
+            <div class="stat-num">+5M$</div>
+            <div class="stat-label">En subventions obtenues</div>
+          </div>
+        </div>
+        <div class="why-divider"></div>
+        <div class="why-text">
+          <div class="section-label">Pourquoi nous choisir</div>
+          <div class="section-title">Une expertise au cœur du milieu avicole</div>
+          <p>Notre équipe connaît les réalités du milieu avicole québécois. Que vous soyez un nouveau producteur ou un exploitant établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
+        </div>
       </div>
     </div>
 
+    <!-- ── ÉQUIPE ── -->
     <div id="equipe">
       <div class="team">
         <div class="section-label" style="font-size:11px;color:#1565c0;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Notre équipe</div>
         <div class="section-title">Les gens derrière SAGA</div>
-        <div class="team-placeholder">Les membres de l'équipe seront ajoutés ici — photos, noms et titres.</div>
+        <div class="team-grid">
+          <div class="team-card" onclick="openTeamModal(0)">
+            <div class="team-photo"><!-- <img src="equipe/membre1.jpg"> --> Photo</div>
+            <div class="team-name">Nom Prénom</div>
+            <div class="team-role">Titre du poste</div>
+          </div>
+          <div class="team-card" onclick="openTeamModal(1)">
+            <div class="team-photo"><!-- <img src="equipe/membre2.jpg"> --> Photo</div>
+            <div class="team-name">Nom Prénom</div>
+            <div class="team-role">Titre du poste</div>
+          </div>
+          <div class="team-card" onclick="openTeamModal(2)">
+            <div class="team-photo"><!-- <img src="equipe/membre3.jpg"> --> Photo</div>
+            <div class="team-name">Nom Prénom</div>
+            <div class="team-role">Titre du poste</div>
+          </div>
+          <div class="team-card" onclick="openTeamModal(3)">
+            <div class="team-photo"><!-- <img src="equipe/membre4.jpg"> --> Photo</div>
+            <div class="team-name">Nom Prénom</div>
+            <div class="team-role">Titre du poste</div>
+          </div>
+          <div class="team-card" onclick="openTeamModal(4)">
+            <div class="team-photo"><!-- <img src="equipe/membre5.jpg"> --> Photo</div>
+            <div class="team-name">Nom Prénom</div>
+            <div class="team-role">Titre du poste</div>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- ── CONTACT — FORMULAIRE ── -->
     <div id="contact">
       <div class="contact">
         <h2>Parlons de votre projet</h2>
-        <p>Vous avez une question ou souhaitez être accompagné?<br>Contactez-nous et nous vous répondrons rapidement.</p>
-        <a class="btn-wave" href="mailto:info@saga-avicole.ca">info@saga-avicole.ca</a>
+        <p class="contact-sub">Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.</p>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nom personnel ou d'entreprise</label>
+            <input type="text" id="formNom" placeholder="Ex : Ferme Tremblay Inc." />
+          </div>
+          <div class="form-group">
+            <label>Secteur</label>
+            <select id="formSecteur">
+              <option value="">— Choisir un secteur —</option>
+              <option value="Poulet de chair">Poulet de chair</option>
+              <option value="Dinde de chair">Dinde de chair</option>
+              <option value="Oeufs de consommation">Oeufs de consommation</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Service souhaité</label>
+            <select id="formService">
+              <option value="">— Choisir un service —</option>
+              <option value="Coût de production">Coût de production</option>
+              <option value="Programme de démarrage">Programme de démarrage</option>
+              <option value="Budget">Budget</option>
+              <option value="Subvention">Subvention</option>
+              <option value="PIFVO">PIFVO</option>
+              <option value="Autres services">Autres services</option>
+            </select>
+          </div>
+          <div class="form-group form-full">
+            <label>Message</label>
+            <textarea id="formMessage" placeholder="Décrivez votre projet ou votre question..."></textarea>
+          </div>
+        </div>
+        <div class="form-submit">
+          <a class="btn-wave" onclick="envoyerEmail()">Envoyer ma demande</a>
+        </div>
       </div>
     </div>
 
@@ -369,12 +362,10 @@
 
   </div>
 
-  <!-- ── MODALES ── -->
+  <!-- ── MODALES SERVICES ── -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
     <div class="modal">
-      <div class="modal-header">
-        <div class="modal-header-title" id="modalHeaderTitle">Titre</div>
-      </div>
+      <div class="modal-header"><div class="modal-header-title" id="modalHeaderTitle">Titre</div></div>
       <div class="modal-body">
         <div class="modal-tag" id="modalTag">Catégorie</div>
         <div class="modal-intro" id="modalIntro"></div>
@@ -382,7 +373,22 @@
       </div>
       <div class="modal-footer">
         <button class="btn-close" onclick="closeModal()">← Fermer</button>
-        <a class="btn-wave" href="mailto:info@saga-avicole.ca" style="padding:10px 24px;font-size:13px;">Nous contacter</a>
+        <a class="btn-wave" onclick="closeModal();document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="padding:10px 24px;font-size:13px;cursor:pointer;">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODALES ÉQUIPE ── -->
+  <div class="team-modal-overlay" id="teamModalOverlay" onclick="closeTeamModalOutside(event)">
+    <div class="team-modal">
+      <div class="team-modal-photo" id="teamModalPhoto">Photo — à ajouter</div>
+      <div class="team-modal-body">
+        <div class="team-modal-name" id="teamModalName">Nom Prénom</div>
+        <div class="team-modal-title" id="teamModalTitle">Titre</div>
+        <div class="team-modal-desc" id="teamModalDesc">Description du rôle et des responsabilités — à compléter.</div>
+      </div>
+      <div class="team-modal-footer">
+        <button class="btn-close" onclick="closeTeamModal()">← Fermer</button>
       </div>
     </div>
   </div>
@@ -412,12 +418,20 @@
     }
     resize(); window.addEventListener('resize', resize);
 
-    /* ── Contenu des modales ── */
+    /* ── Stats slide up au scroll ── */
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 150);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.stat-item').forEach(el => statObserver.observe(el));
+
+    /* ── Contenu modales services ── */
     const services = {
       couts: {
-        tag: 'Analyse financière',
-        title: 'Coût de production',
-        intro: '',
+        tag: 'Analyse financière', title: 'Coût de production', intro: '',
         bullets: [
           'Établissement des revenus et des dépenses avicoles de votre entreprise.',
           'Offre une comparaison avec votre secteur de production en détails. Poulet de chair, dinde de chair et oeufs de consommation.',
@@ -425,18 +439,14 @@
         ]
       },
       demarrage: {
-        tag: 'Relève agricole',
-        title: 'Programme de démarrage',
-        intro: '',
+        tag: 'Relève agricole', title: 'Programme de démarrage', intro: '',
         bullets: [
           'Assistance auprès de la relève agricole admissible au programme de démarrage des oeufs de consommation (PAD-6000).',
           'Assistance auprès de la relève agricole admissible au programme de démarrage du poulet de chair (1000 m2 pour la relève non-apparenté).'
         ]
       },
       budget: {
-        tag: 'Planification',
-        title: 'Budget',
-        intro: '',
+        tag: 'Planification', title: 'Budget', intro: '',
         bullets: [
           'Établissement de plan d\'investissement dans les différents secteurs d\'activités avicoles.',
           'Budget long terme.',
@@ -445,36 +455,27 @@
         ]
       },
       subvention: {
-        tag: 'Financement',
-        title: 'Subvention',
+        tag: 'Financement', title: 'Subvention',
         intro: 'Vous êtes peut-être admissible à des subventions agricoles sans le savoir. Laissez-nous mettre notre expertise à votre service pour identifier les programmes disponibles et assurer le bon acheminement de vos demandes. Nous vous accompagnons à chaque étape du processus.',
-        bullets: [
-          'Simple.',
-          'Efficace.',
-          'Gagnant en temps et argent.'
-        ]
+        bullets: ['Simple.', 'Efficace.', 'Gagnant en temps et argent.']
       },
       pifvo: {
-        tag: 'Programme fédéral',
-        title: 'PIFVO',
+        tag: 'Programme fédéral', title: 'PIFVO',
         intro: 'Le Programme d\'investissement pour fermes de volailles et d\'œufs (PIFVO) offre des contributions non remboursables pouvant couvrir jusqu\'à 70% de vos coûts de projets admissibles. Notre équipe vous accompagne dans la préparation et le suivi de votre dossier pour maximiser votre financement.',
         bullets: [
-          'Poulet de chair, dinde, œufs et œufs d\'incubation.',
+          'Poulet de chair, dinde de chair et oeufs de consommation.',
           'Jusqu\'à 85% pour les jeunes producteurs de 35 ans et moins.',
           'Programme ouvert jusqu\'au 31 mars 2030.'
         ]
       },
       autres: {
-        tag: 'À venir',
-        title: 'Autres services',
+        tag: 'À venir', title: 'Autres services',
         intro: 'Nous offrons également d\'autres services adaptés à vos besoins. Contactez-nous pour en savoir plus.',
         bullets: []
       }
     };
 
-    function checkSVG() {
-      return `<svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-    }
+    function checkSVG() { return `<svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`; }
 
     function openModal(id) {
       const s = services[id];
@@ -483,14 +484,50 @@
       document.getElementById('modalIntro').textContent = s.intro;
       const ul = document.getElementById('modalBullets');
       ul.innerHTML = '';
-      s.bullets.forEach(b => {
-        ul.innerHTML += `<li><div class="chk">${checkSVG()}</div><span>${b}</span></li>`;
-      });
+      s.bullets.forEach(b => { ul.innerHTML += `<li><div class="chk">${checkSVG()}</div><span>${b}</span></li>`; });
       document.getElementById('modalOverlay').classList.add('active');
     }
     function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
     function closeModalOutside(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* ── Modales équipe ── */
+    const teamMembers = [
+      { name: 'Nom Prénom', title: 'Titre du poste', desc: 'Description du rôle et des responsabilités — à compléter.', photo: null },
+      { name: 'Nom Prénom', title: 'Titre du poste', desc: 'Description du rôle et des responsabilités — à compléter.', photo: null },
+      { name: 'Nom Prénom', title: 'Titre du poste', desc: 'Description du rôle et des responsabilités — à compléter.', photo: null },
+      { name: 'Nom Prénom', title: 'Titre du poste', desc: 'Description du rôle et des responsabilités — à compléter.', photo: null },
+      { name: 'Nom Prénom', title: 'Titre du poste', desc: 'Description du rôle et des responsabilités — à compléter.', photo: null }
+    ];
+
+    function openTeamModal(i) {
+      const m = teamMembers[i];
+      document.getElementById('teamModalName').textContent = m.name;
+      document.getElementById('teamModalTitle').textContent = m.title;
+      document.getElementById('teamModalDesc').textContent = m.desc;
+      const p = document.getElementById('teamModalPhoto');
+      p.innerHTML = m.photo ? `<img src="${m.photo}" alt="${m.name}">` : 'Photo — à ajouter';
+      document.getElementById('teamModalOverlay').classList.add('active');
+    }
+    function closeTeamModal() { document.getElementById('teamModalOverlay').classList.remove('active'); }
+    function closeTeamModalOutside(e) { if (e.target === document.getElementById('teamModalOverlay')) closeTeamModal(); }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeTeamModal(); } });
+
+    /* ── Formulaire de contact ── */
+    function envoyerEmail() {
+      const nom = document.getElementById('formNom').value || 'Non spécifié';
+      const secteur = document.getElementById('formSecteur').value || 'Non spécifié';
+      const service = document.getElementById('formService').value || 'Non spécifié';
+      const message = document.getElementById('formMessage').value || '';
+      const sujet = encodeURIComponent(`Demande de service — ${service} — ${nom}`);
+      const corps = encodeURIComponent(
+        `Nom / Entreprise : ${nom}\n` +
+        `Secteur : ${secteur}\n` +
+        `Service souhaité : ${service}\n\n` +
+        `Message :\n${message}`
+      );
+      window.location.href = `mailto:info@saga-avicole.ca?subject=${sujet}&body=${corps}`;
+    }
   </script>
 
 </body>
