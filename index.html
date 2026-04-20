@@ -63,8 +63,6 @@
     .team-photo img { width: 100%; height: 100%; object-fit: cover; }
     .team-name { font-size: 14px; font-weight: 700; color: #0d2b6b; text-align: center; }
     .team-role { font-size: 12px; color: #5585b5; font-family: Calibri, sans-serif; text-align: center; margin-top: 2px; }
-
-    /* ── Formulaire contact ── */
     .contact { position: relative; z-index: 5; padding: 56px 40px; background: rgba(255,255,255,0.82); }
     .contact h2 { font-size: 22px; font-weight: 700; color: #0d2b6b; margin-bottom: 8px; }
     .contact-sub { font-size: 14px; color: #5585b5; margin-bottom: 32px; font-family: Calibri, sans-serif; }
@@ -79,13 +77,10 @@
     .form-group input.error, .form-group select.error, .form-group textarea.error { border-color: #e24b4a; background: rgba(252,235,235,0.6); }
     .error-msg { font-size: 11px; color: #e24b4a; font-family: Calibri, sans-serif; margin-top: 2px; display: none; }
     .error-msg.visible { display: block; }
-
-    /* Message de confirmation */
     .form-success { display: none; padding: 20px 24px; background: #eaf3de; border: 1px solid #639922; border-radius: 12px; margin-top: 16px; }
     .form-success.visible { display: block; }
     .form-success p { font-size: 14px; color: #27500a; font-family: Calibri, sans-serif; line-height: 1.6; }
     .form-success strong { font-weight: 700; }
-
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(13,43,107,0.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
     .modal-overlay.active { display: flex; }
     .modal { background: #ffffff; border-radius: 16px; max-width: 560px; width: 100%; overflow: hidden; animation: modalIn 0.25s ease; }
@@ -224,7 +219,7 @@
           <div class="team-card" onclick="openTeamModal(0)"><div class="team-photo">Photo</div><div class="team-name">Stéphane Grondines</div><div class="team-role">Agronome, Propriétaire</div></div>
           <div class="team-card" onclick="openTeamModal(1)"><div class="team-photo">Photo</div><div class="team-name">Marc-Olivier Laprise</div><div class="team-role">Agronome</div></div>
           <div class="team-card" onclick="openTeamModal(2)"><div class="team-photo">Photo</div><div class="team-name">Alexandre Grondines</div><div class="team-role">Administrateur</div></div>
-          <div class="team-card" onclick="openTeamModal(3)"><div class="team-photo">Photo</div><div class="team-name">Catherine Houle</div><div class="team-role">Technicienne GEA</div></div>
+          <div class="team-card" onclick="openTeamModal(3)"><div class="team-photo">Photo</div><div class="team-name">Catherine Houle</div><div class="team-role">Technicienne Agricole</div></div>
           <div class="team-card" onclick="openTeamModal(4)"><div class="team-photo">Photo</div><div class="team-name">Lucie Pelchat</div><div class="team-role">Technicienne Comptable</div></div>
         </div>
       </div>
@@ -244,6 +239,16 @@
             <div class="form-group">
               <label>Votre nom d'entreprise <span style="font-size:11px;color:#888;font-weight:400;">(optionnel)</span></label>
               <input type="text" id="formEntreprise" placeholder="Ex : Ferme Tremblay Inc." />
+            </div>
+            <div class="form-group">
+              <label>E-mail <span class="required-star">*</span></label>
+              <input type="email" id="formEmail" placeholder="Ex : jean@exemple.com" />
+              <span class="error-msg" id="errEmail">Veuillez entrer une adresse e-mail valide.</span>
+            </div>
+            <div class="form-group">
+              <label>Numéro de téléphone <span class="required-star">*</span></label>
+              <input type="tel" id="formTel" placeholder="Ex : 418-555-1234" />
+              <span class="error-msg" id="errTel">Ce champ est obligatoire.</span>
             </div>
             <div class="form-group">
               <label>Secteur <span class="required-star">*</span></label>
@@ -277,7 +282,7 @@
           <a class="btn-wave" id="btnEnvoyer" onclick="envoyerEmail()">Envoyer ma demande</a>
         </div>
         <div class="form-success" id="formSuccess">
-          <p>✅ <strong>Votre demande a bien été envoyée!</strong><br>Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais à l'adresse fournie.</p>
+          <p>✅ <strong>Votre demande a bien été envoyée!</strong><br>Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.</p>
         </div>
       </div>
     </div>
@@ -318,30 +323,60 @@
   </div>
 
   <script>
+    /* ── Lignes courbes animées en vague ── */
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
-    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; draw(); }
+    let t = 0;
+
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    resize(); window.addEventListener('resize', resize);
+
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const w = canvas.width, h = canvas.height, n = 18;
-      for (let i = 0; i < n; i++) {
-        const t = i/(n-1); ctx.strokeStyle=`rgba(13,71,161,${0.04+t*0.08})`; ctx.lineWidth=0.9;
-        ctx.beginPath(); ctx.moveTo(w*(-0.15+t*0.75),0);
-        ctx.bezierCurveTo(w*(0.05+t*0.3),h*0.3,w*(0.4+t*0.35),h*0.6,w*(0.2+t*0.9),h); ctx.stroke();
-      }
-      for (let i = 0; i < n; i++) {
-        const t = i/(n-1); ctx.strokeStyle=`rgba(13,71,161,${0.03+t*0.06})`; ctx.lineWidth=0.8;
-        ctx.beginPath(); ctx.moveTo(0,h*(-0.1+t*0.75));
-        ctx.bezierCurveTo(w*0.3,h*(0.05+t*0.35),w*0.6,h*(0.4+t*0.3),w,h*(0.15+t*0.9)); ctx.stroke();
-      }
-    }
-    resize(); window.addEventListener('resize', resize);
 
+      for (let i = 0; i < n; i++) {
+        const p = i / (n - 1);
+        const wave = Math.sin(t + p * 2.5) * 0.06;
+        ctx.strokeStyle = `rgba(13,71,161,${0.04 + p * 0.08})`;
+        ctx.lineWidth = 0.9;
+        ctx.beginPath();
+        ctx.moveTo(w * (-0.15 + p * 0.75), 0);
+        ctx.bezierCurveTo(
+          w * (0.05 + p * 0.3 + wave), h * 0.3,
+          w * (0.4 + p * 0.35 - wave), h * 0.6,
+          w * (0.2 + p * 0.9), h
+        );
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < n; i++) {
+        const p = i / (n - 1);
+        const wave = Math.sin(t * 0.8 + p * 2) * 0.05;
+        ctx.strokeStyle = `rgba(13,71,161,${0.03 + p * 0.06})`;
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(0, h * (-0.1 + p * 0.75));
+        ctx.bezierCurveTo(
+          w * (0.3 + wave), h * (0.05 + p * 0.35),
+          w * (0.6 - wave), h * (0.4 + p * 0.3),
+          w, h * (0.15 + p * 0.9)
+        );
+        ctx.stroke();
+      }
+
+      t += 0.008;
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    /* ── Stats slide up ── */
     const statObs = new IntersectionObserver(entries => {
       entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*150); });
     }, {threshold:0.2});
     document.querySelectorAll('.stat-item').forEach(el=>statObs.observe(el));
 
+    /* ── Modales services ── */
     const services = {
       couts: { tag:'Analyse financière', title:'Coût de production', intro:'', bullets:['Établissement des revenus et des dépenses avicoles de votre entreprise.','Offre une comparaison avec votre secteur de production en détails. Poulet de chair, dinde de chair et oeufs de consommation.','Inclut une consultation en personne avec nos experts, avec rapport de coût de revient à l\'appuie.'] },
       demarrage: { tag:'Relève agricole', title:'Programme de démarrage', intro:'', bullets:['Assistance auprès de la relève agricole admissible au programme de démarrage des oeufs de consommation (PAD-6000).','Assistance auprès de la relève agricole admissible au programme de démarrage du poulet de chair (1000 m2 pour la relève non-apparenté).'] },
@@ -363,11 +398,12 @@
     function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
     function closeModalOutside(e) { if(e.target===document.getElementById('modalOverlay')) closeModal(); }
 
+    /* ── Modales équipe ── */
     const team = [
       {name:'Stéphane Grondines', title:'Agronome, Propriétaire', desc:'Description du rôle et des responsabilités — à compléter.', photo:null},
       {name:'Marc-Olivier Laprise', title:'Agronome', desc:'Description du rôle et des responsabilités — à compléter.', photo:null},
       {name:'Alexandre Grondines', title:'Administrateur', desc:'Description du rôle et des responsabilités — à compléter.', photo:null},
-      {name:'Catherine Houle', title:'Technicienne GEA', desc:'Description du rôle et des responsabilités — à compléter.', photo:null},
+      {name:'Catherine Houle', title:'Technicienne Agricole', desc:'Description du rôle et des responsabilités — à compléter.', photo:null},
       {name:'Lucie Pelchat', title:'Technicienne Comptable', desc:'Description du rôle et des responsabilités — à compléter.', photo:null}
     ];
     function openTeamModal(i) {
@@ -387,14 +423,18 @@
     async function envoyerEmail() {
       let valid = true;
       const nom = document.getElementById('formNom');
+      const email = document.getElementById('formEmail');
+      const tel = document.getElementById('formTel');
       const secteur = document.getElementById('formSecteur');
       const service = document.getElementById('formService');
       const message = document.getElementById('formMessage');
 
-      [nom, secteur, service, message].forEach(el => el.classList.remove('error'));
+      [nom, email, tel, secteur, service, message].forEach(el => el.classList.remove('error'));
       document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('visible'));
 
       if (!nom.value.trim()) { nom.classList.add('error'); document.getElementById('errNom').classList.add('visible'); valid = false; }
+      if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add('error'); document.getElementById('errEmail').classList.add('visible'); valid = false; }
+      if (!tel.value.trim()) { tel.classList.add('error'); document.getElementById('errTel').classList.add('visible'); valid = false; }
       if (!secteur.value) { secteur.classList.add('error'); document.getElementById('errSecteur').classList.add('visible'); valid = false; }
       if (!service.value) { service.classList.add('error'); document.getElementById('errService').classList.add('visible'); valid = false; }
       if (!message.value.trim()) { message.classList.add('error'); document.getElementById('errMessage').classList.add('visible'); valid = false; }
@@ -413,12 +453,13 @@
           body: JSON.stringify({
             nom: nom.value,
             entreprise: entreprise || 'Non spécifié',
+            email: email.value,
+            telephone: tel.value,
             secteur: secteur.value,
             service: service.value,
             message: message.value
           })
         });
-
         if (response.ok) {
           document.getElementById('formContainer').style.display = 'none';
           document.getElementById('formSuccess').classList.add('visible');
