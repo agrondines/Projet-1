@@ -9,184 +9,242 @@
     body { background: #ffffff; }
     .bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
     .site { font-family: 'Times New Roman', Times, serif; color: #1a1a2e; position: relative; z-index: 1; }
-    nav { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 18px 36px; background: transparent; }
-    .nav-logo { font-size: 34px; font-weight: 700; letter-spacing: 0.1em; background: linear-gradient(115deg, #0d47a1 0%, #0d47a1 20%, #90caf9 35%, #42a5f5 45%, #90caf9 55%, #0d47a1 70%, #0d47a1 80%, #42a5f5 90%, #bbdefb 96%, #0d47a1 100%); background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: logoSpotlight 14s ease-in-out infinite; animation-delay: 3s; }
-    @keyframes logoSpotlight { 0% { background-position: 0% 80%; } 20% { background-position: 90% 10%; } 40% { background-position: 15% 95%; } 60% { background-position: 100% 30%; } 80% { background-position: 45% 60%; } 100% { background-position: 0% 80%; } }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a { font-size: 16px; color: #444; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'Times New Roman', Times, serif; }
+
+    /* ── Conteneur max-width global ── */
+    .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(13,71,161,0.08);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+    }
+    .nav-logo { font-size: clamp(22px, 2.5vw, 34px); font-weight: 700; letter-spacing: 0.1em; background: linear-gradient(115deg, #0d47a1 0%, #0d47a1 20%, #90caf9 35%, #42a5f5 45%, #90caf9 55%, #0d47a1 70%, #0d47a1 80%, #42a5f5 90%, #bbdefb 96%, #0d47a1 100%); background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: logoSpotlight 14s ease-in-out infinite; animation-delay: 3s; }
+    @keyframes logoSpotlight { 0%{background-position:0% 80%} 20%{background-position:90% 10%} 40%{background-position:15% 95%} 60%{background-position:100% 30%} 80%{background-position:45% 60%} 100%{background-position:0% 80%} }
+    .nav-links { display: flex; gap: clamp(14px, 2vw, 28px); }
+    .nav-links a { font-size: clamp(13px, 1.2vw, 16px); color: #444; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'Times New Roman', Times, serif; }
     .nav-links a:hover { color: #0d47a1; }
-    .hero { position: relative; z-index: 5; padding: 80px 40px 60px; text-align: center; background: transparent; display: flex; flex-direction: column; align-items: center; }
-    .hero-logo { width: 90px; height: auto; margin-bottom: 24px; }
-    .hero h1 { font-size: 42px; font-weight: 700; line-height: 1.3; max-width: 640px; margin: 0 auto 32px; color: #0d2b6b; }
-    .hero-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; padding: 5px 14px; border-radius: 99px; background: rgba(187,222,251,0.6); color: #0d47a1; margin-top: 18px; letter-spacing: 0.06em; }
+
+    /* ── Bouton wave ── */
+    .btn-wave { display: inline-block; padding: clamp(10px,1.2vw,13px) clamp(24px,3vw,38px); border-radius: 8px; font-size: clamp(13px,1.2vw,15px); font-weight: 700; font-family: Calibri, 'Gill Sans', sans-serif; color: #ffffff; text-decoration: none; cursor: pointer; border: none; background: linear-gradient(115deg, #1565c0 0%, #1565c0 20%, #42a5f5 32%, #90caf9 42%, #42a5f5 52%, #1565c0 68%, #1976d2 80%, #64b5f6 90%, #1565c0 100%); background-size: 600% 600%; animation: btnSpotlight 12s ease-in-out infinite; animation-delay: 1.5s; transition: opacity 0.3s ease; }
+    .btn-wave:hover { opacity: 0.85; animation-play-state: paused; }
+    @keyframes btnSpotlight { 0%{background-position:0% 80%} 20%{background-position:85% 15%} 38%{background-position:20% 90%} 55%{background-position:100% 25%} 72%{background-position:40% 65%} 88%{background-position:75% 10%} 100%{background-position:0% 80%} }
+
+    /* ── Hero ── */
+    #accueil { position: relative; z-index: 5; }
+    .hero { padding: clamp(48px,7vw,100px) clamp(20px,5vw,40px) clamp(40px,6vw,80px); text-align: center; background: transparent; display: flex; flex-direction: column; align-items: center; }
+    .hero-logo { width: clamp(60px,8vw,100px); height: auto; margin-bottom: clamp(16px,2vw,28px); }
+    .hero h1 { font-size: clamp(26px,4vw,50px); font-weight: 700; line-height: 1.25; max-width: 700px; margin: 0 auto clamp(20px,3vw,36px); color: #0d2b6b; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 6px; font-size: clamp(10px,1vw,12px); padding: 5px 14px; border-radius: 99px; background: rgba(187,222,251,0.6); color: #0d47a1; margin-top: clamp(12px,1.5vw,20px); letter-spacing: 0.06em; }
     .hero-tag .check { width: 14px; height: 14px; border-radius: 50%; background: #0d47a1; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .hero-tag .check svg { width: 8px; height: 8px; }
-    #accueil::after { content: ''; display: block; height: 140px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.95)); position: relative; z-index: 5; }
-    .btn-wave { display: inline-block; padding: 13px 38px; border-radius: 8px; font-size: 15px; font-weight: 700; font-family: Calibri, 'Gill Sans', sans-serif; color: #ffffff; text-decoration: none; cursor: pointer; border: none; background: linear-gradient(115deg, #1565c0 0%, #1565c0 20%, #42a5f5 32%, #90caf9 42%, #42a5f5 52%, #1565c0 68%, #1976d2 80%, #64b5f6 90%, #1565c0 100%); background-size: 600% 600%; animation: btnSpotlight 12s ease-in-out infinite; animation-delay: 1.5s; transition: opacity 0.3s ease; }
-    .btn-wave:hover { opacity: 0.85; animation-play-state: paused; }
-    @keyframes btnSpotlight { 0% { background-position: 0% 80%; } 20% { background-position: 85% 15%; } 38% { background-position: 20% 90%; } 55% { background-position: 100% 25%; } 72% { background-position: 40% 65%; } 88% { background-position: 75% 10%; } 100% { background-position: 0% 80%; } }
-    .marquee-section { position: relative; z-index: 5; padding: 26px 0; background: #0d2b6b; overflow: hidden; }
-    .marquee-label { text-align: center; font-size: 12px; color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; font-family: Calibri, sans-serif; font-weight: 700; }
+    #accueil::after { content: ''; display: block; height: clamp(60px,10vw,140px); background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.95)); position: relative; z-index: 5; }
+
+    /* ── Section générique ── */
+    .section { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
+    .section-label { font-size: clamp(10px,1vw,11px); color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .section-title { font-size: clamp(18px,2vw,24px); font-weight: 700; color: #0d2b6b; margin-bottom: clamp(18px,2.5vw,30px); }
+
+    /* ── Cartes services ── */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px,1.5vw,16px); }
+    .card { background: rgba(240,246,255,0.92); border: 1px solid #c8dcf5; border-radius: 12px; padding: clamp(16px,2vw,24px); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+    .card:hover { transform: translateY(-4px); border-color: #1565c0; box-shadow: 0 8px 24px rgba(21,101,192,0.12); }
+    .card-accent { width: 28px; height: 3px; border-radius: 99px; background: #1565c0; margin-bottom: 12px; }
+    .card h3 { font-size: clamp(13px,1.2vw,15px); font-weight: 700; margin-bottom: 8px; color: #0d2b6b; }
+    .card p { font-size: clamp(12px,1vw,13px); color: #3a5068; line-height: 1.6; }
+    .card-clic { font-size: clamp(10px,0.9vw,11px); color: #1565c0; margin-top: 12px; font-family: Calibri, sans-serif; }
+
+    /* ── Marquee ── */
+    .marquee-section { position: relative; z-index: 5; padding: 22px 0; background: #0d2b6b; overflow: hidden; }
+    .marquee-label { text-align: center; font-size: clamp(10px,1vw,12px); color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; font-family: Calibri, sans-serif; font-weight: 700; }
     .marquee-track { display: flex; width: max-content; animation: defilement 100s linear infinite; }
     .marquee-track:hover { animation-play-state: paused; }
-    .marquee-item { display: flex; align-items: center; gap: 14px; padding: 0 36px; border-right: 1px solid rgba(255,255,255,0.15); white-space: nowrap; }
-    .logo-box { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .marquee-item { display: flex; align-items: center; gap: 12px; padding: 0 28px; border-right: 1px solid rgba(255,255,255,0.15); white-space: nowrap; }
+    .logo-box { width: clamp(36px,4vw,52px); height: clamp(36px,4vw,52px); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .logo-box img { width: 100%; height: 100%; object-fit: contain; }
-    .collab-name { font-size: 13px; color: #ffffff; font-family: Calibri, sans-serif; font-weight: 600; }
-    @keyframes defilement { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .section { position: relative; z-index: 5; padding: 56px 40px; background: rgba(255,255,255,0.82); }
-    .section-label { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-    .section-title { font-size: 22px; font-weight: 700; color: #0d2b6b; margin-bottom: 28px; }
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .card { background: rgba(240,246,255,0.92); border: 1px solid #c8dcf5; border-radius: 12px; padding: 22px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
-    .card:hover { transform: translateY(-4px); border-color: #1565c0; box-shadow: 0 8px 24px rgba(21,101,192,0.12); }
-    .card-accent { width: 28px; height: 3px; border-radius: 99px; background: #1565c0; margin-bottom: 14px; }
-    .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #0d2b6b; }
-    .card p { font-size: 13px; color: #3a5068; line-height: 1.6; }
-    .card-clic { font-size: 11px; color: #1565c0; margin-top: 14px; font-family: Calibri, sans-serif; }
+    .collab-name { font-size: clamp(11px,1vw,13px); color: #ffffff; font-family: Calibri, sans-serif; font-weight: 600; }
+    @keyframes defilement { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
     /* ── Section Pourquoi nous choisir ── */
     .why {
-      position: relative;
-      z-index: 5;
-      padding: 56px 40px;
+      position: relative; z-index: 5;
       background: #1976d2;
+      padding: clamp(40px,5vw,72px) clamp(20px,5vw,40px);
+    }
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto 1fr;
-      gap: 0 48px;
-      align-items: start;
+      gap: clamp(32px,4vw,64px);
+      align-items: center;
     }
-    .why-header {
-      grid-column: 2;
-      grid-row: 1;
-      padding-bottom: 32px;
-    }
-    .why-header .section-label { color: #bbdefb; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-    .why-header .section-title { color: #ffffff; margin-bottom: 14px; font-size: 22px; font-weight: 700; }
-    .why-header p { font-size: 15px; color: #c8dcf5; line-height: 1.8; }
-
-    /* Stats en escalier gauche haut → droite bas */
+    /* Colonne gauche : texte + stats */
+    .why-left { display: flex; flex-direction: column; gap: clamp(24px,3vw,36px); }
+    .why-left .section-label { color: #bbdefb; }
+    .why-left .section-title { color: #ffffff; margin-bottom: 0; font-size: clamp(18px,2vw,24px); }
+    .why-left p { font-size: clamp(13px,1.2vw,15px); color: #c8dcf5; line-height: 1.8; }
+    /* Grille stats 2x2 */
     .why-stats {
-      grid-column: 1;
-      grid-row: 1 / 3;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 28px;
-      padding: 20px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(16px,2vw,24px);
     }
     .stat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(30px);
       transition: opacity 0.6s ease, transform 0.6s ease;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: clamp(14px,1.8vw,22px);
     }
     .stat-item.visible { opacity: 1; transform: translateY(0); }
-    .stat-item:nth-child(1) { margin-bottom: 120px; }
-    .stat-item:nth-child(2) { margin-bottom: 80px; }
-    .stat-item:nth-child(3) { margin-bottom: 40px; }
-    .stat-item:nth-child(4) { margin-bottom: 0px; }
-    .stat-num {
-      font-size: 42px;
-      font-weight: 700;
-      color: #ffffff;
-      font-family: 'Times New Roman', Times, serif;
-      line-height: 1;
-      white-space: nowrap;
+    .stat-num { font-size: clamp(28px,3vw,42px); font-weight: 700; color: #ffffff; font-family: 'Times New Roman', Times, serif; line-height: 1; white-space: nowrap; }
+    .stat-label { font-size: clamp(10px,0.9vw,12px); color: rgba(255,255,255,0.7); font-family: Calibri, sans-serif; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    /* Colonne droite : globe */
+    .why-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .stat-label {
-      font-size: 11px;
-      color: rgba(255,255,255,0.7);
-      font-family: Calibri, sans-serif;
-      margin-top: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      text-align: center;
-      max-width: 110px;
-    }
-
-    /* Globe en bas à droite */
     .why-globe {
-      grid-column: 2;
-      grid-row: 2;
       width: 100%;
+      max-width: min(420px, 100%);
       aspect-ratio: 1;
-      max-width: 340px;
-      justify-self: center;
       position: relative;
     }
     .why-globe canvas { width: 100% !important; height: 100% !important; display: block; }
 
-    .team { position: relative; z-index: 5; padding: 56px 40px; background: rgba(255,255,255,0.82); }
-    .team-grid { display: flex; gap: 16px; justify-content: center; }
-    .team-card { display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1; max-width: 180px; transition: transform 0.2s; }
+    /* ── Équipe ── */
+    .team { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
+    .team-grid { display: flex; gap: clamp(10px,1.5vw,18px); justify-content: center; flex-wrap: wrap; }
+    .team-card { display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1; min-width: 120px; max-width: 180px; transition: transform 0.2s; }
     .team-card:hover { transform: translateY(-4px); }
-    .team-photo { width: 100%; aspect-ratio: 1; border-radius: 12px; background: #e8f1fb; border: 1px solid #c8dcf5; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5585b5; font-family: Calibri, sans-serif; text-align: center; overflow: hidden; margin-bottom: 10px; }
+    .team-photo { width: 100%; aspect-ratio: 1; border-radius: 12px; background: #e8f1fb; border: 1px solid #c8dcf5; display: flex; align-items: center; justify-content: center; font-size: clamp(10px,1vw,12px); color: #5585b5; font-family: Calibri, sans-serif; text-align: center; overflow: hidden; margin-bottom: 10px; }
     .team-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .team-name { font-size: 14px; font-weight: 700; color: #0d2b6b; text-align: center; }
-    .team-role { font-size: 12px; color: #5585b5; font-family: Calibri, sans-serif; text-align: center; margin-top: 2px; }
-    .contact { position: relative; z-index: 5; padding: 56px 40px; background: rgba(255,255,255,0.82); }
-    .contact h2 { font-size: 22px; font-weight: 700; color: #0d2b6b; margin-bottom: 8px; }
-    .contact-sub { font-size: 14px; color: #5585b5; margin-bottom: 32px; font-family: Calibri, sans-serif; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .team-name { font-size: clamp(12px,1.1vw,14px); font-weight: 700; color: #0d2b6b; text-align: center; }
+    .team-role { font-size: clamp(10px,0.9vw,12px); color: #5585b5; font-family: Calibri, sans-serif; text-align: center; margin-top: 2px; }
+
+    /* ── Contact / Formulaire ── */
+    .contact { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
+    .contact-inner { max-width: 800px; }
+    .contact h2 { font-size: clamp(18px,2vw,24px); font-weight: 700; color: #0d2b6b; margin-bottom: 8px; }
+    .contact-sub { font-size: clamp(12px,1.1vw,14px); color: #5585b5; margin-bottom: clamp(20px,3vw,32px); font-family: Calibri, sans-serif; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px,1.5vw,16px); margin-bottom: clamp(12px,1.5vw,16px); }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-group label { font-size: 12px; color: #0d2b6b; font-weight: 700; font-family: Calibri, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 3px; }
+    .form-group label { font-size: clamp(10px,0.9vw,12px); color: #0d2b6b; font-weight: 700; font-family: Calibri, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 3px; }
     .required-star { color: #e24b4a; font-size: 13px; font-weight: 700; }
-    .form-group input, .form-group select, .form-group textarea { padding: 10px 14px; border: 1px solid #c8dcf5; border-radius: 8px; font-size: 14px; font-family: 'Times New Roman', Times, serif; color: #1a1a2e; background: rgba(240,246,255,0.6); outline: none; transition: border-color 0.2s; }
+    .form-group input, .form-group select, .form-group textarea { padding: clamp(8px,1vw,10px) clamp(10px,1.2vw,14px); border: 1px solid #c8dcf5; border-radius: 8px; font-size: clamp(12px,1.1vw,14px); font-family: 'Times New Roman', Times, serif; color: #1a1a2e; background: rgba(240,246,255,0.6); outline: none; transition: border-color 0.2s; }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #1565c0; }
-    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group textarea { resize: vertical; min-height: clamp(90px,10vw,120px); }
     .form-full { grid-column: 1 / -1; }
     .form-group input.error, .form-group select.error, .form-group textarea.error { border-color: #e24b4a; background: rgba(252,235,235,0.6); }
     .error-msg { font-size: 11px; color: #e24b4a; font-family: Calibri, sans-serif; margin-top: 2px; display: none; }
     .error-msg.visible { display: block; }
     .form-success { display: none; padding: 20px 24px; background: #eaf3de; border: 1px solid #639922; border-radius: 12px; margin-top: 16px; }
     .form-success.visible { display: block; }
-    .form-success p { font-size: 14px; color: #27500a; font-family: Calibri, sans-serif; line-height: 1.6; }
+    .form-success p { font-size: clamp(12px,1.1vw,14px); color: #27500a; font-family: Calibri, sans-serif; line-height: 1.6; }
     .form-success strong { font-weight: 700; }
+
+    /* ── Modales ── */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(13,43,107,0.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
     .modal-overlay.active { display: flex; }
     .modal { background: #ffffff; border-radius: 16px; max-width: 560px; width: 100%; overflow: hidden; animation: modalIn 0.25s ease; }
-    @keyframes modalIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .modal-header { width: 100%; padding: 28px 32px; background: #0d2b6b; display: flex; align-items: center; justify-content: center; }
-    .modal-header-title { font-size: 22px; font-weight: 700; color: #ffffff; font-family: 'Times New Roman', Times, serif; text-align: center; }
-    .modal-body { padding: 24px 32px; }
+    @keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .modal-header { width: 100%; padding: clamp(18px,2.5vw,28px) clamp(20px,3vw,32px); background: #0d2b6b; display: flex; align-items: center; justify-content: center; }
+    .modal-header-title { font-size: clamp(17px,1.8vw,22px); font-weight: 700; color: #ffffff; font-family: 'Times New Roman', Times, serif; text-align: center; }
+    .modal-body { padding: clamp(18px,2.5vw,24px) clamp(20px,3vw,32px); }
     .modal-tag { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; font-family: Calibri, sans-serif; }
-    .modal-intro { font-size: 14px; color: #3a5068; line-height: 1.8; margin-bottom: 16px; }
+    .modal-intro { font-size: clamp(12px,1.1vw,14px); color: #3a5068; line-height: 1.8; margin-bottom: 16px; }
     .modal-bullets { list-style: none; padding: 0; margin: 0; }
-    .modal-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #3a5068; line-height: 1.7; margin-bottom: 10px; }
+    .modal-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: clamp(12px,1.1vw,14px); color: #3a5068; line-height: 1.7; margin-bottom: 10px; }
     .modal-bullets li .chk { width: 18px; height: 18px; border-radius: 50%; background: #0d2b6b; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
     .modal-bullets li .chk svg { width: 10px; height: 10px; }
-    .modal-footer { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-top: 1px solid #e0eaf5; background: #f8fbff; }
+    .modal-footer { display: flex; justify-content: space-between; align-items: center; padding: clamp(12px,1.5vw,16px) clamp(20px,3vw,32px); border-top: 1px solid #e0eaf5; background: #f8fbff; }
     .btn-close { font-size: 13px; color: #888; cursor: pointer; font-family: Calibri, sans-serif; background: none; border: none; }
     .btn-close:hover { color: #333; }
     .team-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(13,43,107,0.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
     .team-modal-overlay.active { display: flex; }
     .team-modal { background: #ffffff; border-radius: 16px; max-width: 420px; width: 100%; overflow: hidden; animation: modalIn 0.25s ease; }
-    .team-modal-photo { width: 100%; height: 220px; background: #e8f1fb; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #5585b5; font-family: Calibri, sans-serif; overflow: hidden; }
+    .team-modal-photo { width: 100%; height: clamp(160px,20vw,220px); background: #e8f1fb; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #5585b5; font-family: Calibri, sans-serif; overflow: hidden; }
     .team-modal-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .team-modal-body { padding: 24px 28px; }
-    .team-modal-name { font-size: 20px; font-weight: 700; color: #0d2b6b; margin-bottom: 4px; }
-    .team-modal-title { font-size: 13px; color: #1565c0; font-family: Calibri, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
-    .team-modal-desc { font-size: 14px; color: #3a5068; line-height: 1.8; }
+    .team-modal-body { padding: clamp(18px,2.5vw,24px) clamp(18px,2.5vw,28px); }
+    .team-modal-name { font-size: clamp(16px,1.8vw,20px); font-weight: 700; color: #0d2b6b; margin-bottom: 4px; }
+    .team-modal-title { font-size: clamp(11px,1vw,13px); color: #1565c0; font-family: Calibri, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+    .team-modal-desc { font-size: clamp(12px,1.1vw,14px); color: #3a5068; line-height: 1.8; }
     .team-modal-footer { display: flex; justify-content: flex-end; padding: 14px 28px; border-top: 1px solid #e0eaf5; background: #f8fbff; }
-    footer { position: relative; z-index: 5; padding: 20px 40px; background: #0d2b6b; display: flex; justify-content: space-between; font-size: 11px; color: #90caf9; }
 
-    @media (max-width: 768px) {
-      nav { padding: 14px 20px; } .nav-logo { font-size: 24px; } .nav-links { gap: 14px; } .nav-links a { font-size: 13px; }
-      .hero { padding: 48px 20px 40px; } .hero h1 { font-size: 28px; } .cards { grid-template-columns: 1fr; }
-      .why { grid-template-columns: 1fr; grid-template-rows: auto auto auto; padding: 40px 20px; gap: 32px 0; }
-      .why-header { grid-column: 1; grid-row: 1; }
-      .why-stats { grid-column: 1; grid-row: 2; gap: 16px; padding: 0; flex-wrap: wrap; justify-content: space-around; }
-      .stat-item:nth-child(1), .stat-item:nth-child(2), .stat-item:nth-child(3), .stat-item:nth-child(4) { margin-bottom: 0; }
-      .stat-num { font-size: 30px; }
-      .why-globe { grid-column: 1; grid-row: 3; max-width: 280px; justify-self: center; }
-      .team-grid { flex-wrap: wrap; }
-      .form-grid { grid-template-columns: 1fr; } .section, .team, .contact { padding: 40px 20px; }
-      footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
+    /* ── Footer ── */
+    footer { position: relative; z-index: 5; padding: clamp(14px,2vw,20px) clamp(20px,5vw,40px); background: #0d2b6b; display: flex; justify-content: space-between; align-items: center; font-size: clamp(10px,0.9vw,11px); color: #90caf9; }
+
+    /* ══════════════════════════════
+       BREAKPOINTS RESPONSIVES
+    ══════════════════════════════ */
+
+    /* Tablette paysage / petit laptop — 900px–1280px */
+    @media (max-width: 1280px) {
+      .why-inner { gap: 32px; }
+      .stat-num { font-size: clamp(26px,3.5vw,38px); }
+    }
+
+    /* Tablette portrait — 600px–900px */
+    @media (max-width: 900px) {
+      .nav-inner { padding: 14px 24px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .why-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .why-right {
+        order: 2;
+      }
+      .why-globe {
+        max-width: 320px;
+      }
+      .team-card { min-width: 140px; max-width: 160px; }
+    }
+
+    /* Grand cellulaire — 480px–600px */
+    @media (max-width: 600px) {
+      .nav-inner { padding: 12px 16px; }
+      .nav-links { gap: 12px; }
+      .cards { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .why-stats { grid-template-columns: 1fr 1fr; }
+      .why-globe { max-width: 260px; }
+      .team-grid { gap: 10px; }
+      .team-card { min-width: 100px; max-width: 140px; }
+      footer { flex-direction: column; gap: 6px; text-align: center; }
+    }
+
+    /* Cellulaire — < 480px */
+    @media (max-width: 480px) {
+      .nav-links a { font-size: 12px; }
+      .hero h1 { font-size: clamp(22px,6vw,30px); }
+      .why-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .stat-num { font-size: 26px; }
+      .why-globe { max-width: 240px; }
+      .team-card { min-width: 90px; max-width: 120px; }
+      .modal { margin: 10px; }
+    }
+
+    /* Grand écran — > 1400px */
+    @media (min-width: 1400px) {
+      .why-inner { max-width: 1300px; }
+      .inner { max-width: 1300px; }
     }
   </style>
 </head>
@@ -195,12 +253,14 @@
   <div class="site">
 
     <nav>
-      <span class="nav-logo">SAGA</span>
-      <div class="nav-links">
-        <a onclick="document.getElementById('accueil').scrollIntoView({behavior:'smooth'})">Accueil</a>
-        <a onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</a>
-        <a onclick="document.getElementById('equipe').scrollIntoView({behavior:'smooth'})">Équipe</a>
-        <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+      <div class="nav-inner">
+        <span class="nav-logo">SAGA</span>
+        <div class="nav-links">
+          <a onclick="document.getElementById('accueil').scrollIntoView({behavior:'smooth'})">Accueil</a>
+          <a onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</a>
+          <a onclick="document.getElementById('equipe').scrollIntoView({behavior:'smooth'})">Équipe</a>
+          <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+        </div>
       </div>
     </nav>
 
@@ -218,15 +278,17 @@
 
     <div id="services">
       <div class="section">
-        <div class="section-label">Nos services</div>
-        <div class="section-title">Ce que nous offrons</div>
-        <div class="cards">
-          <div class="card" onclick="openModal('couts')"><div class="card-accent"></div><h3>Coût de production</h3><p>Établissement des revenus et dépenses avicoles avec comparaison sectorielle détaillée.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
-          <div class="card" onclick="openModal('demarrage')"><div class="card-accent"></div><h3>Programme de démarrage</h3><p>Assistance auprès de la relève agricole pour les programmes de démarrage admissibles.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
-          <div class="card" onclick="openModal('budget')"><div class="card-accent"></div><h3>Budget</h3><p>Planification budgétaire et gestion de croissance adaptées à votre exploitation avicole.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
-          <div class="card" onclick="openModal('subvention')"><div class="card-accent"></div><h3>Subvention</h3><p>Identification et accompagnement dans vos demandes de subventions agricoles.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
-          <div class="card" onclick="openModal('pifvo')"><div class="card-accent"></div><h3>PIFVO</h3><p>Programme d'investissement pour fermes de volailles et d'œufs — jusqu'à 70% de remboursement.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
-          <div class="card" onclick="openModal('autres')"><div class="card-accent"></div><h3>Autres services</h3><p>Contactez-nous pour discuter de vos besoins spécifiques.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+        <div class="inner">
+          <div class="section-label">Nos services</div>
+          <div class="section-title">Ce que nous offrons</div>
+          <div class="cards">
+            <div class="card" onclick="openModal('couts')"><div class="card-accent"></div><h3>Coût de production</h3><p>Établissement des revenus et dépenses avicoles avec comparaison sectorielle détaillée.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+            <div class="card" onclick="openModal('demarrage')"><div class="card-accent"></div><h3>Programme de démarrage</h3><p>Assistance auprès de la relève agricole pour les programmes de démarrage admissibles.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+            <div class="card" onclick="openModal('budget')"><div class="card-accent"></div><h3>Budget</h3><p>Planification budgétaire et gestion de croissance adaptées à votre exploitation avicole.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+            <div class="card" onclick="openModal('subvention')"><div class="card-accent"></div><h3>Subvention</h3><p>Identification et accompagnement dans vos demandes de subventions agricoles.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+            <div class="card" onclick="openModal('pifvo')"><div class="card-accent"></div><h3>PIFVO</h3><p>Programme d'investissement pour fermes de volailles et d'œufs — jusqu'à 70% de remboursement.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+            <div class="card" onclick="openModal('autres')"><div class="card-accent"></div><h3>Autres services</h3><p>Contactez-nous pour discuter de vos besoins spécifiques.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+          </div>
         </div>
       </div>
 
@@ -268,113 +330,121 @@
         </div>
       </div>
 
+      <!-- Pourquoi nous choisir -->
       <div class="why">
-        <!-- Texte en haut à droite -->
-        <div class="why-header">
-          <div class="section-label">Pourquoi nous choisir</div>
-          <div class="section-title">Une expertise au cœur du milieu avicole</div>
-          <p>Fondée en 2023, Services Avicoles Grondines Associés s'est rapidement établie comme une référence de confiance dans le milieu avicole québécois. Que vous soyez un nouveau producteur ou un producteur établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
-        </div>
-
-        <!-- Stats en escalier gauche haut → droite bas -->
-        <div class="why-stats">
-          <div class="stat-item" data-target="20" data-suffix=" ans" data-prefix="">
-            <div class="stat-num">0</div>
-            <div class="stat-label">D'expérience</div>
+        <div class="why-inner">
+          <!-- Gauche : texte + stats -->
+          <div class="why-left">
+            <div>
+              <div class="section-label">Pourquoi nous choisir</div>
+              <div class="section-title">Une expertise au cœur du milieu avicole</div>
+              <p>Fondée en 2023, Services Avicoles Grondines Associés s'est rapidement établie comme une référence de confiance dans le milieu avicole québécois. Que vous soyez un nouveau producteur ou un producteur établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
+            </div>
+            <div class="why-stats">
+              <div class="stat-item" data-target="20" data-prefix="" data-suffix=" ans">
+                <div class="stat-num">0</div>
+                <div class="stat-label">D'expérience</div>
+              </div>
+              <div class="stat-item" data-target="100" data-prefix="+" data-suffix="">
+                <div class="stat-num">0</div>
+                <div class="stat-label">Producteurs accompagnés</div>
+              </div>
+              <div class="stat-item" data-target="300" data-prefix="+" data-suffix="">
+                <div class="stat-num">0</div>
+                <div class="stat-label">Dossiers complétés</div>
+              </div>
+              <div class="stat-item" data-target="5" data-prefix="+" data-suffix="M$">
+                <div class="stat-num">0</div>
+                <div class="stat-label">En subventions obtenues</div>
+              </div>
+            </div>
           </div>
-          <div class="stat-item" data-target="100" data-suffix="" data-prefix="+">
-            <div class="stat-num">0</div>
-            <div class="stat-label">Producteurs accompagnés</div>
+          <!-- Droite : globe -->
+          <div class="why-right">
+            <div class="why-globe">
+              <canvas id="globeCanvas"></canvas>
+            </div>
           </div>
-          <div class="stat-item" data-target="300" data-suffix="" data-prefix="+">
-            <div class="stat-num">0</div>
-            <div class="stat-label">Dossiers complétés</div>
-          </div>
-          <div class="stat-item" data-target="5" data-suffix="M$" data-prefix="+">
-            <div class="stat-num">0</div>
-            <div class="stat-label">En subventions obtenues</div>
-          </div>
-        </div>
-
-        <!-- Globe en bas à droite -->
-        <div class="why-globe">
-          <canvas id="globeCanvas"></canvas>
         </div>
       </div>
     </div>
 
     <div id="equipe">
       <div class="team">
-        <div class="section-label" style="font-size:11px;color:#1565c0;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Notre équipe</div>
-        <div class="section-title">Les gens derrière SAGA</div>
-        <div class="team-grid">
-          <div class="team-card" onclick="openTeamModal(0)"><div class="team-photo">Photo</div><div class="team-name">Stéphane Grondines</div><div class="team-role">Agronome, Propriétaire</div></div>
-          <div class="team-card" onclick="openTeamModal(1)"><div class="team-photo">Photo</div><div class="team-name">Marc-Olivier Laprise</div><div class="team-role">Agronome</div></div>
-          <div class="team-card" onclick="openTeamModal(2)"><div class="team-photo">Photo</div><div class="team-name">Alexandre Grondines</div><div class="team-role">Administrateur</div></div>
-          <div class="team-card" onclick="openTeamModal(3)"><div class="team-photo">Photo</div><div class="team-name">Catherine Houle</div><div class="team-role">Technicienne Agricole</div></div>
-          <div class="team-card" onclick="openTeamModal(4)"><div class="team-photo">Photo</div><div class="team-name">Lucie Pelchat</div><div class="team-role">Technicienne Comptable</div></div>
+        <div class="inner">
+          <div class="section-label">Notre équipe</div>
+          <div class="section-title">Les gens derrière SAGA</div>
+          <div class="team-grid">
+            <div class="team-card" onclick="openTeamModal(0)"><div class="team-photo">Photo</div><div class="team-name">Stéphane Grondines</div><div class="team-role">Agronome, Propriétaire</div></div>
+            <div class="team-card" onclick="openTeamModal(1)"><div class="team-photo">Photo</div><div class="team-name">Marc-Olivier Laprise</div><div class="team-role">Agronome</div></div>
+            <div class="team-card" onclick="openTeamModal(2)"><div class="team-photo">Photo</div><div class="team-name">Alexandre Grondines</div><div class="team-role">Administrateur</div></div>
+            <div class="team-card" onclick="openTeamModal(3)"><div class="team-photo">Photo</div><div class="team-name">Catherine Houle</div><div class="team-role">Technicienne Agricole</div></div>
+            <div class="team-card" onclick="openTeamModal(4)"><div class="team-photo">Photo</div><div class="team-name">Lucie Pelchat</div><div class="team-role">Technicienne Comptable</div></div>
+          </div>
         </div>
       </div>
     </div>
 
     <div id="contact">
       <div class="contact">
-        <h2>Parlons de votre projet</h2>
-        <p class="contact-sub">Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.</p>
-        <div id="formContainer">
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Votre nom <span class="required-star">*</span></label>
-              <input type="text" id="formNom" placeholder="Ex : Jean Tremblay" />
-              <span class="error-msg" id="errNom">Ce champ est obligatoire.</span>
+        <div class="contact-inner">
+          <h2>Parlons de votre projet</h2>
+          <p class="contact-sub">Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.</p>
+          <div id="formContainer">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Votre nom <span class="required-star">*</span></label>
+                <input type="text" id="formNom" placeholder="Ex : Jean Tremblay" />
+                <span class="error-msg" id="errNom">Ce champ est obligatoire.</span>
+              </div>
+              <div class="form-group">
+                <label>Votre nom d'entreprise <span style="font-size:11px;color:#888;font-weight:400;">(optionnel)</span></label>
+                <input type="text" id="formEntreprise" placeholder="Ex : Ferme Tremblay Inc." />
+              </div>
+              <div class="form-group">
+                <label>E-mail <span class="required-star">*</span></label>
+                <input type="email" id="formEmail" placeholder="Ex : jean@exemple.com" />
+                <span class="error-msg" id="errEmail">Veuillez entrer une adresse e-mail valide.</span>
+              </div>
+              <div class="form-group">
+                <label>Numéro de téléphone <span class="required-star">*</span></label>
+                <input type="tel" id="formTel" placeholder="Ex : 418-555-1234" />
+                <span class="error-msg" id="errTel">Ce champ est obligatoire.</span>
+              </div>
+              <div class="form-group">
+                <label>Secteur <span class="required-star">*</span></label>
+                <select id="formSecteur">
+                  <option value="">— Choisir un secteur —</option>
+                  <option>Poulet de chair</option>
+                  <option>Dinde de chair</option>
+                  <option>Oeufs de consommation</option>
+                </select>
+                <span class="error-msg" id="errSecteur">Veuillez choisir un secteur.</span>
+              </div>
+              <div class="form-group">
+                <label>Service souhaité <span class="required-star">*</span></label>
+                <select id="formService">
+                  <option value="">— Choisir un service —</option>
+                  <option>Coût de production</option>
+                  <option>Programme de démarrage</option>
+                  <option>Budget</option>
+                  <option>Subvention</option>
+                  <option>PIFVO</option>
+                  <option>Autres services</option>
+                </select>
+                <span class="error-msg" id="errService">Veuillez choisir un service.</span>
+              </div>
+              <div class="form-group form-full">
+                <label>Message <span class="required-star">*</span></label>
+                <textarea id="formMessage" placeholder="Décrivez votre projet ou votre question..."></textarea>
+                <span class="error-msg" id="errMessage">Ce champ est obligatoire.</span>
+              </div>
             </div>
-            <div class="form-group">
-              <label>Votre nom d'entreprise <span style="font-size:11px;color:#888;font-weight:400;">(optionnel)</span></label>
-              <input type="text" id="formEntreprise" placeholder="Ex : Ferme Tremblay Inc." />
-            </div>
-            <div class="form-group">
-              <label>E-mail <span class="required-star">*</span></label>
-              <input type="email" id="formEmail" placeholder="Ex : jean@exemple.com" />
-              <span class="error-msg" id="errEmail">Veuillez entrer une adresse e-mail valide.</span>
-            </div>
-            <div class="form-group">
-              <label>Numéro de téléphone <span class="required-star">*</span></label>
-              <input type="tel" id="formTel" placeholder="Ex : 418-555-1234" />
-              <span class="error-msg" id="errTel">Ce champ est obligatoire.</span>
-            </div>
-            <div class="form-group">
-              <label>Secteur <span class="required-star">*</span></label>
-              <select id="formSecteur">
-                <option value="">— Choisir un secteur —</option>
-                <option>Poulet de chair</option>
-                <option>Dinde de chair</option>
-                <option>Oeufs de consommation</option>
-              </select>
-              <span class="error-msg" id="errSecteur">Veuillez choisir un secteur.</span>
-            </div>
-            <div class="form-group">
-              <label>Service souhaité <span class="required-star">*</span></label>
-              <select id="formService">
-                <option value="">— Choisir un service —</option>
-                <option>Coût de production</option>
-                <option>Programme de démarrage</option>
-                <option>Budget</option>
-                <option>Subvention</option>
-                <option>PIFVO</option>
-                <option>Autres services</option>
-              </select>
-              <span class="error-msg" id="errService">Veuillez choisir un service.</span>
-            </div>
-            <div class="form-group form-full">
-              <label>Message <span class="required-star">*</span></label>
-              <textarea id="formMessage" placeholder="Décrivez votre projet ou votre question..."></textarea>
-              <span class="error-msg" id="errMessage">Ce champ est obligatoire.</span>
-            </div>
+            <a class="btn-wave" id="btnEnvoyer" onclick="envoyerEmail()">Envoyer ma demande</a>
           </div>
-          <a class="btn-wave" id="btnEnvoyer" onclick="envoyerEmail()">Envoyer ma demande</a>
-        </div>
-        <div class="form-success" id="formSuccess">
-          <p>✅ <strong>Votre demande a bien été envoyée!</strong><br>Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.</p>
+          <div class="form-success" id="formSuccess">
+            <p>✅ <strong>Votre demande a bien été envoyée!</strong><br>Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -385,6 +455,7 @@
     </footer>
   </div>
 
+  <!-- Modales services -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
     <div class="modal">
       <div class="modal-header"><div class="modal-header-title" id="modalHeaderTitle">Titre</div></div>
@@ -400,6 +471,7 @@
     </div>
   </div>
 
+  <!-- Modales équipe -->
   <div class="team-modal-overlay" id="teamModalOverlay" onclick="closeTeamModalOutside(event)">
     <div class="team-modal">
       <div class="team-modal-photo" id="teamModalPhoto">Photo — à ajouter</div>
@@ -431,7 +503,7 @@
         ctx.lineWidth = 0.9;
         ctx.beginPath();
         ctx.moveTo(w * (-0.15 + p * 0.75), 0);
-        ctx.bezierCurveTo(w * (0.05 + p * 0.3 + wave), h * 0.3, w * (0.4 + p * 0.35 - wave), h * 0.6, w * (0.2 + p * 0.9), h);
+        ctx.bezierCurveTo(w*(0.05+p*0.3+wave), h*0.3, w*(0.4+p*0.35-wave), h*0.6, w*(0.2+p*0.9), h);
         ctx.stroke();
       }
       for (let i = 0; i < n; i++) {
@@ -441,7 +513,7 @@
         ctx.lineWidth = 0.8;
         ctx.beginPath();
         ctx.moveTo(0, h * (-0.1 + p * 0.75));
-        ctx.bezierCurveTo(w * (0.3 + wave), h * (0.05 + p * 0.35), w * (0.6 - wave), h * (0.4 + p * 0.3), w, h * (0.15 + p * 0.9));
+        ctx.bezierCurveTo(w*(0.3+wave), h*(0.05+p*0.35), w*(0.6-wave), h*(0.4+p*0.3), w, h*(0.15+p*0.9));
         ctx.stroke();
       }
       t += 0.008;
@@ -451,24 +523,20 @@
 
     /* ── Count-up animé au scroll ── */
     function easeOutQuart(x) { return 1 - Math.pow(1 - x, 4); }
-
     function animateCountUp(el, target, prefix, suffix, duration) {
       const numEl = el.querySelector('.stat-num');
       const start = performance.now();
       function step(now) {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = easeOutQuart(progress);
-        const current = Math.round(eased * target);
+        const current = Math.round(easeOutQuart(progress) * target);
         numEl.textContent = prefix + current + suffix;
         if (progress < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
     }
-
     const statItems = document.querySelectorAll('.stat-item');
     let statsAnimated = false;
-
     const statObs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !statsAnimated) {
@@ -485,7 +553,6 @@
         }
       });
     }, { threshold: 0.3 });
-
     statItems.forEach(el => statObs.observe(el));
 
     /* ── Modales services ── */
@@ -578,7 +645,6 @@
   </script>
   <script type="module">
     import * as THREE from 'three';
-
     const globeCanvas = document.getElementById('globeCanvas');
     const container = globeCanvas.parentElement;
     const scene = new THREE.Scene();
@@ -602,194 +668,155 @@
     const globe = new THREE.Group();
     scene.add(globe);
     const R = 1;
-
     function llToV3(lat, lon, r = R) {
       const phi = (90 - lat) * Math.PI / 180;
       const theta = (lon + 180) * Math.PI / 180;
       return new THREE.Vector3(-r*Math.sin(phi)*Math.cos(theta), r*Math.cos(phi), r*Math.sin(phi)*Math.sin(theta));
     }
-
-    const occluder = new THREE.Mesh(
-      new THREE.SphereGeometry(R * 0.999, 96, 96),
-      new THREE.MeshBasicMaterial({ color: 0x1976d2, colorWrite: false })
-    );
+    const occluder = new THREE.Mesh(new THREE.SphereGeometry(R*0.999,96,96), new THREE.MeshBasicMaterial({color:0x1976d2,colorWrite:false}));
     globe.add(occluder);
+    const matCountry   = new THREE.LineBasicMaterial({color:0x90caf9,transparent:true,opacity:0.4});
+    const matProvince  = new THREE.LineBasicMaterial({color:0x90caf9,transparent:true,opacity:0.5});
+    const matQuebec    = new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:1.0});
+    const matQuebecFill= new THREE.MeshBasicMaterial({color:0x1976d2,transparent:true,opacity:0.55,side:THREE.DoubleSide,depthWrite:false});
 
-    const matCountry    = new THREE.LineBasicMaterial({ color: 0x90caf9, transparent: true, opacity: 0.4 });
-    const matProvince   = new THREE.LineBasicMaterial({ color: 0x90caf9, transparent: true, opacity: 0.5 });
-    const matQuebec     = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 1.0 });
-    const matQuebecFill = new THREE.MeshBasicMaterial({ color: 0x1976d2, transparent: true, opacity: 0.55, side: THREE.DoubleSide, depthWrite: false });
-
-    function drawGeoJSONFill(geojson, material, lift = 1.0015) {
-      const group = new THREE.Group();
-      function buildPolygonMesh(rings) {
-        const outer = rings[0].map(([lon, lat]) => new THREE.Vector2(lon, lat));
-        const holes = rings.slice(1).map(r => r.map(([lon, lat]) => new THREE.Vector2(lon, lat)));
-        let faces;
-        try { faces = THREE.ShapeUtils.triangulateShape(outer, holes); } catch(e) { return; }
-        const allPts = outer.concat(...holes);
-        const positions = [];
-        faces.forEach(([a,b,c]) => { [a,b,c].forEach(i => { const p = allPts[i]; const v = llToV3(p.y, p.x, R*lift); positions.push(v.x, v.y, v.z); }); });
-        if (!positions.length) return;
-        const geo = new THREE.BufferGeometry();
-        geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-        group.add(new THREE.Mesh(geo, material));
+    function drawGeoJSONFill(geojson,material,lift=1.0015){
+      const group=new THREE.Group();
+      function buildPolygonMesh(rings){
+        const outer=rings[0].map(([lon,lat])=>new THREE.Vector2(lon,lat));
+        const holes=rings.slice(1).map(r=>r.map(([lon,lat])=>new THREE.Vector2(lon,lat)));
+        let faces; try{faces=THREE.ShapeUtils.triangulateShape(outer,holes);}catch(e){return;}
+        const allPts=outer.concat(...holes); const positions=[];
+        faces.forEach(([a,b,c])=>{[a,b,c].forEach(i=>{const p=allPts[i];const v=llToV3(p.y,p.x,R*lift);positions.push(v.x,v.y,v.z);});});
+        if(!positions.length)return;
+        const geo=new THREE.BufferGeometry();
+        geo.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));
+        group.add(new THREE.Mesh(geo,material));
       }
-      function handleGeom(geom) {
-        if (!geom) return;
-        if (geom.type === 'Polygon') buildPolygonMesh(geom.coordinates);
-        else if (geom.type === 'MultiPolygon') geom.coordinates.forEach(buildPolygonMesh);
+      function handleGeom(geom){
+        if(!geom)return;
+        if(geom.type==='Polygon')buildPolygonMesh(geom.coordinates);
+        else if(geom.type==='MultiPolygon')geom.coordinates.forEach(buildPolygonMesh);
       }
-      if (geojson.type === 'FeatureCollection') geojson.features.forEach(f => handleGeom(f.geometry));
-      else if (geojson.type === 'Feature') handleGeom(geojson.geometry);
+      if(geojson.type==='FeatureCollection')geojson.features.forEach(f=>handleGeom(f.geometry));
+      else if(geojson.type==='Feature')handleGeom(geojson.geometry);
+      else handleGeom(geojson);
+      return group;
+    }
+    function drawGeoJSON(geojson,material,lift=1.002){
+      const group=new THREE.Group();
+      const drawRing=(ring)=>{const pts=ring.map(([lon,lat])=>llToV3(lat,lon,R*lift));group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),material));};
+      const handleGeom=(geom)=>{
+        if(!geom)return;
+        if(geom.type==='Polygon')geom.coordinates.forEach(drawRing);
+        else if(geom.type==='MultiPolygon')geom.coordinates.forEach(p=>p.forEach(drawRing));
+        else if(geom.type==='LineString')drawRing(geom.coordinates);
+        else if(geom.type==='MultiLineString')geom.coordinates.forEach(drawRing);
+      };
+      if(geojson.type==='FeatureCollection')geojson.features.forEach(f=>handleGeom(f.geometry));
+      else if(geojson.type==='Feature')handleGeom(geojson.geometry);
       else handleGeom(geojson);
       return group;
     }
 
-    function drawGeoJSON(geojson, material, lift = 1.002) {
-      const group = new THREE.Group();
-      const drawRing = (ring) => {
-        const pts = ring.map(([lon,lat]) => llToV3(lat, lon, R*lift));
-        group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), material));
-      };
-      const handleGeom = (geom) => {
-        if (!geom) return;
-        if (geom.type === 'Polygon') geom.coordinates.forEach(drawRing);
-        else if (geom.type === 'MultiPolygon') geom.coordinates.forEach(p => p.forEach(drawRing));
-        else if (geom.type === 'LineString') drawRing(geom.coordinates);
-        else if (geom.type === 'MultiLineString') geom.coordinates.forEach(drawRing);
-      };
-      if (geojson.type === 'FeatureCollection') geojson.features.forEach(f => handleGeom(f.geometry));
-      else if (geojson.type === 'Feature') handleGeom(geojson.geometry);
-      else handleGeom(geojson);
-      return group;
-    }
+    const COUNTRIES_URL='https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json';
+    const CANADA_URL='https://raw.githubusercontent.com/codeforgermany/click_that_hood/main/public/data/canada.geojson';
+    const US_URL='https://raw.githubusercontent.com/codeforgermany/click_that_hood/main/public/data/united-states.geojson';
 
-    const COUNTRIES_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json';
-    const CANADA_URL    = 'https://raw.githubusercontent.com/codeforgermany/click_that_hood/main/public/data/canada.geojson';
-    const US_URL        = 'https://raw.githubusercontent.com/codeforgermany/click_that_hood/main/public/data/united-states.geojson';
-
-    async function loadTopoJSON() {
-      return new Promise((resolve, reject) => {
-        const s = document.createElement('script');
-        s.src = 'https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js';
-        s.onload = () => resolve(window.topojson);
-        s.onerror = reject;
+    async function loadTopoJSON(){
+      return new Promise((resolve,reject)=>{
+        const s=document.createElement('script');
+        s.src='https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js';
+        s.onload=()=>resolve(window.topojson); s.onerror=reject;
         document.head.appendChild(s);
       });
     }
 
-    const DESTINATIONS = [
-      { lat: 45.5017, lon: -73.5673 }, { lat: 45.4765, lon: -75.7013 },
-      { lat: 45.4042, lon: -71.8929 }, { lat: 46.3432, lon: -72.5477 },
-      { lat: 48.4488, lon: -68.5236 }, { lat: 46.5500, lon: -75.5000 },
-      { lat: 45.8833, lon: -72.4833 }, { lat: 45.6308, lon: -72.9569 },
-      { lat: 45.4000, lon: -72.7333 }, { lat: 46.0500, lon: -71.9667 },
-      { lat: 47.8261, lon: -69.5419 }, { lat: 46.1167, lon: -70.6667 },
-      { lat: 46.1000, lon: -71.3000 }, { lat: 45.3073, lon: -73.2623 },
-      { lat: 46.5667, lon: -72.7500 }, { lat: 46.0167, lon: -73.4333 },
-      { lat: 47.6533, lon: -70.1522 }, { lat: 48.4653, lon: -71.0086 }
+    const DESTINATIONS=[
+      {lat:45.5017,lon:-73.5673},{lat:45.4765,lon:-75.7013},{lat:45.4042,lon:-71.8929},{lat:46.3432,lon:-72.5477},
+      {lat:48.4488,lon:-68.5236},{lat:46.5500,lon:-75.5000},{lat:45.8833,lon:-72.4833},{lat:45.6308,lon:-72.9569},
+      {lat:45.4000,lon:-72.7333},{lat:46.0500,lon:-71.9667},{lat:47.8261,lon:-69.5419},{lat:46.1167,lon:-70.6667},
+      {lat:46.1000,lon:-71.3000},{lat:45.3073,lon:-73.2623},{lat:46.5667,lon:-72.7500},{lat:46.0167,lon:-73.4333},
+      {lat:47.6533,lon:-70.1522},{lat:48.4653,lon:-71.0086}
     ];
 
-    function makeArcPoints(aLat, aLon, bLat, bLon, segments = 80, heightScale = 0.22) {
-      const a = llToV3(aLat, aLon, R), b = llToV3(bLat, bLon, R);
-      const mid = a.clone().add(b).multiplyScalar(0.5);
-      mid.normalize().multiplyScalar(R + a.distanceTo(b) * heightScale);
-      const curve = new THREE.QuadraticBezierCurve3(a.clone().multiplyScalar(1.002), mid, b.clone().multiplyScalar(1.002));
+    function makeArcPoints(aLat,aLon,bLat,bLon,segments=80,heightScale=0.22){
+      const a=llToV3(aLat,aLon,R),b=llToV3(bLat,bLon,R);
+      const mid=a.clone().add(b).multiplyScalar(0.5);
+      mid.normalize().multiplyScalar(R+a.distanceTo(b)*heightScale);
+      const curve=new THREE.QuadraticBezierCurve3(a.clone().multiplyScalar(1.002),mid,b.clone().multiplyScalar(1.002));
       return curve.getPoints(segments);
     }
 
-    const arcsGroup = new THREE.Group();
-    globe.add(arcsGroup);
-    const arcStates = [];
-
-    function buildArcs() {
-      DESTINATIONS.forEach((d, i) => {
-        const pts = makeArcPoints(QC_LAT, QC_LON, d.lat, d.lon);
-        const geo = new THREE.BufferGeometry().setFromPoints(pts);
-        const mat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.85 });
-        const line = new THREE.Line(geo, mat);
-        geo.setDrawRange(0, 0);
-        arcsGroup.add(line);
-        const dotMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true });
-        const dot = new THREE.Mesh(new THREE.SphereGeometry(0.0022, 12, 12), dotMat);
-        dot.position.copy(llToV3(d.lat, d.lon, R * 1.004));
-        dot.visible = false;
-        arcsGroup.add(dot);
-        const pulse = new THREE.Mesh(new THREE.SphereGeometry(0.0032, 16, 16), new THREE.MeshBasicMaterial({ color: 0x90caf9 }));
-        pulse.visible = false;
-        arcsGroup.add(pulse);
-        arcStates.push({ line, geo, pts, dot, pulse, total: pts.length, startAt: i * 0.3, drawDuration: 2.2, holdDuration: 2.0, fadeDuration: 1.2, cycleLength: 0 });
+    const arcsGroup=new THREE.Group(); globe.add(arcsGroup); const arcStates=[];
+    function buildArcs(){
+      DESTINATIONS.forEach((d,i)=>{
+        const pts=makeArcPoints(QC_LAT,QC_LON,d.lat,d.lon);
+        const geo=new THREE.BufferGeometry().setFromPoints(pts);
+        const mat=new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:0.85});
+        const line=new THREE.Line(geo,mat); geo.setDrawRange(0,0); arcsGroup.add(line);
+        const dotMat=new THREE.MeshBasicMaterial({color:0xffffff,transparent:true});
+        const dot=new THREE.Mesh(new THREE.SphereGeometry(0.0022,12,12),dotMat);
+        dot.position.copy(llToV3(d.lat,d.lon,R*1.004)); dot.visible=false; arcsGroup.add(dot);
+        const pulse=new THREE.Mesh(new THREE.SphereGeometry(0.0032,16,16),new THREE.MeshBasicMaterial({color:0x90caf9}));
+        pulse.visible=false; arcsGroup.add(pulse);
+        arcStates.push({line,geo,pts,dot,pulse,total:pts.length,startAt:i*0.3,drawDuration:2.2,holdDuration:2.0,fadeDuration:1.2,cycleLength:0});
       });
-      arcStates.forEach(s => s.cycleLength = s.drawDuration + s.holdDuration + s.fadeDuration + 1.5);
+      arcStates.forEach(s=>s.cycleLength=s.drawDuration+s.holdDuration+s.fadeDuration+1.5);
     }
 
-    const qcPos = llToV3(QC_LAT, QC_LON, R * 1.005);
-    const qcCore = new THREE.Mesh(new THREE.SphereGeometry(0.0045, 20, 20), new THREE.MeshBasicMaterial({ color: 0xf5833f }));
-    qcCore.position.copy(qcPos);
-    globe.add(qcCore);
-    const ring = new THREE.Mesh(
-      new THREE.RingGeometry(0.0065, 0.0078, 48),
-      new THREE.MeshBasicMaterial({ color: 0xf5833f, side: THREE.DoubleSide, transparent: true, opacity: 0.85 })
-    );
-    ring.position.copy(qcPos);
-    ring.lookAt(qcPos.clone().multiplyScalar(2));
-    globe.add(ring);
+    const qcPos=llToV3(QC_LAT,QC_LON,R*1.005);
+    const qcCore=new THREE.Mesh(new THREE.SphereGeometry(0.0045,20,20),new THREE.MeshBasicMaterial({color:0xf5833f}));
+    qcCore.position.copy(qcPos); globe.add(qcCore);
+    const ring=new THREE.Mesh(new THREE.RingGeometry(0.0065,0.0078,48),new THREE.MeshBasicMaterial({color:0xf5833f,side:THREE.DoubleSide,transparent:true,opacity:0.85}));
+    ring.position.copy(qcPos); ring.lookAt(qcPos.clone().multiplyScalar(2)); globe.add(ring);
+    const qcDir=llToV3(QC_LAT,QC_LON,1).normalize();
+    globe.quaternion.setFromUnitVectors(qcDir,new THREE.Vector3(0,0,1));
 
-    const qcDir = llToV3(QC_LAT, QC_LON, 1).normalize();
-    globe.quaternion.setFromUnitVectors(qcDir, new THREE.Vector3(0, 0, 1));
-
-    async function buildMap() {
-      try {
-        const topojson = await loadTopoJSON();
-        const worldTopo = await fetch(COUNTRIES_URL).then(r => r.json());
-        const countries = topojson.feature(worldTopo, worldTopo.objects.countries);
-        const nonFocus = { type: 'FeatureCollection', features: countries.features.filter(f => f.properties.name !== 'Canada' && f.properties.name !== 'United States of America') };
-        globe.add(drawGeoJSON(nonFocus, matCountry));
-        const usGeo = await fetch(US_URL).then(r => r.json());
-        globe.add(drawGeoJSON(usGeo, matCountry));
-        const canadaGeo = await fetch(CANADA_URL).then(r => r.json());
-        const nonQC = { type: 'FeatureCollection', features: canadaGeo.features.filter(f => !(f.properties.name || f.properties.NAME || '').toLowerCase().includes('qu')) };
-        globe.add(drawGeoJSON(nonQC, matProvince));
-        const quebecOnly = { type: 'FeatureCollection', features: canadaGeo.features.filter(f => (f.properties.name || f.properties.NAME || '').toLowerCase().includes('qu')) };
-        globe.add(drawGeoJSONFill(quebecOnly, matQuebecFill, 1.0015));
-        globe.add(drawGeoJSON(quebecOnly, matQuebec, 1.003));
+    async function buildMap(){
+      try{
+        const topojson=await loadTopoJSON();
+        const worldTopo=await fetch(COUNTRIES_URL).then(r=>r.json());
+        const countries=topojson.feature(worldTopo,worldTopo.objects.countries);
+        const nonFocus={type:'FeatureCollection',features:countries.features.filter(f=>f.properties.name!=='Canada'&&f.properties.name!=='United States of America')};
+        globe.add(drawGeoJSON(nonFocus,matCountry));
+        const usGeo=await fetch(US_URL).then(r=>r.json()); globe.add(drawGeoJSON(usGeo,matCountry));
+        const canadaGeo=await fetch(CANADA_URL).then(r=>r.json());
+        const nonQC={type:'FeatureCollection',features:canadaGeo.features.filter(f=>!(f.properties.name||f.properties.NAME||'').toLowerCase().includes('qu'))};
+        globe.add(drawGeoJSON(nonQC,matProvince));
+        const quebecOnly={type:'FeatureCollection',features:canadaGeo.features.filter(f=>(f.properties.name||f.properties.NAME||'').toLowerCase().includes('qu'))};
+        globe.add(drawGeoJSONFill(quebecOnly,matQuebecFill,1.0015));
+        globe.add(drawGeoJSON(quebecOnly,matQuebec,1.003));
         buildArcs();
-      } catch(err) { console.error('Globe map error:', err); }
+      }catch(err){console.error('Globe map error:',err);}
     }
 
-    const clock = new THREE.Clock();
-    let tAccum = 0;
-    function animateGlobe() {
-      const dt = clock.getDelta();
-      tAccum += dt;
-      for (const s of arcStates) {
-        const local = (tAccum - s.startAt) % s.cycleLength;
-        if (local < 0) { s.geo.setDrawRange(0,0); s.dot.visible=false; s.pulse.visible=false; continue; }
-        if (local < s.drawDuration) {
-          const p = local / s.drawDuration, c = Math.floor(p * s.total);
-          s.geo.setDrawRange(0, c); s.line.material.opacity = 0.85;
-          s.dot.visible = false; s.pulse.visible = true;
-          s.pulse.position.copy(s.pts[Math.min(s.total - 1, c)]);
-        } else if (local < s.drawDuration + s.holdDuration) {
-          s.geo.setDrawRange(0, s.total); s.line.material.opacity = 0.85;
-          s.dot.visible = true; s.dot.material.opacity = 1; s.pulse.visible = false;
-        } else if (local < s.drawDuration + s.holdDuration + s.fadeDuration) {
-          const f = (local - s.drawDuration - s.holdDuration) / s.fadeDuration;
-          s.line.material.opacity = 0.85 * (1 - f); s.dot.material.opacity = 1 - f;
-          s.dot.visible = true; s.pulse.visible = false;
-        } else {
-          s.geo.setDrawRange(0, 0); s.dot.visible=false; s.pulse.visible=false;
-        }
+    const clock=new THREE.Clock(); let tAccum=0;
+    function animateGlobe(){
+      const dt=clock.getDelta(); tAccum+=dt;
+      for(const s of arcStates){
+        const local=(tAccum-s.startAt)%s.cycleLength;
+        if(local<0){s.geo.setDrawRange(0,0);s.dot.visible=false;s.pulse.visible=false;continue;}
+        if(local<s.drawDuration){
+          const p=local/s.drawDuration,c=Math.floor(p*s.total);
+          s.geo.setDrawRange(0,c);s.line.material.opacity=0.85;
+          s.dot.visible=false;s.pulse.visible=true;s.pulse.position.copy(s.pts[Math.min(s.total-1,c)]);
+        }else if(local<s.drawDuration+s.holdDuration){
+          s.geo.setDrawRange(0,s.total);s.line.material.opacity=0.85;
+          s.dot.visible=true;s.dot.material.opacity=1;s.pulse.visible=false;
+        }else if(local<s.drawDuration+s.holdDuration+s.fadeDuration){
+          const f=(local-s.drawDuration-s.holdDuration)/s.fadeDuration;
+          s.line.material.opacity=0.85*(1-f);s.dot.material.opacity=1-f;
+          s.dot.visible=true;s.pulse.visible=false;
+        }else{s.geo.setDrawRange(0,0);s.dot.visible=false;s.pulse.visible=false;}
       }
-      const pt = (tAccum % 2.2) / 2.2;
-      ring.scale.set(1 + pt * 1.2, 1 + pt * 1.2, 1 + pt * 1.2);
-      ring.material.opacity = 0.8 * (1 - pt);
-      renderer.render(scene, camera);
+      const pt=(tAccum%2.2)/2.2;
+      ring.scale.set(1+pt*1.2,1+pt*1.2,1+pt*1.2);
+      ring.material.opacity=0.8*(1-pt);
+      renderer.render(scene,camera);
       requestAnimationFrame(animateGlobe);
     }
-    animateGlobe();
-    buildMap();
+    animateGlobe(); buildMap();
   </script>
 </body>
 </html>
