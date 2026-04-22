@@ -50,17 +50,8 @@
     .card p { font-size: clamp(12px,1vw,13px); color: #3a5068; line-height: 1.6; }
     .card-clic { font-size: clamp(10px,0.9vw,11px); color: #1565c0; margin-top: 12px; font-family: Calibri,sans-serif; }
 
-    /* ── Marquee — slide in depuis droite ── */
-    .marquee-section {
-      position: relative; z-index: 5;
-      padding: 22px 0;
-      background: #0d2b6b;
-      overflow: hidden;
-      transform: translateX(100%);
-      opacity: 0;
-      transition: transform 0.65s cubic-bezier(0.4,0,0.2,1), opacity 0.65s ease;
-    }
-    .marquee-section.slide-in { transform: translateX(0); opacity: 1; }
+    /* ── Marquee ── */
+    .marquee-section { position: relative; z-index: 5; padding: 22px 0; background: #0d2b6b; overflow: hidden; }
     .marquee-label { text-align: center; font-size: clamp(10px,1vw,12px); color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; font-family: Calibri,sans-serif; font-weight: 700; }
     .marquee-track { display: flex; width: max-content; animation: defilement 100s linear infinite; }
     .marquee-track:hover { animation-play-state: paused; }
@@ -70,16 +61,8 @@
     .collab-name { font-size: clamp(11px,1vw,13px); color: #ffffff; font-family: Calibri,sans-serif; font-weight: 600; }
     @keyframes defilement { 0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
 
-    /* ── Section Pourquoi — slide in depuis gauche ── */
-    .why {
-      position: relative; z-index: 5;
-      background: #1976d2;
-      padding: clamp(40px,5vw,72px) clamp(20px,5vw,40px);
-      transform: translateX(-100%);
-      opacity: 0;
-      transition: transform 0.65s cubic-bezier(0.4,0,0.2,1), opacity 0.65s ease;
-    }
-    .why.slide-in { transform: translateX(0); opacity: 1; }
+    /* ── Section Pourquoi nous choisir ── */
+    .why { position: relative; z-index: 5; background: #1976d2; padding: clamp(40px,5vw,72px) clamp(20px,5vw,40px); }
     .why-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,64px); align-items: center; }
     .why-left { display: flex; flex-direction: column; gap: clamp(24px,3vw,36px); }
     .why-left .section-label { color: #bbdefb; }
@@ -104,7 +87,7 @@
     .team-name { font-size: clamp(12px,1.1vw,14px); font-weight: 700; color: #0d2b6b; text-align: center; }
     .team-role { font-size: clamp(10px,0.9vw,12px); color: #5585b5; font-family: Calibri,sans-serif; text-align: center; margin-top: 2px; }
 
-    /* ── Contact centré ── */
+    /* ── Contact ── */
     .contact { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
     .contact-inner { max-width: 800px; margin: 0 auto; }
     .contact h2 { font-size: clamp(18px,2vw,24px); font-weight: 700; color: #0d2b6b; margin-bottom: 8px; }
@@ -229,8 +212,7 @@
         </div>
       </div>
 
-      <!-- Banderole — slide depuis droite -->
-      <div class="marquee-section" id="marqueeSection">
+      <div class="marquee-section">
         <div class="marquee-label">Reconnu par l'industrie</div>
         <div class="marquee-track">
           <div class="marquee-item"><div class="logo-box"><img src="logos/bnc.png" alt="BNC"></div><span class="collab-name">Banque Nationale du Canada</span></div>
@@ -268,8 +250,7 @@
         </div>
       </div>
 
-      <!-- Pourquoi nous choisir — slide depuis gauche -->
-      <div class="why" id="whySection">
+      <div class="why">
         <div class="why-inner">
           <div class="why-left">
             <div>
@@ -391,7 +372,6 @@
     </footer>
   </div>
 
-  <!-- Modales services -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
     <div class="modal">
       <div class="modal-header"><div class="modal-header-title" id="modalHeaderTitle">Titre</div></div>
@@ -407,7 +387,6 @@
     </div>
   </div>
 
-  <!-- Modales équipe -->
   <div class="team-modal-overlay" id="teamModalOverlay" onclick="closeTeamModalOutside(event)">
     <div class="team-modal">
       <div class="team-modal-photo" id="teamModalPhoto">Photo — à ajouter</div>
@@ -438,18 +417,8 @@
     }
     draw();
 
-    /* ── Slide in banderole (droite) et why (gauche) ── */
-    new IntersectionObserver(entries => {
-      entries.forEach(e => e.isIntersecting ? e.target.classList.add('slide-in') : e.target.classList.remove('slide-in'));
-    }, { threshold: 0.15 }).observe(document.getElementById('marqueeSection'));
-
-    new IntersectionObserver(entries => {
-      entries.forEach(e => e.isIntersecting ? e.target.classList.add('slide-in') : e.target.classList.remove('slide-in'));
-    }, { threshold: 0.1 }).observe(document.getElementById('whySection'));
-
-    /* ── Count-up avec reset au départ de section ── */
+    /* ── Count-up au scroll (one-shot) ── */
     function easeOutQuart(x) { return 1 - Math.pow(1-x, 4); }
-
     function animateCountUp(el, target, prefix, suffix, duration) {
       const numEl = el.querySelector('.stat-num');
       const start = performance.now();
@@ -460,14 +429,6 @@
       }
       requestAnimationFrame(step);
     }
-
-    function resetStats() {
-      document.querySelectorAll('.stat-item').forEach(el => {
-        el.classList.remove('visible');
-        el.querySelector('.stat-num').textContent = '0';
-      });
-    }
-
     let statsAnimated = false;
     new IntersectionObserver(entries => {
       entries.forEach(e => {
@@ -479,12 +440,9 @@
               animateCountUp(el, parseInt(el.dataset.target), el.dataset.prefix||'', el.dataset.suffix||'', 2000);
             }, i * 180);
           });
-        } else if(!e.isIntersecting && statsAnimated) {
-          statsAnimated = false;
-          resetStats();
         }
       });
-    }, { threshold: 0.3 }).observe(document.getElementById('whySection'));
+    }, { threshold: 0.3 }).observe(document.querySelector('.why'));
 
     /* ── Modales services ── */
     const services = {
@@ -499,8 +457,6 @@
     function openModal(id){const s=services[id];document.getElementById('modalHeaderTitle').textContent=s.title;document.getElementById('modalTag').textContent=s.tag;document.getElementById('modalIntro').textContent=s.intro;const ul=document.getElementById('modalBullets');ul.innerHTML='';s.bullets.forEach(b=>{ul.innerHTML+=`<li><div class="chk">${chkSVG()}</div><span>${b}</span></li>`;});document.getElementById('modalOverlay').classList.add('active');}
     function closeModal(){document.getElementById('modalOverlay').classList.remove('active');}
     function closeModalOutside(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
-
-    /* ── Modales équipe ── */
     const team=[
       {name:'Stéphane Grondines',title:'Agronome, Propriétaire',desc:'Description du rôle et des responsabilités — à compléter.',photo:null},
       {name:'Marc-Olivier Laprise',title:'Agronome',desc:'Description du rôle et des responsabilités — à compléter.',photo:null},
@@ -512,8 +468,6 @@
     function closeTeamModal(){document.getElementById('teamModalOverlay').classList.remove('active');}
     function closeTeamModalOutside(e){if(e.target===document.getElementById('teamModalOverlay'))closeTeamModal();}
     document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeTeamModal();}});
-
-    /* ── Formulaire Formspree ── */
     async function envoyerEmail(){
       let valid=true;
       const nom=document.getElementById('formNom'),email=document.getElementById('formEmail'),tel=document.getElementById('formTel'),secteur=document.getElementById('formSecteur'),service=document.getElementById('formService'),message=document.getElementById('formMessage');
@@ -537,7 +491,6 @@
     }
   </script>
 
-  <!-- ── Globe Three.js ── -->
   <script type="importmap">
   { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
   </script>
@@ -548,16 +501,14 @@
     const scene=new THREE.Scene();
     const QC_LAT=46.8139,QC_LON=-71.2080;
     const camera=new THREE.PerspectiveCamera(6.5,1,0.1,100);
-    camera.position.set(0,0.0,3.3); camera.lookAt(0,0,0);
+    camera.position.set(0,0.0,3.3);camera.lookAt(0,0,0);
     const renderer=new THREE.WebGLRenderer({canvas:globeCanvas,antialias:true,alpha:true});
-    renderer.setClearColor(0x000000,0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    renderer.setClearColor(0x000000,0);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
     function resizeGlobe(){const w=container.clientWidth,h=container.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
-    resizeGlobe(); window.addEventListener('resize',resizeGlobe);
-    const globe=new THREE.Group(); scene.add(globe); const R=1;
+    resizeGlobe();window.addEventListener('resize',resizeGlobe);
+    const globe=new THREE.Group();scene.add(globe);const R=1;
     function llToV3(lat,lon,r=R){const phi=(90-lat)*Math.PI/180;const theta=(lon+180)*Math.PI/180;return new THREE.Vector3(-r*Math.sin(phi)*Math.cos(theta),r*Math.cos(phi),r*Math.sin(phi)*Math.sin(theta));}
-    const occluder=new THREE.Mesh(new THREE.SphereGeometry(R*0.999,96,96),new THREE.MeshBasicMaterial({color:0x1976d2,colorWrite:false}));
-    globe.add(occluder);
+    const occluder=new THREE.Mesh(new THREE.SphereGeometry(R*0.999,96,96),new THREE.MeshBasicMaterial({color:0x1976d2,colorWrite:false}));globe.add(occluder);
     const matCountry=new THREE.LineBasicMaterial({color:0x90caf9,transparent:true,opacity:0.4});
     const matProvince=new THREE.LineBasicMaterial({color:0x90caf9,transparent:true,opacity:0.5});
     const matQuebec=new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:1.0});
@@ -573,12 +524,9 @@
     const arcsGroup=new THREE.Group();globe.add(arcsGroup);const arcStates=[];
     function buildArcs(){DESTINATIONS.forEach((d,i)=>{const pts=makeArcPoints(QC_LAT,QC_LON,d.lat,d.lon);const geo=new THREE.BufferGeometry().setFromPoints(pts);const mat=new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:0.85});const line=new THREE.Line(geo,mat);geo.setDrawRange(0,0);arcsGroup.add(line);const dotMat=new THREE.MeshBasicMaterial({color:0xffffff,transparent:true});const dot=new THREE.Mesh(new THREE.SphereGeometry(0.0022,12,12),dotMat);dot.position.copy(llToV3(d.lat,d.lon,R*1.004));dot.visible=false;arcsGroup.add(dot);const pulse=new THREE.Mesh(new THREE.SphereGeometry(0.0032,16,16),new THREE.MeshBasicMaterial({color:0x90caf9}));pulse.visible=false;arcsGroup.add(pulse);arcStates.push({line,geo,pts,dot,pulse,total:pts.length,startAt:i*0.3,drawDuration:2.2,holdDuration:2.0,fadeDuration:1.2,cycleLength:0});});arcStates.forEach(s=>s.cycleLength=s.drawDuration+s.holdDuration+s.fadeDuration+1.5);}
     const qcPos=llToV3(QC_LAT,QC_LON,R*1.005);
-    const qcCore=new THREE.Mesh(new THREE.SphereGeometry(0.0045,20,20),new THREE.MeshBasicMaterial({color:0xf5833f}));
-    qcCore.position.copy(qcPos);globe.add(qcCore);
-    const ring=new THREE.Mesh(new THREE.RingGeometry(0.0065,0.0078,48),new THREE.MeshBasicMaterial({color:0xf5833f,side:THREE.DoubleSide,transparent:true,opacity:0.85}));
-    ring.position.copy(qcPos);ring.lookAt(qcPos.clone().multiplyScalar(2));globe.add(ring);
-    const qcDir=llToV3(QC_LAT,QC_LON,1).normalize();
-    globe.quaternion.setFromUnitVectors(qcDir,new THREE.Vector3(0,0,1));
+    const qcCore=new THREE.Mesh(new THREE.SphereGeometry(0.0045,20,20),new THREE.MeshBasicMaterial({color:0xf5833f}));qcCore.position.copy(qcPos);globe.add(qcCore);
+    const ring=new THREE.Mesh(new THREE.RingGeometry(0.0065,0.0078,48),new THREE.MeshBasicMaterial({color:0xf5833f,side:THREE.DoubleSide,transparent:true,opacity:0.85}));ring.position.copy(qcPos);ring.lookAt(qcPos.clone().multiplyScalar(2));globe.add(ring);
+    const qcDir=llToV3(QC_LAT,QC_LON,1).normalize();globe.quaternion.setFromUnitVectors(qcDir,new THREE.Vector3(0,0,1));
     async function buildMap(){try{const topojson=await loadTopoJSON();const worldTopo=await fetch(COUNTRIES_URL).then(r=>r.json());const countries=topojson.feature(worldTopo,worldTopo.objects.countries);const nonFocus={type:'FeatureCollection',features:countries.features.filter(f=>f.properties.name!=='Canada'&&f.properties.name!=='United States of America')};globe.add(drawGeoJSON(nonFocus,matCountry));const usGeo=await fetch(US_URL).then(r=>r.json());globe.add(drawGeoJSON(usGeo,matCountry));const canadaGeo=await fetch(CANADA_URL).then(r=>r.json());const nonQC={type:'FeatureCollection',features:canadaGeo.features.filter(f=>!(f.properties.name||f.properties.NAME||'').toLowerCase().includes('qu'))};globe.add(drawGeoJSON(nonQC,matProvince));const quebecOnly={type:'FeatureCollection',features:canadaGeo.features.filter(f=>(f.properties.name||f.properties.NAME||'').toLowerCase().includes('qu'))};globe.add(drawGeoJSONFill(quebecOnly,matQuebecFill,1.0015));globe.add(drawGeoJSON(quebecOnly,matQuebec,1.003));buildArcs();}catch(err){console.error('Globe map error:',err);}}
     const clock=new THREE.Clock();let tAccum=0;
     function animateGlobe(){const dt=clock.getDelta();tAccum+=dt;for(const s of arcStates){const local=(tAccum-s.startAt)%s.cycleLength;if(local<0){s.geo.setDrawRange(0,0);s.dot.visible=false;s.pulse.visible=false;continue;}if(local<s.drawDuration){const p=local/s.drawDuration,c=Math.floor(p*s.total);s.geo.setDrawRange(0,c);s.line.material.opacity=0.85;s.dot.visible=false;s.pulse.visible=true;s.pulse.position.copy(s.pts[Math.min(s.total-1,c)]);}else if(local<s.drawDuration+s.holdDuration){s.geo.setDrawRange(0,s.total);s.line.material.opacity=0.85;s.dot.visible=true;s.dot.material.opacity=1;s.pulse.visible=false;}else if(local<s.drawDuration+s.holdDuration+s.fadeDuration){const f=(local-s.drawDuration-s.holdDuration)/s.fadeDuration;s.line.material.opacity=0.85*(1-f);s.dot.material.opacity=1-f;s.dot.visible=true;s.pulse.visible=false;}else{s.geo.setDrawRange(0,0);s.dot.visible=false;s.pulse.visible=false;}}const pt=(tAccum%2.2)/2.2;ring.scale.set(1+pt*1.2,1+pt*1.2,1+pt*1.2);ring.material.opacity=0.8*(1-pt);renderer.render(scene,camera);requestAnimationFrame(animateGlobe);}
