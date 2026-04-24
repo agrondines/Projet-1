@@ -5,10 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services Avicoles Grondines Associés</title>
   <style>
+    @font-face {
+      font-family: 'Sentient';
+      src: url('fonts/Sentient-Variable.woff2') format('woff2-variations');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: #ffffff; }
     .bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-    .site { font-family: 'Times New Roman', Times, serif; color: #1a1a2e; position: relative; z-index: 1; }
+    .site { font-family: 'Sentient', serif; color: #1a1a2e; position: relative; z-index: 1; }
 
     .inner { max-width: 1200px; margin: 0 auto; width: 100%; }
 
@@ -18,11 +26,11 @@
     .nav-logo { font-size: clamp(22px,2.5vw,34px); font-weight: 700; letter-spacing: 0.1em; background: linear-gradient(115deg,#0d47a1 0%,#0d47a1 20%,#90caf9 35%,#42a5f5 45%,#90caf9 55%,#0d47a1 70%,#0d47a1 80%,#42a5f5 90%,#bbdefb 96%,#0d47a1 100%); background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: logoSpotlight 14s ease-in-out infinite; animation-delay: 3s; }
     @keyframes logoSpotlight { 0%{background-position:0% 80%}20%{background-position:90% 10%}40%{background-position:15% 95%}60%{background-position:100% 30%}80%{background-position:45% 60%}100%{background-position:0% 80%} }
     .nav-links { display: flex; gap: clamp(14px,2vw,28px); }
-    .nav-links a { font-size: clamp(13px,1.2vw,16px); color: #444; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'Times New Roman', Times, serif; }
+    .nav-links a { font-size: clamp(13px,1.2vw,16px); color: #444; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'Sentient', serif; }
     .nav-links a:hover { color: #0d47a1; }
 
     /* ── Bouton wave ── */
-    .btn-wave { display: inline-block; padding: clamp(10px,1.2vw,13px) clamp(24px,3vw,38px); border-radius: 8px; font-size: clamp(13px,1.2vw,15px); font-weight: 700; font-family: Calibri,'Gill Sans',sans-serif; color: #ffffff; text-decoration: none; cursor: pointer; border: none; background: linear-gradient(115deg,#1565c0 0%,#1565c0 20%,#42a5f5 32%,#90caf9 42%,#42a5f5 52%,#1565c0 68%,#1976d2 80%,#64b5f6 90%,#1565c0 100%); background-size: 600% 600%; animation: btnSpotlight 12s ease-in-out infinite; animation-delay: 1.5s; transition: opacity 0.3s ease; }
+    .btn-wave { display: inline-block; padding: clamp(10px,1.2vw,13px) clamp(24px,3vw,38px); border-radius: 8px; font-size: clamp(13px,1.2vw,15px); font-weight: 700; font-family: 'Sentient', serif; color: #ffffff; text-decoration: none; cursor: pointer; border: none; background: linear-gradient(115deg,#1565c0 0%,#1565c0 20%,#42a5f5 32%,#90caf9 42%,#42a5f5 52%,#1565c0 68%,#1976d2 80%,#64b5f6 90%,#1565c0 100%); background-size: 600% 600%; animation: btnSpotlight 12s ease-in-out infinite; animation-delay: 1.5s; transition: opacity 0.3s ease; }
     .btn-wave:hover { opacity: 0.85; animation-play-state: paused; }
     @keyframes btnSpotlight { 0%{background-position:0% 80%}20%{background-position:85% 15%}38%{background-position:20% 90%}55%{background-position:100% 25%}72%{background-position:40% 65%}88%{background-position:75% 10%}100%{background-position:0% 80%} }
 
@@ -48,17 +56,17 @@
     .card-accent { width: 28px; height: 3px; border-radius: 99px; background: #1565c0; margin-bottom: 12px; }
     .card h3 { font-size: clamp(13px,1.2vw,15px); font-weight: 700; margin-bottom: 8px; color: #0d2b6b; }
     .card p { font-size: clamp(12px,1vw,13px); color: #3a5068; line-height: 1.6; }
-    .card-clic { font-size: clamp(10px,0.9vw,11px); color: #1565c0; margin-top: 12px; font-family: Calibri,sans-serif; }
+    .card-clic { font-size: clamp(10px,0.9vw,11px); color: #1565c0; margin-top: 12px; font-family: 'Sentient', serif; }
 
     /* ── Marquee ── */
     .marquee-section { position: relative; z-index: 5; padding: 22px 0; background: #0d2b6b; overflow: hidden; }
-    .marquee-label { text-align: center; font-size: clamp(10px,1vw,12px); color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; font-family: Calibri,sans-serif; font-weight: 700; }
+    .marquee-label { text-align: center; font-size: clamp(10px,1vw,12px); color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; font-family: 'Sentient', serif; font-weight: 700; }
     .marquee-track { display: flex; width: max-content; animation: defilement 100s linear infinite; }
     .marquee-track:hover { animation-play-state: paused; }
     .marquee-item { display: flex; align-items: center; gap: 12px; padding: 0 28px; border-right: 1px solid rgba(255,255,255,0.15); white-space: nowrap; }
     .logo-box { width: clamp(36px,4vw,52px); height: clamp(36px,4vw,52px); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .logo-box img { width: 100%; height: 100%; object-fit: contain; }
-    .collab-name { font-size: clamp(11px,1vw,13px); color: #ffffff; font-family: Calibri,sans-serif; font-weight: 600; }
+    .collab-name { font-size: clamp(11px,1vw,13px); color: #ffffff; font-family: 'Sentient', serif; font-weight: 600; }
     @keyframes defilement { 0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
 
     /* ── Section Pourquoi nous choisir ── */
@@ -71,8 +79,8 @@
     .why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px,2vw,24px); }
     .stat-item { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; background: rgba(255,255,255,0.1); border-radius: 12px; padding: clamp(14px,1.8vw,22px); }
     .stat-item.visible { opacity: 1; transform: translateY(0); }
-    .stat-num { font-size: clamp(28px,3vw,42px); font-weight: 700; color: #ffffff; font-family: 'Times New Roman',Times,serif; line-height: 1; white-space: nowrap; }
-    .stat-label { font-size: clamp(10px,0.9vw,12px); color: rgba(255,255,255,0.7); font-family: Calibri,sans-serif; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-num { font-size: clamp(28px,3vw,42px); font-weight: 700; color: #ffffff; font-family: 'Sentient', serif; line-height: 1; white-space: nowrap; }
+    .stat-label { font-size: clamp(10px,0.9vw,12px); color: rgba(255,255,255,0.7); font-family: 'Sentient', serif; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
     .why-right { display: flex; align-items: center; justify-content: center; }
     .why-globe { width: 100%; max-width: min(420px,100%); aspect-ratio: 1; position: relative; }
     .why-globe canvas { width: 100% !important; height: 100% !important; display: block; }
@@ -80,61 +88,50 @@
     /* ── Équipe ── */
     .team { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
     .team-grid { display: flex; gap: clamp(10px,1.5vw,18px); justify-content: center; flex-wrap: wrap; }
-    .team-card { display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1; min-width: 120px; max-width: 180px; transition: transform 0.2s; }
-    .team-card:hover { transform: translateY(-4px); }
-    .team-photo { width: 100%; aspect-ratio: 1; border-radius: 12px; background: #e8f1fb; border: 1px solid #c8dcf5; display: flex; align-items: center; justify-content: center; font-size: clamp(10px,1vw,12px); color: #5585b5; font-family: Calibri,sans-serif; text-align: center; overflow: hidden; margin-bottom: 10px; }
+    .team-card { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 120px; max-width: 180px; }
+    .team-photo { width: 100%; aspect-ratio: 1; border-radius: 12px; background: #e8f1fb; border: 1px solid #c8dcf5; display: flex; align-items: center; justify-content: center; font-size: clamp(10px,1vw,12px); color: #5585b5; font-family: 'Sentient', serif; text-align: center; overflow: hidden; margin-bottom: 10px; }
     .team-photo img { width: 100%; height: 100%; object-fit: cover; }
     .team-name { font-size: clamp(12px,1.1vw,14px); font-weight: 700; color: #0d2b6b; text-align: center; }
-    .team-role { font-size: clamp(10px,0.9vw,12px); color: #5585b5; font-family: Calibri,sans-serif; text-align: center; margin-top: 2px; }
+    .team-role { font-size: clamp(10px,0.9vw,12px); color: #5585b5; font-family: 'Sentient', serif; text-align: center; margin-top: 2px; }
 
     /* ── Contact ── */
     .contact { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
     .contact-inner { max-width: 800px; margin: 0 auto; }
     .contact h2 { font-size: clamp(18px,2vw,24px); font-weight: 700; color: #0d2b6b; margin-bottom: 8px; }
-    .contact-sub { font-size: clamp(12px,1.1vw,14px); color: #5585b5; margin-bottom: clamp(20px,3vw,32px); font-family: Calibri,sans-serif; }
+    .contact-sub { font-size: clamp(12px,1.1vw,14px); color: #5585b5; margin-bottom: clamp(20px,3vw,32px); font-family: 'Sentient', serif; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px,1.5vw,16px); margin-bottom: clamp(12px,1.5vw,16px); }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-group label { font-size: clamp(10px,0.9vw,12px); color: #0d2b6b; font-weight: 700; font-family: Calibri,sans-serif; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 3px; }
+    .form-group label { font-size: clamp(10px,0.9vw,12px); color: #0d2b6b; font-weight: 700; font-family: 'Sentient', serif; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 3px; }
     .required-star { color: #e24b4a; font-size: 13px; font-weight: 700; }
-    .form-group input,.form-group select,.form-group textarea { padding: clamp(8px,1vw,10px) clamp(10px,1.2vw,14px); border: 1px solid #c8dcf5; border-radius: 8px; font-size: clamp(12px,1.1vw,14px); font-family: 'Times New Roman',Times,serif; color: #1a1a2e; background: rgba(240,246,255,0.6); outline: none; transition: border-color 0.2s; }
+    .form-group input,.form-group select,.form-group textarea { padding: clamp(8px,1vw,10px) clamp(10px,1.2vw,14px); border: 1px solid #c8dcf5; border-radius: 8px; font-size: clamp(12px,1.1vw,14px); font-family: 'Sentient', serif; color: #1a1a2e; background: rgba(240,246,255,0.6); outline: none; transition: border-color 0.2s; }
     .form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color: #1565c0; }
     .form-group textarea { resize: vertical; min-height: clamp(90px,10vw,120px); }
     .form-full { grid-column: 1 / -1; }
     .form-group input.error,.form-group select.error,.form-group textarea.error { border-color: #e24b4a; background: rgba(252,235,235,0.6); }
-    .error-msg { font-size: 11px; color: #e24b4a; font-family: Calibri,sans-serif; margin-top: 2px; display: none; }
+    .error-msg { font-size: 11px; color: #e24b4a; font-family: 'Sentient', serif; margin-top: 2px; display: none; }
     .error-msg.visible { display: block; }
     .form-success { display: none; padding: 20px 24px; background: #eaf3de; border: 1px solid #639922; border-radius: 12px; margin-top: 16px; }
     .form-success.visible { display: block; }
-    .form-success p { font-size: clamp(12px,1.1vw,14px); color: #27500a; font-family: Calibri,sans-serif; line-height: 1.6; }
+    .form-success p { font-size: clamp(12px,1.1vw,14px); color: #27500a; font-family: 'Sentient', serif; line-height: 1.6; }
     .form-success strong { font-weight: 700; }
 
-    /* ── Modales ── */
+    /* ── Modales services ── */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(13,43,107,0.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
     .modal-overlay.active { display: flex; }
     .modal { background: #ffffff; border-radius: 16px; max-width: 560px; width: 100%; overflow: hidden; animation: modalIn 0.25s ease; }
     @keyframes modalIn { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
     .modal-header { width: 100%; padding: clamp(18px,2.5vw,28px) clamp(20px,3vw,32px); background: #0d2b6b; display: flex; align-items: center; justify-content: center; }
-    .modal-header-title { font-size: clamp(17px,1.8vw,22px); font-weight: 700; color: #ffffff; font-family: 'Times New Roman',Times,serif; text-align: center; }
+    .modal-header-title { font-size: clamp(17px,1.8vw,22px); font-weight: 700; color: #ffffff; font-family: 'Sentient', serif; text-align: center; }
     .modal-body { padding: clamp(18px,2.5vw,24px) clamp(20px,3vw,32px); }
-    .modal-tag { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; font-family: Calibri,sans-serif; }
+    .modal-tag { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; font-family: 'Sentient', serif; }
     .modal-intro { font-size: clamp(12px,1.1vw,14px); color: #3a5068; line-height: 1.8; margin-bottom: 16px; }
     .modal-bullets { list-style: none; padding: 0; margin: 0; }
     .modal-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: clamp(12px,1.1vw,14px); color: #3a5068; line-height: 1.7; margin-bottom: 10px; }
     .modal-bullets li .chk { width: 18px; height: 18px; border-radius: 50%; background: #0d2b6b; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
     .modal-bullets li .chk svg { width: 10px; height: 10px; }
     .modal-footer { display: flex; justify-content: space-between; align-items: center; padding: clamp(12px,1.5vw,16px) clamp(20px,3vw,32px); border-top: 1px solid #e0eaf5; background: #f8fbff; }
-    .btn-close { font-size: 13px; color: #888; cursor: pointer; font-family: Calibri,sans-serif; background: none; border: none; }
+    .btn-close { font-size: 13px; color: #888; cursor: pointer; font-family: 'Sentient', serif; background: none; border: none; }
     .btn-close:hover { color: #333; }
-    .team-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(13,43,107,0.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
-    .team-modal-overlay.active { display: flex; }
-    .team-modal { background: #ffffff; border-radius: 16px; max-width: 420px; width: 100%; overflow: hidden; animation: modalIn 0.25s ease; }
-    .team-modal-photo { width: 100%; height: clamp(160px,20vw,220px); background: #e8f1fb; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #5585b5; font-family: Calibri,sans-serif; overflow: hidden; }
-    .team-modal-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .team-modal-body { padding: clamp(18px,2.5vw,24px) clamp(18px,2.5vw,28px); }
-    .team-modal-name { font-size: clamp(16px,1.8vw,20px); font-weight: 700; color: #0d2b6b; margin-bottom: 4px; }
-    .team-modal-title { font-size: clamp(11px,1vw,13px); color: #1565c0; font-family: Calibri,sans-serif; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
-    .team-modal-desc { font-size: clamp(12px,1.1vw,14px); color: #3a5068; line-height: 1.8; }
-    .team-modal-footer { display: flex; justify-content: flex-end; padding: 14px 28px; border-top: 1px solid #e0eaf5; background: #f8fbff; }
 
     /* ── Footer ── */
     footer { position: relative; z-index: 5; padding: clamp(14px,2vw,20px) clamp(20px,5vw,40px); background: #0d2b6b; display: flex; justify-content: space-between; align-items: center; font-size: clamp(10px,0.9vw,11px); color: #90caf9; }
@@ -292,11 +289,11 @@
           <div class="section-label">Notre équipe</div>
           <div class="section-title">Les gens derrière SAGA</div>
           <div class="team-grid">
-            <div class="team-card" onclick="openTeamModal(0)"><div class="team-photo">Photo</div><div class="team-name">Stéphane Grondines</div><div class="team-role">Agronome, Propriétaire</div></div>
-            <div class="team-card" onclick="openTeamModal(1)"><div class="team-photo">Photo</div><div class="team-name">Marc-Olivier Laprise</div><div class="team-role">Agronome</div></div>
-            <div class="team-card" onclick="openTeamModal(2)"><div class="team-photo">Photo</div><div class="team-name">Alexandre Grondines</div><div class="team-role">Administrateur</div></div>
-            <div class="team-card" onclick="openTeamModal(3)"><div class="team-photo">Photo</div><div class="team-name">Catherine Houle</div><div class="team-role">Technicienne Agricole</div></div>
-            <div class="team-card" onclick="openTeamModal(4)"><div class="team-photo">Photo</div><div class="team-name">Lucie Pelchat</div><div class="team-role">Technicienne Comptable</div></div>
+            <div class="team-card"><div class="team-photo">Photo</div><div class="team-name">Stéphane Grondines</div><div class="team-role">Agronome, Propriétaire</div></div>
+            <div class="team-card"><div class="team-photo">Photo</div><div class="team-name">Marc-Olivier Laprise</div><div class="team-role">Agronome</div></div>
+            <div class="team-card"><div class="team-photo">Photo</div><div class="team-name">Alexandre Grondines</div><div class="team-role">Administrateur</div></div>
+            <div class="team-card"><div class="team-photo">Photo</div><div class="team-name">Catherine Houle</div><div class="team-role">Technicienne Agricole</div></div>
+            <div class="team-card"><div class="team-photo">Photo</div><div class="team-name">Lucie Pelchat</div><div class="team-role">Technicienne Comptable</div></div>
           </div>
         </div>
       </div>
@@ -387,20 +384,6 @@
     </div>
   </div>
 
-  <div class="team-modal-overlay" id="teamModalOverlay" onclick="closeTeamModalOutside(event)">
-    <div class="team-modal">
-      <div class="team-modal-photo" id="teamModalPhoto">Photo — à ajouter</div>
-      <div class="team-modal-body">
-        <div class="team-modal-name" id="teamModalName"></div>
-        <div class="team-modal-title" id="teamModalTitle"></div>
-        <div class="team-modal-desc" id="teamModalDesc"></div>
-      </div>
-      <div class="team-modal-footer">
-        <button class="btn-close" onclick="closeTeamModal()">← Fermer</button>
-      </div>
-    </div>
-  </div>
-
   <script>
     /* ── Fond animé ── */
     const canvas = document.getElementById('bgCanvas');
@@ -457,17 +440,8 @@
     function openModal(id){const s=services[id];document.getElementById('modalHeaderTitle').textContent=s.title;document.getElementById('modalTag').textContent=s.tag;document.getElementById('modalIntro').textContent=s.intro;const ul=document.getElementById('modalBullets');ul.innerHTML='';s.bullets.forEach(b=>{ul.innerHTML+=`<li><div class="chk">${chkSVG()}</div><span>${b}</span></li>`;});document.getElementById('modalOverlay').classList.add('active');}
     function closeModal(){document.getElementById('modalOverlay').classList.remove('active');}
     function closeModalOutside(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
-    const team=[
-      {name:'Stéphane Grondines',title:'Agronome, Propriétaire',desc:'Description du rôle et des responsabilités — à compléter.',photo:null},
-      {name:'Marc-Olivier Laprise',title:'Agronome',desc:'Description du rôle et des responsabilités — à compléter.',photo:null},
-      {name:'Alexandre Grondines',title:'Administrateur',desc:'Description du rôle et des responsabilités — à compléter.',photo:null},
-      {name:'Catherine Houle',title:'Technicienne Agricole',desc:'Description du rôle et des responsabilités — à compléter.',photo:null},
-      {name:'Lucie Pelchat',title:'Technicienne Comptable',desc:'Description du rôle et des responsabilités — à compléter.',photo:null}
-    ];
-    function openTeamModal(i){const m=team[i];document.getElementById('teamModalName').textContent=m.name;document.getElementById('teamModalTitle').textContent=m.title;document.getElementById('teamModalDesc').textContent=m.desc;const p=document.getElementById('teamModalPhoto');p.innerHTML=m.photo?`<img src="${m.photo}" alt="${m.name}">`:'Photo — à ajouter';document.getElementById('teamModalOverlay').classList.add('active');}
-    function closeTeamModal(){document.getElementById('teamModalOverlay').classList.remove('active');}
-    function closeTeamModalOutside(e){if(e.target===document.getElementById('teamModalOverlay'))closeTeamModal();}
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeTeamModal();}});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
     async function envoyerEmail(){
       let valid=true;
       const nom=document.getElementById('formNom'),email=document.getElementById('formEmail'),tel=document.getElementById('formTel'),secteur=document.getElementById('formSecteur'),service=document.getElementById('formService'),message=document.getElementById('formMessage');
