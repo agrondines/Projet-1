@@ -40,13 +40,9 @@
     .hero { position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 clamp(20px,5vw,40px); }
     .hero-logo { width: clamp(60px,8vw,100px); height: auto; margin-bottom: clamp(16px,2vw,28px); }
     .hero h1 { font-size: clamp(26px,4vw,50px); font-weight: 700; line-height: 1.25; max-width: 700px; color: #0d2b6b; }
-
-    /* ── Tag OAQ ── */
     .oaq-tag { position: absolute; top: clamp(72px,8vw,90px); right: clamp(16px,2vw,32px); display: inline-flex; align-items: center; gap: 6px; font-size: clamp(10px,1vw,12px); padding: 5px 14px; border-radius: 99px; background: rgba(187,222,251,0.6); color: #0d47a1; letter-spacing: 0.06em; z-index: 10; }
     .oaq-tag .check { width: 14px; height: 14px; border-radius: 50%; background: #0d47a1; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .oaq-tag .check svg { width: 8px; height: 8px; }
-
-    /* ── Bouton Commencer ── */
     .hero-cta { position: absolute; bottom: clamp(32px,5vw,60px); left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; animation: floatUpDown 3.5s ease-in-out infinite; }
     @keyframes floatUpDown { 0%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}100%{transform:translateX(-50%) translateY(0)} }
     .hero-arrow svg { width: 22px; height: 22px; display: block; }
@@ -57,12 +53,11 @@
     .section-title { font-size: clamp(18px,2vw,24px); font-weight: 700; color: #0d2b6b; margin-bottom: clamp(18px,2.5vw,30px); }
     #services, #equipe, #contact { scroll-margin-top: 80px; }
 
-    /* ── Cartes services ── */
+    /* ── Cartes ── */
     .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(10px,1.5vw,16px); }
     .card { background: rgba(240,246,255,0.92); border: 1px solid #c8dcf5; border-radius: 12px; padding: clamp(16px,2vw,24px); cursor: pointer; opacity: 0; transform: translateY(24px) scale(0.97); transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.3s ease, border-color 0.3s ease; position: relative; overflow: hidden; }
     .card.card-visible { opacity: 1; transform: translateY(0) scale(1); }
     .card.card-visible:hover { transform: translateY(-4px); border-color: #1565c0; box-shadow: 0 8px 24px rgba(21,101,192,0.12); }
-    /* Glow circulaire */
     .card::before { content: ''; position: absolute; top: 50%; left: 50%; width: 220px; height: 220px; transform: translate(-50%,-50%) scale(0); background: radial-gradient(circle, rgba(21,101,192,0.18) 0%, rgba(21,101,192,0.06) 50%, transparent 75%); border-radius: 50%; transition: transform 0.5s ease, opacity 0.5s ease; opacity: 0; pointer-events: none; z-index: 0; }
     .card.card-visible:hover::before { transform: translate(-50%,-50%) scale(1); opacity: 1; }
     .card > * { position: relative; z-index: 1; }
@@ -71,7 +66,7 @@
     .card p { font-size: clamp(12px,1vw,13px); color: #3a5068; line-height: 1.6; }
     .card-clic { font-size: clamp(10px,0.9vw,11px); color: #1565c0; margin-top: 12px; }
 
-    /* ── Pourquoi nous choisir — vague haut ── */
+    /* ── Pourquoi + vague ── */
     .why-wrapper { position: relative; z-index: 5; margin-top: -2px; }
     .why-wave { display: block; width: 100%; overflow: hidden; line-height: 0; }
     .why-wave svg { display: block; width: 100%; }
@@ -99,6 +94,71 @@
     .logo-box img { width: 100%; height: 100%; object-fit: contain; }
     .collab-name { font-size: clamp(11px,1vw,13px); color: #ffffff; font-weight: 600; }
     @keyframes defilement { 0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
+
+    /* ══ SECTION LUMIÈRE ══ */
+    #lumiere-section {
+      position: relative;
+      z-index: 5;
+      background: #ffffff;
+      padding: clamp(56px,8vw,90px) clamp(24px,6vw,80px) clamp(56px,8vw,90px);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(36px,5vw,56px);
+    }
+    .lumiere-titre {
+      font-size: clamp(20px,2.4vw,30px);
+      font-weight: 700;
+      color: #0d2b6b;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      pointer-events: none;
+    }
+    #mots-zone {
+      max-width: 860px;
+      width: 100%;
+      text-align: justify;
+      line-height: 2.6;
+      font-size: clamp(13px,1.3vw,16px);
+      font-weight: 600;
+      color: #1565c0;
+      position: relative;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .mot {
+      display: inline;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    /* Ghost button pour la section lumière */
+    #btn-lumiere {
+      background: transparent !important;
+      animation: none !important;
+      border: 2px solid #1565c0;
+      color: #1565c0 !important;
+      -webkit-text-fill-color: #1565c0 !important;
+      opacity: 1 !important;
+      transition: background 0.3s ease, box-shadow 0.3s ease !important;
+      position: relative;
+      z-index: 10;
+    }
+    #btn-lumiere:hover {
+      background: rgba(21,101,192,0.06) !important;
+      box-shadow: 0 0 0 4px rgba(21,101,192,0.08);
+      opacity: 1 !important;
+    }
+    /* Onde d'explosion */
+    @keyframes ondeExplosion {
+      0% { transform: translate(-50%,-50%) scale(0); opacity: 1; }
+      100% { transform: translate(-50%,-50%) scale(1); opacity: 0; }
+    }
+    @keyframes flashPulse {
+      0% { transform: translate(-50%,-50%) scale(0.3); opacity: 1; }
+      100% { transform: translate(-50%,-50%) scale(3); opacity: 0; }
+    }
 
     /* ── Équipe ── */
     .team { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
@@ -209,9 +269,7 @@
         <div class="hero-cta">
           <a class="btn-wave" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Commencer</a>
           <div class="hero-arrow">
-            <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11 4v14M4 11l7 7 7-7" stroke="#1565c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg viewBox="0 0 22 22" fill="none"><path d="M11 4v14M4 11l7 7 7-7" stroke="#1565c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
       </div>
@@ -233,7 +291,6 @@
         </div>
       </div>
 
-      <!-- Vague + section bleue -->
       <div class="why-wrapper">
         <div class="why-wave">
           <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -299,6 +356,13 @@
           <div class="marquee-item"><div class="logo-box"><img src="logos/hellmann.png" alt="Hellmann"></div><span class="collab-name">Hellmann</span></div>
         </div>
       </div>
+    </div>
+
+    <!-- ══ SECTION LUMIÈRE ══ -->
+    <div id="lumiere-section">
+      <p class="lumiere-titre">Notre accompagnement vous fait voir plus loin</p>
+      <div id="mots-zone"></div>
+      <button class="btn-wave" id="btn-lumiere" onclick="illuminerTout()">Commencer</button>
     </div>
 
     <div id="equipe">
@@ -421,6 +485,143 @@
         }
       });
     }, { threshold: 0.1 }).observe(document.querySelector('.cards'));
+
+    /* ══ SECTION LUMIÈRE ══ */
+    const MOTS = [
+      'quota','rentabilité','troupeau','poussin','moulée','dinde',
+      'assurance','croissance','fonds de roulement','revenu brut',
+      'amortissement','subvention','relève','coût de production',
+      'flux de trésorerie','endettement','patrimoine','couvoir',
+      'densité','mise en marché','contingent','bénéfice','dépréciation',
+      'investissement','plan d\'affaires','financement','ponte',
+      'bâtiment','ventilation','PIFVO','démarrage','marge brute',
+      'capital','aviculture','biosécurité','abattoir','équipement',
+      'réforme','cycle de production','FCR','mortalité','élevage',
+      'grille tarifaire','revenu net','passif','actif','intérêts',
+      'marge nette','poulet de chair','dinde de chair','taux d\'intérêt',
+      'PAD-6000','seuil de rentabilité','roulement','pesée',
+      'liquidité','budget','ferme','succession','valeur nette',
+      'transition','conversion alimentaire','gain moyen',
+      'charge opérationnelle','planification','agronomie',
+      'développement','stratégie','expansion','optimisation',
+      'performance','diagnostic','accompagnement','producteur',
+      'éleveur','consultant','croissance d\'entreprise',
+      'financement agricole','gestion du risque','programme de relève',
+      'quota de production','coopérative agricole','patrimoine familial'
+    ];
+
+    const lumiereSection = document.getElementById('lumiere-section');
+    const motsZone = document.getElementById('mots-zone');
+    const btnLumiere = document.getElementById('btn-lumiere');
+    const isMobile = () => !window.matchMedia('(hover: hover)').matches;
+
+    let motElements = [];
+    let lampX = -9999, lampY = -9999;
+    let illuminated = false;
+    let autoT = 0;
+    let lampLoopId = null;
+
+    // Build paragraph of words
+    function buildMots() {
+      motsZone.innerHTML = '';
+      motElements = [];
+      MOTS.forEach((mot, i) => {
+        const span = document.createElement('span');
+        span.className = 'mot';
+        span.textContent = mot;
+        motsZone.appendChild(span);
+        if (i < MOTS.length - 1) {
+          motsZone.appendChild(document.createTextNode(' · '));
+        }
+        motElements.push(span);
+      });
+    }
+
+    function lampLoop() {
+      if (illuminated) return;
+      const radius = 140;
+
+      let lx, ly;
+      if (isMobile()) {
+        autoT += 0.009;
+        const sectRect = lumiereSection.getBoundingClientRect();
+        lx = sectRect.left + sectRect.width * (0.5 + 0.42 * Math.sin(autoT * 1.1));
+        ly = sectRect.top + sectRect.height * (0.5 + 0.38 * Math.sin(autoT * 0.75));
+      } else {
+        lx = lampX;
+        ly = lampY;
+      }
+
+      motElements.forEach(el => {
+        const r = el.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const dist = Math.sqrt((cx - lx) ** 2 + (cy - ly) ** 2);
+        const bright = Math.max(0, 1 - dist / radius);
+        el.style.opacity = 0.05 + bright * 0.87;
+      });
+
+      lampLoopId = requestAnimationFrame(lampLoop);
+    }
+
+    function illuminerTout() {
+      if (illuminated) {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+      illuminated = true;
+      if (lampLoopId) cancelAnimationFrame(lampLoopId);
+
+      const sectRect = lumiereSection.getBoundingClientRect();
+      const btnRect = btnLumiere.getBoundingClientRect();
+      const bx = btnRect.left + btnRect.width / 2 - sectRect.left;
+      const by = btnRect.top + btnRect.height / 2 - sectRect.top;
+
+      const maxDist = Math.max(
+        Math.sqrt(bx**2 + by**2),
+        Math.sqrt((lumiereSection.offsetWidth - bx)**2 + by**2),
+        Math.sqrt(bx**2 + (lumiereSection.offsetHeight - by)**2),
+        Math.sqrt((lumiereSection.offsetWidth - bx)**2 + (lumiereSection.offsetHeight - by)**2)
+      );
+
+      // Flash central
+      const flash = document.createElement('div');
+      flash.style.cssText = `position:absolute;left:${bx}px;top:${by}px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,192,0.7) 0%,rgba(21,101,192,0.3) 40%,transparent 70%);transform:translate(-50%,-50%);pointer-events:none;z-index:9;animation:flashPulse 0.5s ease-out forwards;`;
+      lumiereSection.appendChild(flash);
+      setTimeout(() => flash.remove(), 600);
+
+      // 3 ondes expansives
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          const onde = document.createElement('div');
+          const size = maxDist * 2.4;
+          onde.style.cssText = `position:absolute;left:${bx}px;top:${by}px;width:${size}px;height:${size}px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,192,0.38) 0%,rgba(21,101,192,0.14) 35%,rgba(21,101,192,0.04) 60%,transparent 75%);transform:translate(-50%,-50%) scale(0);pointer-events:none;z-index:8;animation:ondeExplosion ${1.4 + i * 0.12}s ease-out forwards;`;
+          lumiereSection.appendChild(onde);
+          setTimeout(() => onde.remove(), 1700);
+        }, i * 160);
+      }
+
+      // Illuminer les mots en vague depuis le bouton
+      const waveSpeed = 700;
+      motElements.forEach(el => {
+        const r = el.getBoundingClientRect();
+        const wx = r.left + r.width / 2 - sectRect.left;
+        const wy = r.top + r.height / 2 - sectRect.top;
+        const dist = Math.sqrt((wx - bx)**2 + (wy - by)**2);
+        const delay = (dist / waveSpeed) * 1000;
+        setTimeout(() => {
+          el.style.transition = 'opacity 0.5s ease';
+          el.style.opacity = '0.9';
+        }, delay);
+      });
+
+      setTimeout(() => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      }, 2000);
+    }
+
+    document.addEventListener('mousemove', e => { lampX = e.clientX; lampY = e.clientY; });
+    window.addEventListener('load', () => { buildMots(); lampLoop(); });
 
     /* ── Modales ── */
     const services = {
