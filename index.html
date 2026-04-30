@@ -100,15 +100,15 @@
       position: relative;
       z-index: 5;
       background: #ffffff;
-      padding: clamp(56px,8vw,90px) clamp(24px,6vw,80px) clamp(56px,8vw,90px);
+      padding: clamp(60px,8vw,100px) clamp(32px,5vw,64px) clamp(60px,8vw,100px);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: clamp(36px,5vw,56px);
+      gap: clamp(40px,6vw,64px);
     }
     .lumiere-titre {
-      font-size: clamp(20px,2.4vw,30px);
+      font-size: clamp(22px,2.6vw,34px);
       font-weight: 700;
       color: #0d2b6b;
       text-align: center;
@@ -117,40 +117,44 @@
       pointer-events: none;
     }
     #mots-zone {
-      max-width: 860px;
       width: 100%;
       text-align: justify;
-      line-height: 2.6;
-      font-size: clamp(13px,1.3vw,16px);
+      line-height: 2.8;
+      font-size: clamp(15px,1.6vw,20px);
       font-weight: 600;
       color: #1565c0;
       position: relative;
       z-index: 2;
       pointer-events: none;
+      word-spacing: 8px;
     }
     .mot {
       display: inline;
       opacity: 0.05;
       pointer-events: none;
     }
-    /* Ghost button pour la section lumière */
+
+    /* Bouton lumière — bleu par défaut, ghost après clic */
     #btn-lumiere {
+      position: relative;
+      z-index: 10;
+      transition: background 0.4s ease, color 0.4s ease, border 0.4s ease, opacity 0.4s ease !important;
+    }
+    #btn-lumiere.ghost {
       background: transparent !important;
       animation: none !important;
-      border: 2px solid #1565c0;
+      border: 2px solid #1565c0 !important;
       color: #1565c0 !important;
       -webkit-text-fill-color: #1565c0 !important;
       opacity: 1 !important;
-      transition: background 0.3s ease, box-shadow 0.3s ease !important;
-      position: relative;
-      z-index: 10;
+      box-shadow: none !important;
     }
-    #btn-lumiere:hover {
+    #btn-lumiere.ghost:hover {
       background: rgba(21,101,192,0.06) !important;
-      box-shadow: 0 0 0 4px rgba(21,101,192,0.08);
       opacity: 1 !important;
     }
-    /* Onde d'explosion */
+
+    /* Animations onde */
     @keyframes ondeExplosion {
       0% { transform: translate(-50%,-50%) scale(0); opacity: 1; }
       100% { transform: translate(-50%,-50%) scale(1); opacity: 0; }
@@ -507,7 +511,9 @@
       'performance','diagnostic','accompagnement','producteur',
       'éleveur','consultant','croissance d\'entreprise',
       'financement agricole','gestion du risque','programme de relève',
-      'quota de production','coopérative agricole','patrimoine familial'
+      'quota de production','coopérative agricole','patrimoine familial',
+      'poulet','dinde','oeuf','volaille','poussin','chair','ponte',
+      'rentabiliser','analyse','expertise','accompagnement'
     ];
 
     const lumiereSection = document.getElementById('lumiere-section');
@@ -521,7 +527,6 @@
     let autoT = 0;
     let lampLoopId = null;
 
-    // Build paragraph of words
     function buildMots() {
       motsZone.innerHTML = '';
       motElements = [];
@@ -531,7 +536,7 @@
         span.textContent = mot;
         motsZone.appendChild(span);
         if (i < MOTS.length - 1) {
-          motsZone.appendChild(document.createTextNode(' · '));
+          motsZone.appendChild(document.createTextNode('  '));
         }
         motElements.push(span);
       });
@@ -539,8 +544,7 @@
 
     function lampLoop() {
       if (illuminated) return;
-      const radius = 140;
-
+      const radius = 160;
       let lx, ly;
       if (isMobile()) {
         autoT += 0.009;
@@ -551,7 +555,6 @@
         lx = lampX;
         ly = lampY;
       }
-
       motElements.forEach(el => {
         const r = el.getBoundingClientRect();
         const cx = r.left + r.width / 2;
@@ -560,7 +563,6 @@
         const bright = Math.max(0, 1 - dist / radius);
         el.style.opacity = 0.05 + bright * 0.87;
       });
-
       lampLoopId = requestAnimationFrame(lampLoop);
     }
 
@@ -571,6 +573,9 @@
       }
       illuminated = true;
       if (lampLoopId) cancelAnimationFrame(lampLoopId);
+
+      // Bouton devient ghost
+      btnLumiere.classList.add('ghost');
 
       const sectRect = lumiereSection.getBoundingClientRect();
       const btnRect = btnLumiere.getBoundingClientRect();
@@ -586,38 +591,39 @@
 
       // Flash central
       const flash = document.createElement('div');
-      flash.style.cssText = `position:absolute;left:${bx}px;top:${by}px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,192,0.7) 0%,rgba(21,101,192,0.3) 40%,transparent 70%);transform:translate(-50%,-50%);pointer-events:none;z-index:9;animation:flashPulse 0.5s ease-out forwards;`;
+      flash.style.cssText = `position:absolute;left:${bx}px;top:${by}px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,192,0.75) 0%,rgba(21,101,192,0.3) 40%,transparent 70%);transform:translate(-50%,-50%);pointer-events:none;z-index:9;animation:flashPulse 0.55s ease-out forwards;`;
       lumiereSection.appendChild(flash);
-      setTimeout(() => flash.remove(), 600);
+      setTimeout(() => flash.remove(), 700);
 
       // 3 ondes expansives
       for (let i = 0; i < 3; i++) {
         setTimeout(() => {
           const onde = document.createElement('div');
-          const size = maxDist * 2.4;
-          onde.style.cssText = `position:absolute;left:${bx}px;top:${by}px;width:${size}px;height:${size}px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,192,0.38) 0%,rgba(21,101,192,0.14) 35%,rgba(21,101,192,0.04) 60%,transparent 75%);transform:translate(-50%,-50%) scale(0);pointer-events:none;z-index:8;animation:ondeExplosion ${1.4 + i * 0.12}s ease-out forwards;`;
+          const size = maxDist * 2.5;
+          onde.style.cssText = `position:absolute;left:${bx}px;top:${by}px;width:${size}px;height:${size}px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,192,0.42) 0%,rgba(21,101,192,0.18) 30%,rgba(21,101,192,0.05) 58%,transparent 72%);transform:translate(-50%,-50%) scale(0);pointer-events:none;z-index:8;animation:ondeExplosion ${1.5 + i * 0.14}s ease-out forwards;`;
           lumiereSection.appendChild(onde);
-          setTimeout(() => onde.remove(), 1700);
-        }, i * 160);
+          setTimeout(() => onde.remove(), 1800);
+        }, i * 170);
       }
 
-      // Illuminer les mots en vague depuis le bouton
+      // Mots s'illuminent en vague depuis le bouton
       const waveSpeed = 700;
+      const sectRect2 = lumiereSection.getBoundingClientRect();
       motElements.forEach(el => {
         const r = el.getBoundingClientRect();
-        const wx = r.left + r.width / 2 - sectRect.left;
-        const wy = r.top + r.height / 2 - sectRect.top;
+        const wx = r.left + r.width / 2 - sectRect2.left;
+        const wy = r.top + r.height / 2 - sectRect2.top;
         const dist = Math.sqrt((wx - bx)**2 + (wy - by)**2);
         const delay = (dist / waveSpeed) * 1000;
         setTimeout(() => {
           el.style.transition = 'opacity 0.5s ease';
-          el.style.opacity = '0.9';
+          el.style.opacity = '0.92';
         }, delay);
       });
 
       setTimeout(() => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-      }, 2000);
+      }, 2100);
     }
 
     document.addEventListener('mousemove', e => { lampX = e.clientX; lampY = e.clientY; });
