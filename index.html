@@ -22,7 +22,7 @@
     /* ── Navigation ── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: transparent; transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease; }
     nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); box-shadow: 0 1px 0 rgba(13,71,161,0.08); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(24px,4vw,60px); }
+    .nav-inner { max-width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(16px,2vw,32px); }
     .nav-logo { font-size: clamp(20px,2.2vw,30px); font-weight: 700; letter-spacing: 0.1em; background: linear-gradient(115deg,#0d47a1 0%,#0d47a1 20%,#90caf9 35%,#42a5f5 45%,#90caf9 55%,#0d47a1 70%,#0d47a1 80%,#42a5f5 90%,#bbdefb 96%,#0d47a1 100%); background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: logoSpotlight 14s ease-in-out infinite; animation-delay: 3s; flex-shrink: 0; }
     @keyframes logoSpotlight { 0%{background-position:0% 80%}20%{background-position:90% 10%}40%{background-position:15% 95%}60%{background-position:100% 30%}80%{background-position:45% 60%}100%{background-position:0% 80%} }
     .nav-right { display: flex; align-items: center; gap: clamp(16px,2.5vw,36px); }
@@ -41,12 +41,12 @@
     .hero-logo { width: clamp(60px,8vw,100px); height: auto; margin-bottom: clamp(16px,2vw,28px); }
     .hero h1 { font-size: clamp(26px,4vw,50px); font-weight: 700; line-height: 1.25; max-width: 700px; color: #0d2b6b; }
 
-    /* ── Tag OAQ — coin haut droit du hero ── */
-    .oaq-tag { position: absolute; top: clamp(72px,8vw,90px); right: clamp(24px,4vw,60px); display: inline-flex; align-items: center; gap: 6px; font-size: clamp(10px,1vw,12px); padding: 5px 14px; border-radius: 99px; background: rgba(187,222,251,0.6); color: #0d47a1; letter-spacing: 0.06em; z-index: 10; }
+    /* ── Tag OAQ ── */
+    .oaq-tag { position: absolute; top: clamp(72px,8vw,90px); right: clamp(16px,2vw,32px); display: inline-flex; align-items: center; gap: 6px; font-size: clamp(10px,1vw,12px); padding: 5px 14px; border-radius: 99px; background: rgba(187,222,251,0.6); color: #0d47a1; letter-spacing: 0.06em; z-index: 10; }
     .oaq-tag .check { width: 14px; height: 14px; border-radius: 50%; background: #0d47a1; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .oaq-tag .check svg { width: 8px; height: 8px; }
 
-    /* ── Bouton Commencer — bas du hero ── */
+    /* ── Bouton Commencer ── */
     .hero-cta { position: absolute; bottom: clamp(32px,5vw,60px); left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; animation: floatUpDown 3.5s ease-in-out infinite; }
     @keyframes floatUpDown { 0%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}100%{transform:translateX(-50%) translateY(0)} }
     .hero-arrow svg { width: 22px; height: 22px; display: block; }
@@ -59,16 +59,23 @@
 
     /* ── Cartes services ── */
     .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(10px,1.5vw,16px); }
-    .card { background: rgba(240,246,255,0.92); border: 1px solid #c8dcf5; border-radius: 12px; padding: clamp(16px,2vw,24px); cursor: pointer; opacity: 0; transform: translateY(24px) scale(0.97); transition: opacity 0.45s ease, transform 0.45s ease; }
+    .card { background: rgba(240,246,255,0.92); border: 1px solid #c8dcf5; border-radius: 12px; padding: clamp(16px,2vw,24px); cursor: pointer; opacity: 0; transform: translateY(24px) scale(0.97); transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.3s ease, border-color 0.3s ease; position: relative; overflow: hidden; }
     .card.card-visible { opacity: 1; transform: translateY(0) scale(1); }
     .card.card-visible:hover { transform: translateY(-4px); border-color: #1565c0; box-shadow: 0 8px 24px rgba(21,101,192,0.12); }
+    /* Glow circulaire */
+    .card::before { content: ''; position: absolute; top: 50%; left: 50%; width: 220px; height: 220px; transform: translate(-50%,-50%) scale(0); background: radial-gradient(circle, rgba(21,101,192,0.18) 0%, rgba(21,101,192,0.06) 50%, transparent 75%); border-radius: 50%; transition: transform 0.5s ease, opacity 0.5s ease; opacity: 0; pointer-events: none; z-index: 0; }
+    .card.card-visible:hover::before { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+    .card > * { position: relative; z-index: 1; }
     .card-accent { width: 28px; height: 3px; border-radius: 99px; background: #1565c0; margin-bottom: 12px; }
     .card h3 { font-size: clamp(13px,1.2vw,15px); font-weight: 700; margin-bottom: 8px; color: #0d2b6b; }
     .card p { font-size: clamp(12px,1vw,13px); color: #3a5068; line-height: 1.6; }
     .card-clic { font-size: clamp(10px,0.9vw,11px); color: #1565c0; margin-top: 12px; }
 
-    /* ── Pourquoi nous choisir ── */
-    .why { position: relative; z-index: 5; background: #1976d2; padding: clamp(40px,5vw,72px) clamp(20px,5vw,40px); }
+    /* ── Pourquoi nous choisir — vague haut ── */
+    .why-wrapper { position: relative; z-index: 5; margin-top: -2px; }
+    .why-wave { display: block; width: 100%; overflow: hidden; line-height: 0; }
+    .why-wave svg { display: block; width: 100%; }
+    .why { background: #1976d2; padding: clamp(20px,3vw,48px) clamp(20px,5vw,40px) clamp(40px,5vw,72px); }
     .why-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,64px); align-items: center; }
     .why-left { display: flex; flex-direction: column; gap: clamp(24px,3vw,36px); }
     .why-left .section-label { color: #bbdefb; }
@@ -152,7 +159,6 @@
       .why-globe { max-width: 320px; }
     }
     @media (max-width: 600px) {
-      .nav-inner { padding: 14px 20px; }
       .nav-links { gap: 12px; }
       .cards { grid-template-columns: 1fr; }
       .form-grid { grid-template-columns: 1fr; }
@@ -194,18 +200,12 @@
 
     <div id="accueil">
       <div class="hero">
-
-        <!-- Tag OAQ — haut droit absolu -->
         <div class="oaq-tag">
           <div class="check"><svg viewBox="0 0 8 8" fill="none"><polyline points="1,4 3,6 7,2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           Membre de l'Ordre des Agronomes du Québec
         </div>
-
-        <!-- Contenu centré -->
         <img class="hero-logo" src="logos/BLEU3-GROS.png" alt="Logo SAGA">
         <h1>Votre projet avicole prend vie ici</h1>
-
-        <!-- Bouton + flèche — bas absolu -->
         <div class="hero-cta">
           <a class="btn-wave" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Commencer</a>
           <div class="hero-arrow">
@@ -214,7 +214,6 @@
             </svg>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -234,23 +233,31 @@
         </div>
       </div>
 
-      <div class="why">
-        <div class="why-inner">
-          <div class="why-left">
-            <div>
-              <div class="section-label">Pourquoi nous choisir</div>
-              <div class="section-title">Une expertise au cœur du milieu avicole</div>
-              <p>Fondée en 2023, Services Avicoles Grondines Associés s'est rapidement établie comme une référence de confiance dans le milieu avicole québécois. Que vous soyez un nouveau producteur ou un producteur établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
+      <!-- Vague + section bleue -->
+      <div class="why-wrapper">
+        <div class="why-wave">
+          <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,60 C120,90 200,20 340,45 C480,70 520,15 660,38 C800,60 870,10 1020,32 C1140,50 1280,5 1440,28 L1440,90 L0,90 Z" fill="#1976d2"/>
+          </svg>
+        </div>
+        <div class="why">
+          <div class="why-inner">
+            <div class="why-left">
+              <div>
+                <div class="section-label">Pourquoi nous choisir</div>
+                <div class="section-title">Une expertise au cœur du milieu avicole</div>
+                <p>Fondée en 2023, Services Avicoles Grondines Associés s'est rapidement établie comme une référence de confiance dans le milieu avicole québécois. Que vous soyez un nouveau producteur ou un producteur établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
+              </div>
+              <div class="why-stats">
+                <div class="stat-item" data-target="20" data-prefix="" data-suffix=" ans"><div class="stat-num">0</div><div class="stat-label">D'expérience</div></div>
+                <div class="stat-item" data-target="100" data-prefix="+" data-suffix=""><div class="stat-num">0</div><div class="stat-label">Producteurs accompagnés</div></div>
+                <div class="stat-item" data-target="300" data-prefix="+" data-suffix=""><div class="stat-num">0</div><div class="stat-label">Dossiers complétés</div></div>
+                <div class="stat-item" data-target="5" data-prefix="+" data-suffix="M$"><div class="stat-num">0</div><div class="stat-label">En subventions obtenues</div></div>
+              </div>
             </div>
-            <div class="why-stats">
-              <div class="stat-item" data-target="20" data-prefix="" data-suffix=" ans"><div class="stat-num">0</div><div class="stat-label">D'expérience</div></div>
-              <div class="stat-item" data-target="100" data-prefix="+" data-suffix=""><div class="stat-num">0</div><div class="stat-label">Producteurs accompagnés</div></div>
-              <div class="stat-item" data-target="300" data-prefix="+" data-suffix=""><div class="stat-num">0</div><div class="stat-label">Dossiers complétés</div></div>
-              <div class="stat-item" data-target="5" data-prefix="+" data-suffix="M$"><div class="stat-num">0</div><div class="stat-label">En subventions obtenues</div></div>
+            <div class="why-right">
+              <div class="why-globe"><canvas id="globeCanvas"></canvas></div>
             </div>
-          </div>
-          <div class="why-right">
-            <div class="why-globe"><canvas id="globeCanvas"></canvas></div>
           </div>
         </div>
       </div>
@@ -402,7 +409,7 @@
       });
     }, { threshold: 0.3 }).observe(document.querySelector('.why'));
 
-    /* ── Cartes pop-up 0.2s (one-shot) ── */
+    /* ── Cartes pop-up 0.2s ── */
     let cardsAnimated = false;
     new IntersectionObserver(entries => {
       entries.forEach(e => {
