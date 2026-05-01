@@ -8,82 +8,69 @@
     @font-face {
       font-family: 'Sora';
       src: url('fonts/Sora-Variable.woff2') format('woff2-variations');
-      font-weight: 100 800;
+      font-weight: 100 900;
       font-style: normal;
       font-display: swap;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
     body { background: #ffffff; }
     .bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
     .site { font-family: 'Sora', sans-serif; color: #1a1a2e; position: relative; z-index: 1; }
+
     .inner { max-width: 1200px; margin: 0 auto; width: 100%; }
 
     /* ── Navigation ── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: transparent; transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease; }
-    nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); box-shadow: 0 1px 0 rgba(13,71,161,0.08); }
-    .nav-inner { max-width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(16px,2vw,32px); }
-    .nav-logo { font-size: clamp(20px,2.2vw,30px); font-weight: 700; letter-spacing: 0.1em; background: linear-gradient(115deg,#0d47a1 0%,#0d47a1 20%,#90caf9 35%,#42a5f5 45%,#90caf9 55%,#0d47a1 70%,#0d47a1 80%,#42a5f5 90%,#bbdefb 96%,#0d47a1 100%); background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: logoSpotlight 14s ease-in-out infinite; animation-delay: 3s; flex-shrink: 0; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(13,71,161,0.08); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 16px 40px; }
+    .nav-logo { font-size: clamp(22px,2.5vw,34px); font-weight: 700; letter-spacing: 0.1em; background: linear-gradient(115deg,#0d47a1 0%,#0d47a1 20%,#90caf9 35%,#42a5f5 45%,#90caf9 55%,#0d47a1 70%,#0d47a1 80%,#42a5f5 90%,#bbdefb 96%,#0d47a1 100%); background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: logoSpotlight 14s ease-in-out infinite; animation-delay: 3s; }
     @keyframes logoSpotlight { 0%{background-position:0% 80%}20%{background-position:90% 10%}40%{background-position:15% 95%}60%{background-position:100% 30%}80%{background-position:45% 60%}100%{background-position:0% 80%} }
-    .nav-right { display: flex; align-items: center; gap: clamp(16px,2.5vw,36px); }
-    .nav-links { display: flex; gap: clamp(16px,2vw,32px); }
-    .nav-links a { font-size: clamp(13px,1.1vw,15px); color: #ffffff; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'Sora', sans-serif; white-space: nowrap; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
-    .nav-links a:hover { color: #90caf9; }
-    nav.scrolled .nav-links a { color: #444; text-shadow: none; }
-    nav.scrolled .nav-links a:hover { color: #0d47a1; }
+    .nav-links { display: flex; gap: clamp(14px,2vw,28px); }
+    .nav-links a { font-size: clamp(13px,1.2vw,16px); color: #444; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'Sora', sans-serif; }
+    .nav-links a:hover { color: #0d47a1; }
 
     /* ── Bouton wave ── */
-    .btn-wave { display: inline-block; padding: clamp(9px,1vw,12px) clamp(20px,2.5vw,32px); border-radius: 8px; font-size: clamp(12px,1.1vw,14px); font-weight: 700; font-family: 'Sora', sans-serif; color: #ffffff; text-decoration: none; cursor: pointer; border: none; background: linear-gradient(115deg,#1565c0 0%,#1565c0 20%,#42a5f5 32%,#90caf9 42%,#42a5f5 52%,#1565c0 68%,#1976d2 80%,#64b5f6 90%,#1565c0 100%); background-size: 600% 600%; animation: btnSpotlight 12s ease-in-out infinite; animation-delay: 1.5s; transition: opacity 0.3s ease; white-space: nowrap; }
+    .btn-wave { display: inline-block; padding: clamp(10px,1.2vw,13px) clamp(24px,3vw,38px); border-radius: 8px; font-size: clamp(13px,1.2vw,15px); font-weight: 700; font-family: 'Sora', sans-serif; color: #ffffff; text-decoration: none; cursor: pointer; border: none; background: linear-gradient(115deg,#1565c0 0%,#1565c0 20%,#42a5f5 32%,#90caf9 42%,#42a5f5 52%,#1565c0 68%,#1976d2 80%,#64b5f6 90%,#1565c0 100%); background-size: 600% 600%; animation: btnSpotlight 12s ease-in-out infinite; animation-delay: 1.5s; transition: opacity 0.3s ease; }
     .btn-wave:hover { opacity: 0.85; animation-play-state: paused; }
     @keyframes btnSpotlight { 0%{background-position:0% 80%}20%{background-position:85% 15%}38%{background-position:20% 90%}55%{background-position:100% 25%}72%{background-position:40% 65%}88%{background-position:75% 10%}100%{background-position:0% 80%} }
 
     /* ── Hero ── */
-    #accueil { position: relative; z-index: 5; height: 100vh; overflow: hidden; background: #0d2b6b; }
+    #accueil { position: relative; z-index: 5; }
+    .hero { padding: clamp(48px,7vw,100px) clamp(20px,5vw,40px) clamp(40px,6vw,80px); text-align: center; background: transparent; display: flex; flex-direction: column; align-items: center; }
+    .hero-logo { width: clamp(60px,8vw,100px); height: auto; margin-bottom: clamp(16px,2vw,28px); }
+    .hero h1 { font-size: clamp(26px,4vw,50px); font-weight: 700; line-height: 1.25; max-width: 700px; margin: 0 auto clamp(20px,3vw,36px); color: #0d2b6b; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 6px; font-size: clamp(10px,1vw,12px); padding: 5px 14px; border-radius: 99px; background: rgba(187,222,251,0.6); color: #0d47a1; margin-top: clamp(12px,1.5vw,20px); letter-spacing: 0.06em; }
+    .hero-tag .check { width: 14px; height: 14px; border-radius: 50%; background: #0d47a1; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hero-tag .check svg { width: 8px; height: 8px; }
+    #accueil::after { content: ''; display: block; height: clamp(60px,10vw,140px); background: linear-gradient(to bottom,transparent,rgba(255,255,255,0.95)); position: relative; z-index: 5; }
 
-    /* Vidéo YouTube en arrière-plan */
-    #yt-bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
-    .yt-player-slot { position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 100%; min-width: 100%; min-height: 56.25vw; transform: translate(-50%, -50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease; }
-    .yt-player-slot.active { opacity: 1; }
-    .yt-blocker { position: absolute; inset: 0; z-index: 1; background: transparent; pointer-events: none; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,30,80,0.45) 0%, rgba(10,30,80,0.30) 50%, rgba(10,30,80,0.55) 100%); z-index: 2; }
-
-    .hero { position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 clamp(20px,5vw,40px); z-index: 3; }
-    .hero-logo { width: clamp(60px,8vw,100px); height: auto; margin-bottom: clamp(16px,2vw,28px); filter: brightness(0) invert(1); }
-    .hero h1 { font-size: clamp(26px,4vw,50px); font-weight: 700; line-height: 1.25; max-width: 700px; color: #ffffff; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
-
-    .oaq-tag { position: absolute; top: clamp(72px,8vw,90px); right: clamp(16px,2vw,32px); display: inline-flex; align-items: center; gap: 6px; font-size: clamp(10px,1vw,12px); padding: 5px 14px; border-radius: 99px; background: rgba(255,255,255,0.18); backdrop-filter: blur(6px); color: #ffffff; letter-spacing: 0.06em; z-index: 10; border: 1px solid rgba(255,255,255,0.3); }
-    .oaq-tag .check { width: 14px; height: 14px; border-radius: 50%; background: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .oaq-tag .check svg { width: 8px; height: 8px; }
-    .oaq-tag .check svg polyline { stroke: #0d47a1; }
-
-    .hero-cta { position: absolute; bottom: clamp(32px,5vw,60px); left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; animation: floatUpDown 3.5s ease-in-out infinite; }
-    @keyframes floatUpDown { 0%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}100%{transform:translateX(-50%) translateY(0)} }
-    .hero-arrow svg { width: 22px; height: 22px; display: block; }
-
-    /* ── Sections ── */
+    /* ── Section générique ── */
     .section { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
     .section-label { font-size: clamp(10px,1vw,11px); color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
     .section-title { font-size: clamp(18px,2vw,24px); font-weight: 700; color: #0d2b6b; margin-bottom: clamp(18px,2.5vw,30px); }
-    #services, #equipe, #contact { scroll-margin-top: 80px; }
 
-    /* ── Cartes ── */
+    /* ── Cartes services ── */
     .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(10px,1.5vw,16px); }
-    .card { background: rgba(240,246,255,0.92); border: 1px solid #c8dcf5; border-radius: 12px; padding: clamp(16px,2vw,24px); cursor: pointer; opacity: 0; transform: translateY(24px) scale(0.97); transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.3s ease, border-color 0.3s ease; position: relative; overflow: hidden; }
-    .card.card-visible { opacity: 1; transform: translateY(0) scale(1); }
-    .card.card-visible:hover { transform: translateY(-4px); border-color: #1565c0; box-shadow: 0 8px 24px rgba(21,101,192,0.12); }
-    .card::before { content: ''; position: absolute; top: 50%; left: 50%; width: 220px; height: 220px; transform: translate(-50%,-50%) scale(0); background: radial-gradient(circle, rgba(21,101,192,0.18) 0%, rgba(21,101,192,0.06) 50%, transparent 75%); border-radius: 50%; transition: transform 0.5s ease, opacity 0.5s ease; opacity: 0; pointer-events: none; z-index: 0; }
-    .card.card-visible:hover::before { transform: translate(-50%,-50%) scale(1); opacity: 1; }
-    .card > * { position: relative; z-index: 1; }
+    .card { background: rgba(240,246,255,0.92); border: 1px solid #c8dcf5; border-radius: 12px; padding: clamp(16px,2vw,24px); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+    .card:hover { transform: translateY(-4px); border-color: #1565c0; box-shadow: 0 8px 24px rgba(21,101,192,0.12); }
     .card-accent { width: 28px; height: 3px; border-radius: 99px; background: #1565c0; margin-bottom: 12px; }
     .card h3 { font-size: clamp(13px,1.2vw,15px); font-weight: 700; margin-bottom: 8px; color: #0d2b6b; }
     .card p { font-size: clamp(12px,1vw,13px); color: #3a5068; line-height: 1.6; }
-    .card-clic { font-size: clamp(10px,0.9vw,11px); color: #1565c0; margin-top: 12px; }
+    .card-clic { font-size: clamp(10px,0.9vw,11px); color: #1565c0; margin-top: 12px; font-family: 'Sora', sans-serif; }
 
-    /* ── Pourquoi + vague ── */
-    .why-wrapper { position: relative; z-index: 5; margin-top: -2px; }
-    .why-wave { display: block; width: 100%; overflow: hidden; line-height: 0; }
-    .why-wave svg { display: block; width: 100%; }
-    .why { background: #1976d2; padding: clamp(20px,3vw,48px) clamp(20px,5vw,40px) clamp(40px,5vw,72px); }
+    /* ── Marquee ── */
+    .marquee-section { position: relative; z-index: 5; padding: 22px 0; background: #0d2b6b; overflow: hidden; }
+    .marquee-label { text-align: center; font-size: clamp(10px,1vw,12px); color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; font-family: 'Sora', sans-serif; font-weight: 700; }
+    .marquee-track { display: flex; width: max-content; animation: defilement 100s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item { display: flex; align-items: center; gap: 12px; padding: 0 28px; border-right: 1px solid rgba(255,255,255,0.15); white-space: nowrap; }
+    .logo-box { width: clamp(36px,4vw,52px); height: clamp(36px,4vw,52px); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .logo-box img { width: 100%; height: 100%; object-fit: contain; }
+    .collab-name { font-size: clamp(11px,1vw,13px); color: #ffffff; font-family: 'Sora', sans-serif; font-weight: 600; }
+    @keyframes defilement { 0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
+
+    /* ── Section Pourquoi nous choisir ── */
+    .why { position: relative; z-index: 5; background: #1976d2; padding: clamp(40px,5vw,72px) clamp(20px,5vw,40px); }
     .why-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,64px); align-items: center; }
     .why-left { display: flex; flex-direction: column; gap: clamp(24px,3vw,36px); }
     .why-left .section-label { color: #bbdefb; }
@@ -92,61 +79,51 @@
     .why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px,2vw,24px); }
     .stat-item { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; background: rgba(255,255,255,0.1); border-radius: 12px; padding: clamp(14px,1.8vw,22px); }
     .stat-item.visible { opacity: 1; transform: translateY(0); }
-    .stat-num { font-size: clamp(28px,3vw,42px); font-weight: 700; color: #ffffff; line-height: 1; white-space: nowrap; }
-    .stat-label { font-size: clamp(10px,0.9vw,12px); color: rgba(255,255,255,0.7); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-num { font-size: clamp(28px,3vw,42px); font-weight: 700; color: #ffffff; font-family: 'Sora', sans-serif; line-height: 1; white-space: nowrap; }
+    .stat-label { font-size: clamp(10px,0.9vw,12px); color: rgba(255,255,255,0.7); font-family: 'Sora', sans-serif; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
     .why-right { display: flex; align-items: center; justify-content: center; }
-    .why-globe { width: 100%; max-width: min(420px,100%); aspect-ratio: 1; }
+    .why-globe { width: 100%; max-width: min(420px,100%); aspect-ratio: 1; position: relative; }
     .why-globe canvas { width: 100% !important; height: 100% !important; display: block; }
-
-    /* ── Marquee ── */
-    .marquee-section { position: relative; z-index: 5; padding: 22px 0; background: #0d2b6b; overflow: hidden; }
-    .marquee-label { text-align: center; font-size: clamp(10px,1vw,12px); color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; font-weight: 700; }
-    .marquee-track { display: flex; width: max-content; animation: defilement 100s linear infinite; }
-    .marquee-item { display: flex; align-items: center; gap: 12px; padding: 0 28px; border-right: 1px solid rgba(255,255,255,0.15); white-space: nowrap; }
-    .logo-box { width: clamp(36px,4vw,52px); height: clamp(36px,4vw,52px); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .logo-box img { width: 100%; height: 100%; object-fit: contain; }
-    .collab-name { font-size: clamp(11px,1vw,13px); color: #ffffff; font-weight: 600; }
-    @keyframes defilement { 0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
 
     /* ── Équipe ── */
     .team { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
     .team-grid { display: flex; gap: clamp(10px,1.5vw,18px); justify-content: center; flex-wrap: wrap; }
     .team-card { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 120px; max-width: 180px; }
-    .team-photo { width: 100%; aspect-ratio: 1; border-radius: 12px; background: #e8f1fb; border: 1px solid #c8dcf5; display: flex; align-items: center; justify-content: center; font-size: clamp(10px,1vw,12px); color: #5585b5; text-align: center; overflow: hidden; margin-bottom: 10px; }
+    .team-photo { width: 100%; aspect-ratio: 1; border-radius: 12px; background: #e8f1fb; border: 1px solid #c8dcf5; display: flex; align-items: center; justify-content: center; font-size: clamp(10px,1vw,12px); color: #5585b5; font-family: 'Sora', sans-serif; text-align: center; overflow: hidden; margin-bottom: 10px; }
     .team-photo img { width: 100%; height: 100%; object-fit: cover; }
     .team-name { font-size: clamp(12px,1.1vw,14px); font-weight: 700; color: #0d2b6b; text-align: center; }
-    .team-role { font-size: clamp(10px,0.9vw,12px); color: #5585b5; text-align: center; margin-top: 2px; }
+    .team-role { font-size: clamp(10px,0.9vw,12px); color: #5585b5; font-family: 'Sora', sans-serif; text-align: center; margin-top: 2px; }
 
     /* ── Contact ── */
     .contact { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
     .contact-inner { max-width: 800px; margin: 0 auto; }
     .contact h2 { font-size: clamp(18px,2vw,24px); font-weight: 700; color: #0d2b6b; margin-bottom: 8px; }
-    .contact-sub { font-size: clamp(12px,1.1vw,14px); color: #5585b5; margin-bottom: clamp(20px,3vw,32px); }
+    .contact-sub { font-size: clamp(12px,1.1vw,14px); color: #5585b5; margin-bottom: clamp(20px,3vw,32px); font-family: 'Sora', sans-serif; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px,1.5vw,16px); margin-bottom: clamp(12px,1.5vw,16px); }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-group label { font-size: clamp(10px,0.9vw,12px); color: #0d2b6b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 3px; }
+    .form-group label { font-size: clamp(10px,0.9vw,12px); color: #0d2b6b; font-weight: 700; font-family: 'Sora', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 3px; }
     .required-star { color: #e24b4a; font-size: 13px; font-weight: 700; }
     .form-group input,.form-group select,.form-group textarea { padding: clamp(8px,1vw,10px) clamp(10px,1.2vw,14px); border: 1px solid #c8dcf5; border-radius: 8px; font-size: clamp(12px,1.1vw,14px); font-family: 'Sora', sans-serif; color: #1a1a2e; background: rgba(240,246,255,0.6); outline: none; transition: border-color 0.2s; }
     .form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color: #1565c0; }
     .form-group textarea { resize: vertical; min-height: clamp(90px,10vw,120px); }
     .form-full { grid-column: 1 / -1; }
     .form-group input.error,.form-group select.error,.form-group textarea.error { border-color: #e24b4a; background: rgba(252,235,235,0.6); }
-    .error-msg { font-size: 11px; color: #e24b4a; margin-top: 2px; display: none; }
+    .error-msg { font-size: 11px; color: #e24b4a; font-family: 'Sora', sans-serif; margin-top: 2px; display: none; }
     .error-msg.visible { display: block; }
     .form-success { display: none; padding: 20px 24px; background: #eaf3de; border: 1px solid #639922; border-radius: 12px; margin-top: 16px; }
     .form-success.visible { display: block; }
-    .form-success p { font-size: clamp(12px,1.1vw,14px); color: #27500a; line-height: 1.6; }
+    .form-success p { font-size: clamp(12px,1.1vw,14px); color: #27500a; font-family: 'Sora', sans-serif; line-height: 1.6; }
     .form-success strong { font-weight: 700; }
 
-    /* ── Modales ── */
+    /* ── Modales services ── */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(13,43,107,0.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
     .modal-overlay.active { display: flex; }
     .modal { background: #ffffff; border-radius: 16px; max-width: 560px; width: 100%; overflow: hidden; animation: modalIn 0.25s ease; }
     @keyframes modalIn { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
     .modal-header { width: 100%; padding: clamp(18px,2.5vw,28px) clamp(20px,3vw,32px); background: #0d2b6b; display: flex; align-items: center; justify-content: center; }
-    .modal-header-title { font-size: clamp(17px,1.8vw,22px); font-weight: 700; color: #ffffff; text-align: center; }
+    .modal-header-title { font-size: clamp(17px,1.8vw,22px); font-weight: 700; color: #ffffff; font-family: 'Sora', sans-serif; text-align: center; }
     .modal-body { padding: clamp(18px,2.5vw,24px) clamp(20px,3vw,32px); }
-    .modal-tag { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .modal-tag { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; font-family: 'Sora', sans-serif; }
     .modal-intro { font-size: clamp(12px,1.1vw,14px); color: #3a5068; line-height: 1.8; margin-bottom: 16px; }
     .modal-bullets { list-style: none; padding: 0; margin: 0; }
     .modal-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: clamp(12px,1.1vw,14px); color: #3a5068; line-height: 1.7; margin-bottom: 10px; }
@@ -160,21 +137,22 @@
     footer { position: relative; z-index: 5; padding: clamp(14px,2vw,20px) clamp(20px,5vw,40px); background: #0d2b6b; display: flex; justify-content: space-between; align-items: center; font-size: clamp(10px,0.9vw,11px); color: #90caf9; }
 
     /* ══ BREAKPOINTS ══ */
+    @media (max-width: 1280px) { .why-inner { gap: 32px; } }
     @media (max-width: 900px) {
+      .nav-inner { padding: 14px 24px; }
       .cards { grid-template-columns: repeat(2,1fr); }
       .why-inner { grid-template-columns: 1fr; gap: 32px; }
       .why-right { order: 2; }
       .why-globe { max-width: 320px; }
     }
     @media (max-width: 600px) {
+      .nav-inner { padding: 12px 16px; }
       .nav-links { gap: 12px; }
       .cards { grid-template-columns: 1fr; }
       .form-grid { grid-template-columns: 1fr; }
       .why-stats { grid-template-columns: 1fr 1fr; }
       .why-globe { max-width: 260px; }
       footer { flex-direction: column; gap: 6px; text-align: center; }
-      .nav-right .btn-wave { display: none; }
-      .oaq-tag { font-size: 10px; padding: 4px 10px; right: 16px; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: clamp(22px,6vw,30px); }
@@ -191,43 +169,26 @@
   <canvas class="bg-canvas" id="bgCanvas"></canvas>
   <div class="site">
 
-    <nav id="mainNav">
+    <nav>
       <div class="nav-inner">
         <span class="nav-logo">SAGA</span>
-        <div class="nav-right">
-          <div class="nav-links">
-            <a onclick="document.getElementById('accueil').scrollIntoView({behavior:'smooth'})">Accueil</a>
-            <a onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</a>
-            <a onclick="document.getElementById('equipe').scrollIntoView({behavior:'smooth'})">Équipe</a>
-            <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
-          </div>
-          <a class="btn-wave" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Nous contacter</a>
+        <div class="nav-links">
+          <a onclick="document.getElementById('accueil').scrollIntoView({behavior:'smooth'})">Accueil</a>
+          <a onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</a>
+          <a onclick="document.getElementById('equipe').scrollIntoView({behavior:'smooth'})">Équipe</a>
+          <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
         </div>
       </div>
     </nav>
 
     <div id="accueil">
-      <!-- Vidéo YouTube en arrière-plan -->
-      <div id="yt-bg-wrap">
-        <div id="yt-player-0" class="yt-player-slot active"></div>
-        <div id="yt-player-1" class="yt-player-slot"></div>
-        <div id="yt-player-2" class="yt-player-slot"></div>
-        <div class="yt-blocker"></div>
-      </div>
-      <div class="hero-overlay"></div>
-
       <div class="hero">
-        <div class="oaq-tag">
-          <div class="check"><svg viewBox="0 0 8 8" fill="none"><polyline points="1,4 3,6 7,2" stroke="#0d47a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          Membre de l'Ordre des Agronomes du Québec
-        </div>
         <img class="hero-logo" src="logos/BLEU3-GROS.png" alt="Logo SAGA">
         <h1>Votre projet avicole prend vie ici</h1>
-        <div class="hero-cta">
-          <a class="btn-wave" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Commencer</a>
-          <div class="hero-arrow">
-            <svg viewBox="0 0 22 22" fill="none"><path d="M11 4v14M4 11l7 7 7-7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+        <a class="btn-wave" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Nous contacter</a>
+        <div class="hero-tag">
+          <div class="check"><svg viewBox="0 0 8 8" fill="none"><polyline points="1,4 3,6 7,2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Membre de l'Ordre des Agronomes du Québec
         </div>
       </div>
     </div>
@@ -244,34 +205,6 @@
             <div class="card" onclick="openModal('subvention')"><div class="card-accent"></div><h3>Subvention</h3><p>Identification et accompagnement dans vos demandes de subventions agricoles.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
             <div class="card" onclick="openModal('pifvo')"><div class="card-accent"></div><h3>PIFVO</h3><p>Programme d'investissement pour fermes de volailles et d'œufs — jusqu'à 70% de remboursement.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
             <div class="card" onclick="openModal('autres')"><div class="card-accent"></div><h3>Autres services</h3><p>Contactez-nous pour discuter de vos besoins spécifiques.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="why-wrapper">
-        <div class="why-wave">
-          <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0,60 C120,90 200,20 340,45 C480,70 520,15 660,38 C800,60 870,10 1020,32 C1140,50 1280,5 1440,28 L1440,90 L0,90 Z" fill="#1976d2"/>
-          </svg>
-        </div>
-        <div class="why">
-          <div class="why-inner">
-            <div class="why-left">
-              <div>
-                <div class="section-label">Pourquoi nous choisir</div>
-                <div class="section-title">Une expertise au cœur du milieu avicole</div>
-                <p>Fondée en 2023, Services Avicoles Grondines Associés s'est rapidement établie comme une référence de confiance dans le milieu avicole québécois. Que vous soyez un nouveau producteur ou un producteur établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
-              </div>
-              <div class="why-stats">
-                <div class="stat-item" data-target="20" data-prefix="" data-suffix=" ans"><div class="stat-num">0</div><div class="stat-label">D'expérience</div></div>
-                <div class="stat-item" data-target="100" data-prefix="+" data-suffix=""><div class="stat-num">0</div><div class="stat-label">Producteurs accompagnés</div></div>
-                <div class="stat-item" data-target="300" data-prefix="+" data-suffix=""><div class="stat-num">0</div><div class="stat-label">Dossiers complétés</div></div>
-                <div class="stat-item" data-target="5" data-prefix="+" data-suffix="M$"><div class="stat-num">0</div><div class="stat-label">En subventions obtenues</div></div>
-              </div>
-            </div>
-            <div class="why-right">
-              <div class="why-globe"><canvas id="globeCanvas"></canvas></div>
-            </div>
           </div>
         </div>
       </div>
@@ -313,6 +246,41 @@
           <div class="marquee-item"><div class="logo-box"><img src="logos/hellmann.png" alt="Hellmann"></div><span class="collab-name">Hellmann</span></div>
         </div>
       </div>
+
+      <div class="why">
+        <div class="why-inner">
+          <div class="why-left">
+            <div>
+              <div class="section-label">Pourquoi nous choisir</div>
+              <div class="section-title">Une expertise au cœur du milieu avicole</div>
+              <p>Fondée en 2023, Services Avicoles Grondines Associés s'est rapidement établie comme une référence de confiance dans le milieu avicole québécois. Que vous soyez un nouveau producteur ou un producteur établi, nous vous offrons un accompagnement sur mesure pour prendre les meilleures décisions pour votre entreprise.</p>
+            </div>
+            <div class="why-stats">
+              <div class="stat-item" data-target="20" data-prefix="" data-suffix=" ans">
+                <div class="stat-num">0</div>
+                <div class="stat-label">D'expérience</div>
+              </div>
+              <div class="stat-item" data-target="100" data-prefix="+" data-suffix="">
+                <div class="stat-num">0</div>
+                <div class="stat-label">Producteurs accompagnés</div>
+              </div>
+              <div class="stat-item" data-target="300" data-prefix="+" data-suffix="">
+                <div class="stat-num">0</div>
+                <div class="stat-label">Dossiers complétés</div>
+              </div>
+              <div class="stat-item" data-target="5" data-prefix="+" data-suffix="M$">
+                <div class="stat-num">0</div>
+                <div class="stat-label">En subventions obtenues</div>
+              </div>
+            </div>
+          </div>
+          <div class="why-right">
+            <div class="why-globe">
+              <canvas id="globeCanvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="equipe">
@@ -338,13 +306,53 @@
           <p class="contact-sub">Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.</p>
           <div id="formContainer">
             <div class="form-grid">
-              <div class="form-group"><label>Votre nom <span class="required-star">*</span></label><input type="text" id="formNom" placeholder="Ex : Jean Tremblay" /><span class="error-msg" id="errNom">Ce champ est obligatoire.</span></div>
-              <div class="form-group"><label>Votre nom d'entreprise <span style="font-size:11px;color:#888;font-weight:400;">(optionnel)</span></label><input type="text" id="formEntreprise" placeholder="Ex : Ferme Tremblay Inc." /></div>
-              <div class="form-group"><label>E-mail <span class="required-star">*</span></label><input type="email" id="formEmail" placeholder="Ex : jean@exemple.com" /><span class="error-msg" id="errEmail">Veuillez entrer une adresse e-mail valide.</span></div>
-              <div class="form-group"><label>Numéro de téléphone <span class="required-star">*</span></label><input type="tel" id="formTel" placeholder="Ex : 418-555-1234" /><span class="error-msg" id="errTel">Ce champ est obligatoire.</span></div>
-              <div class="form-group"><label>Secteur <span class="required-star">*</span></label><select id="formSecteur"><option value="">— Choisir un secteur —</option><option>Poulet de chair</option><option>Dinde de chair</option><option>Oeufs de consommation</option></select><span class="error-msg" id="errSecteur">Veuillez choisir un secteur.</span></div>
-              <div class="form-group"><label>Service souhaité <span class="required-star">*</span></label><select id="formService"><option value="">— Choisir un service —</option><option>Coût de production</option><option>Programme de démarrage</option><option>Budget</option><option>Subvention</option><option>PIFVO</option><option>Autres services</option></select><span class="error-msg" id="errService">Veuillez choisir un service.</span></div>
-              <div class="form-group form-full"><label>Message <span class="required-star">*</span></label><textarea id="formMessage" placeholder="Décrivez votre projet ou votre question..."></textarea><span class="error-msg" id="errMessage">Ce champ est obligatoire.</span></div>
+              <div class="form-group">
+                <label>Votre nom <span class="required-star">*</span></label>
+                <input type="text" id="formNom" placeholder="Ex : Jean Tremblay" />
+                <span class="error-msg" id="errNom">Ce champ est obligatoire.</span>
+              </div>
+              <div class="form-group">
+                <label>Votre nom d'entreprise <span style="font-size:11px;color:#888;font-weight:400;">(optionnel)</span></label>
+                <input type="text" id="formEntreprise" placeholder="Ex : Ferme Tremblay Inc." />
+              </div>
+              <div class="form-group">
+                <label>E-mail <span class="required-star">*</span></label>
+                <input type="email" id="formEmail" placeholder="Ex : jean@exemple.com" />
+                <span class="error-msg" id="errEmail">Veuillez entrer une adresse e-mail valide.</span>
+              </div>
+              <div class="form-group">
+                <label>Numéro de téléphone <span class="required-star">*</span></label>
+                <input type="tel" id="formTel" placeholder="Ex : 418-555-1234" />
+                <span class="error-msg" id="errTel">Ce champ est obligatoire.</span>
+              </div>
+              <div class="form-group">
+                <label>Secteur <span class="required-star">*</span></label>
+                <select id="formSecteur">
+                  <option value="">— Choisir un secteur —</option>
+                  <option>Poulet de chair</option>
+                  <option>Dinde de chair</option>
+                  <option>Oeufs de consommation</option>
+                </select>
+                <span class="error-msg" id="errSecteur">Veuillez choisir un secteur.</span>
+              </div>
+              <div class="form-group">
+                <label>Service souhaité <span class="required-star">*</span></label>
+                <select id="formService">
+                  <option value="">— Choisir un service —</option>
+                  <option>Coût de production</option>
+                  <option>Programme de démarrage</option>
+                  <option>Budget</option>
+                  <option>Subvention</option>
+                  <option>PIFVO</option>
+                  <option>Autres services</option>
+                </select>
+                <span class="error-msg" id="errService">Veuillez choisir un service.</span>
+              </div>
+              <div class="form-group form-full">
+                <label>Message <span class="required-star">*</span></label>
+                <textarea id="formMessage" placeholder="Décrivez votre projet ou votre question..."></textarea>
+                <span class="error-msg" id="errMessage">Ce champ est obligatoire.</span>
+              </div>
             </div>
             <a class="btn-wave" id="btnEnvoyer" onclick="envoyerEmail()">Envoyer ma demande</a>
           </div>
@@ -376,81 +384,8 @@
     </div>
   </div>
 
-  <!-- YouTube IFrame API -->
   <script>
-    /* ── YouTube background — 3 players préchargés ── */
-    const YT_IDS = ['kDBfGjMKQBc', 'syRAvOA6dd8', 'Df-fq1LrpfM'];
-    const ytPlayers = [];
-    let currentSlot = 0;
-    let playersReady = 0;
-
-    const YT_PARAMS = {
-      autoplay: 0,
-      mute: 1,
-      controls: 0,
-      disablekb: 1,
-      fs: 0,
-      iv_load_policy: 3,
-      modestbranding: 1,
-      playsinline: 1,
-      rel: 0,
-      showinfo: 0,
-      origin: window.location.origin
-    };
-
-    window.onYouTubeIframeAPIReady = function() {
-      YT_IDS.forEach((id, i) => {
-        ytPlayers[i] = new YT.Player('yt-player-' + i, {
-          videoId: id,
-          playerVars: YT_PARAMS,
-          events: {
-            onReady: function(e) {
-              playersReady++;
-              // Quand tous les players sont prêts, lancer le premier
-              if (playersReady === YT_IDS.length) {
-                ytPlayers[0].playVideo();
-              }
-            },
-            onStateChange: function(e) {
-              // Quand une vidéo se termine, switcher au suivant instantanément
-              if (e.data === YT.PlayerState.ENDED) {
-                const nextSlot = (currentSlot + 1) % YT_IDS.length;
-                // Activer le suivant (déjà préchargé)
-                document.getElementById('yt-player-' + nextSlot).classList.add('active');
-                ytPlayers[nextSlot].seekTo(0);
-                ytPlayers[nextSlot].playVideo();
-                // Cacher l'actuel après transition
-                setTimeout(() => {
-                  document.getElementById('yt-player-' + currentSlot).classList.remove('active');
-                  ytPlayers[currentSlot].pauseVideo();
-                }, 450);
-                currentSlot = nextSlot;
-              }
-              // Précharger la vidéo suivante quand la courante commence
-              if (e.data === YT.PlayerState.PLAYING) {
-                const nextSlot = (currentSlot + 1) % YT_IDS.length;
-                if (ytPlayers[nextSlot] && ytPlayers[nextSlot].getPlayerState() !== YT.PlayerState.PLAYING) {
-                  ytPlayers[nextSlot].seekTo(0);
-                }
-              }
-            }
-          }
-        });
-      });
-    };
-
-    const ytScript = document.createElement('script');
-    ytScript.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(ytScript);
-
-    /* ── Nav scroll ── */
-    const mainNav = document.getElementById('mainNav');
-    const heroEl = document.getElementById('accueil');
-    window.addEventListener('scroll', () => {
-      mainNav.classList.toggle('scrolled', window.scrollY >= heroEl.offsetHeight - 10);
-    }, { passive: true });
-
-    /* ── Fond animé (hors hero) ── */
+    /* ── Fond animé ── */
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
     let t = 0;
@@ -465,7 +400,7 @@
     }
     draw();
 
-    /* ── Count-up ── */
+    /* ── Count-up au scroll (one-shot) ── */
     function easeOutQuart(x) { return 1 - Math.pow(1-x, 4); }
     function animateCountUp(el, target, prefix, suffix, duration) {
       const numEl = el.querySelector('.stat-num');
@@ -483,33 +418,23 @@
         if(e.isIntersecting && !statsAnimated) {
           statsAnimated = true;
           document.querySelectorAll('.stat-item').forEach((el, i) => {
-            setTimeout(() => { el.classList.add('visible'); animateCountUp(el, parseInt(el.dataset.target), el.dataset.prefix||'', el.dataset.suffix||'', 2000); }, i * 180);
+            setTimeout(() => {
+              el.classList.add('visible');
+              animateCountUp(el, parseInt(el.dataset.target), el.dataset.prefix||'', el.dataset.suffix||'', 2000);
+            }, i * 180);
           });
         }
       });
     }, { threshold: 0.3 }).observe(document.querySelector('.why'));
 
-    /* ── Cartes pop-up 0.2s ── */
-    let cardsAnimated = false;
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if(e.isIntersecting && !cardsAnimated) {
-          cardsAnimated = true;
-          document.querySelectorAll('.card').forEach((card, i) => {
-            setTimeout(() => { card.classList.add('card-visible'); }, i * 200);
-          });
-        }
-      });
-    }, { threshold: 0.1 }).observe(document.querySelector('.cards'));
-
-    /* ── Modales ── */
+    /* ── Modales services ── */
     const services = {
-      couts:{tag:'Analyse financière',title:'Coût de production',intro:'Connaître vos coûts de production réels est essentiel pour assurer la rentabilité de votre entreprise avicole. Nous analysons l\'ensemble de vos revenus et dépenses pour vous donner un portrait financier complet et précis de votre exploitation.',bullets:['Établissement des revenus et des dépenses avicoles de votre entreprise.','Offre une comparaison avec votre secteur de production en détails. Poulet de chair, dinde de chair et oeufs de consommation.','Inclut une consultation en personne avec nos experts, avec rapport de coût de revient à l\'appuie.']},
-      demarrage:{tag:'Relève agricole',title:'Programme de démarrage',intro:'Démarrer une entreprise avicole au Québec implique de naviguer à travers plusieurs programmes d\'aide spécifiques à la relève. Nous vous guidons à chaque étape pour maximiser votre admissibilité et simplifier vos démarches.',bullets:['Assistance auprès de la relève agricole admissible au programme de démarrage des oeufs de consommation (PAD-6000).','Assistance auprès de la relève agricole admissible au programme de démarrage du poulet de chair (1000 m2 pour la relève non-apparenté).']},
-      budget:{tag:'Planification',title:'Budget',intro:'Une planification budgétaire rigoureuse est la clé d\'une entreprise avicole saine et en croissance. Nous vous aidons à établir des projections réalistes et à prendre des décisions éclairées pour l\'avenir de votre ferme.',bullets:['Établissement de plan d\'investissement dans les différents secteurs d\'activités avicoles.','Budget long terme.','Suivi de rentabilité.','Gestion de croissance d\'entreprise.']},
+      couts:{tag:'Analyse financière',title:'Coût de production',intro:'',bullets:['Établissement des revenus et des dépenses avicoles de votre entreprise.','Offre une comparaison avec votre secteur de production en détails. Poulet de chair, dinde de chair et oeufs de consommation.','Inclut une consultation en personne avec nos experts, avec rapport de coût de revient à l\'appuie.']},
+      demarrage:{tag:'Relève agricole',title:'Programme de démarrage',intro:'',bullets:['Assistance auprès de la relève agricole admissible au programme de démarrage des oeufs de consommation (PAD-6000).','Assistance auprès de la relève agricole admissible au programme de démarrage du poulet de chair (1000 m2 pour la relève non-apparenté).']},
+      budget:{tag:'Planification',title:'Budget',intro:'',bullets:['Établissement de plan d\'investissement dans les différents secteurs d\'activités avicoles.','Budget long terme.','Suivi de rentabilité.','Gestion de croissance d\'entreprise.']},
       subvention:{tag:'Financement',title:'Subvention',intro:'Vous êtes peut-être admissible à des subventions agricoles sans le savoir. Laissez-nous mettre notre expertise à votre service pour identifier les programmes disponibles et assurer le bon acheminement de vos demandes. Nous vous accompagnons à chaque étape du processus.',bullets:['Simple.','Efficace.','Gagnant en temps et argent.']},
       pifvo:{tag:'Programme fédéral',title:'PIFVO',intro:'Le Programme d\'investissement pour fermes de volailles et d\'œufs (PIFVO) offre des contributions non remboursables pouvant couvrir jusqu\'à 70% de vos coûts de projets admissibles. Notre équipe vous accompagne dans la préparation et le suivi de votre dossier pour maximiser votre financement.',bullets:['Poulet de chair, dinde de chair et oeufs de consommation.','Jusqu\'à 85% pour les jeunes producteurs de 35 ans et moins.','Programme ouvert jusqu\'au 31 mars 2030.']},
-      autres:{tag:'Services complémentaires',title:'Autres services',intro:'Chaque entreprise avicole a des besoins qui lui sont propres. Nous pouvons vous accompagner dans plusieurs autres services adaptés à votre réalité — n\'hésitez pas à nous contacter pour discuter de votre situation.',bullets:['Assurance.']}
+      autres:{tag:'À venir',title:'Autres services',intro:'Nous offrons également d\'autres services adaptés à vos besoins. Contactez-nous pour en savoir plus.',bullets:[]}
     };
     function chkSVG(){return`<svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
     function openModal(id){const s=services[id];document.getElementById('modalHeaderTitle').textContent=s.title;document.getElementById('modalTag').textContent=s.tag;document.getElementById('modalIntro').textContent=s.intro;const ul=document.getElementById('modalBullets');ul.innerHTML='';s.bullets.forEach(b=>{ul.innerHTML+=`<li><div class="chk">${chkSVG()}</div><span>${b}</span></li>`;});document.getElementById('modalOverlay').classList.add('active');}
@@ -540,7 +465,9 @@
     }
   </script>
 
-  <script type="importmap">{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }</script>
+  <script type="importmap">
+  { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
   <script type="module">
     import * as THREE from 'three';
     const globeCanvas=document.getElementById('globeCanvas');
