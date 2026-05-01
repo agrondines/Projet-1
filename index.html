@@ -42,7 +42,8 @@
 
     /* Vidéo YouTube en arrière-plan */
     #yt-bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
-    #yt-player { position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 100%; min-width: 100%; min-height: 56.25vw; transform: translate(-50%, -50%); pointer-events: none; }
+    .yt-player-slot { position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 100%; min-width: 100%; min-height: 56.25vw; transform: translate(-50%, -50%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease; }
+    .yt-player-slot.active { opacity: 1; }
     .yt-blocker { position: absolute; inset: 0; z-index: 1; background: transparent; pointer-events: none; }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,30,80,0.45) 0%, rgba(10,30,80,0.30) 50%, rgba(10,30,80,0.55) 100%); z-index: 2; }
 
@@ -208,7 +209,9 @@
     <div id="accueil">
       <!-- Vidéo YouTube en arrière-plan -->
       <div id="yt-bg-wrap">
-        <div id="yt-player"></div>
+        <div id="yt-player-0" class="yt-player-slot active"></div>
+        <div id="yt-player-1" class="yt-player-slot"></div>
+        <div id="yt-player-2" class="yt-player-slot"></div>
         <div class="yt-blocker"></div>
       </div>
       <div class="hero-overlay"></div>
@@ -375,39 +378,67 @@
 
   <!-- YouTube IFrame API -->
   <script>
-    /* ── YouTube background ── */
+    /* ── YouTube background — 3 players préchargés ── */
     const YT_IDS = ['kDBfGjMKQBc', 'syRAvOA6dd8', 'Df-fq1LrpfM'];
-    let ytPlayer, currentVideo = 0;
+    const ytPlayers = [];
+    let currentSlot = 0;
+    let playersReady = 0;
+
+    const YT_PARAMS = {
+      autoplay: 0,
+      mute: 1,
+      controls: 0,
+      disablekb: 1,
+      fs: 0,
+      iv_load_policy: 3,
+      modestbranding: 1,
+      playsinline: 1,
+      rel: 0,
+      showinfo: 0,
+      origin: window.location.origin
+    };
 
     window.onYouTubeIframeAPIReady = function() {
-      ytPlayer = new YT.Player('yt-player', {
-        videoId: YT_IDS[0],
-        playerVars: {
-          autoplay: 1,
-          mute: 1,
-          controls: 0,
-          disablekb: 1,
-          fs: 0,
-          iv_load_policy: 3,
-          loop: 0,
-          modestbranding: 1,
-          playsinline: 1,
-          rel: 0,
-          showinfo: 0,
-          origin: window.location.origin
-        },
-        events: {
-          onStateChange: function(e) {
-            if (e.data === YT.PlayerState.ENDED) {
-              currentVideo = (currentVideo + 1) % YT_IDS.length;
-              ytPlayer.loadVideoById(YT_IDS[currentVideo]);
+      YT_IDS.forEach((id, i) => {
+        ytPlayers[i] = new YT.Player('yt-player-' + i, {
+          videoId: id,
+          playerVars: YT_PARAMS,
+          events: {
+            onReady: function(e) {
+              playersReady++;
+              // Quand tous les players sont prêts, lancer le premier
+              if (playersReady === YT_IDS.length) {
+                ytPlayers[0].playVideo();
+              }
+            },
+            onStateChange: function(e) {
+              // Quand une vidéo se termine, switcher au suivant instantanément
+              if (e.data === YT.PlayerState.ENDED) {
+                const nextSlot = (currentSlot + 1) % YT_IDS.length;
+                // Activer le suivant (déjà préchargé)
+                document.getElementById('yt-player-' + nextSlot).classList.add('active');
+                ytPlayers[nextSlot].seekTo(0);
+                ytPlayers[nextSlot].playVideo();
+                // Cacher l'actuel après transition
+                setTimeout(() => {
+                  document.getElementById('yt-player-' + currentSlot).classList.remove('active');
+                  ytPlayers[currentSlot].pauseVideo();
+                }, 450);
+                currentSlot = nextSlot;
+              }
+              // Précharger la vidéo suivante quand la courante commence
+              if (e.data === YT.PlayerState.PLAYING) {
+                const nextSlot = (currentSlot + 1) % YT_IDS.length;
+                if (ytPlayers[nextSlot] && ytPlayers[nextSlot].getPlayerState() !== YT.PlayerState.PLAYING) {
+                  ytPlayers[nextSlot].seekTo(0);
+                }
+              }
             }
           }
-        }
+        });
       });
     };
 
-    // Charger l'API YouTube
     const ytScript = document.createElement('script');
     ytScript.src = 'https://www.youtube.com/iframe_api';
     document.head.appendChild(ytScript);
