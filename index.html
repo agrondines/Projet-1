@@ -164,7 +164,14 @@
     .btn-close:hover { color: #333; }
 
     /* ── Footer ── */
-    footer { position: relative; z-index: 5; padding: clamp(14px,2vw,20px) clamp(20px,5vw,40px); background: #0d2b6b; display: flex; justify-content: space-between; align-items: center; font-size: clamp(10px,0.9vw,11px); color: #90caf9; }
+    footer { position: relative; z-index: 5; padding: clamp(20px,3vw,32px) clamp(20px,5vw,40px); background: #0d2b6b; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
+    .footer-copy { font-size: clamp(10px,0.9vw,11px); color: #90caf9; }
+    .footer-copy span { display: block; margin-bottom: 4px; }
+    .footer-politique { text-align: right; }
+    .footer-politique-title { font-size: clamp(9px,0.85vw,11px); color: #bbdefb; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 8px; }
+    .footer-politique a { display: block; font-size: clamp(10px,0.9vw,12px); color: #90caf9; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; margin-bottom: 4px; }
+    .footer-politique a:hover { color: #ffffff; }
 
     /* ══ BREAKPOINTS ══ */
     @media (max-width: 900px) {
@@ -181,7 +188,8 @@
       .form-grid { grid-template-columns: 1fr; }
       .why-stats { grid-template-columns: 1fr 1fr; }
       .why-globe { max-width: 260px; }
-      footer { flex-direction: column; gap: 6px; text-align: center; }
+      .footer-inner { flex-direction: column; gap: 20px; }
+      .footer-politique { text-align: left; }
       .nav-right .btn-wave { display: none; }
       .oaq-tag { font-size: 10px; padding: 4px 10px; right: 16px; }
     }
@@ -356,8 +364,16 @@
     </div>
 
     <footer>
-      <span>© 2026 Services Avicoles Grondines Associés</span>
-      <span>Québec, Canada</span>
+      <div class="footer-inner">
+        <div class="footer-copy">
+          <span>© 2026 Services Avicoles Grondines Associés</span>
+          <span>Québec, Canada</span>
+        </div>
+        <div class="footer-politique">
+          <div class="footer-politique-title">Protection des renseignements personnels</div>
+          <a href="politique.html">Politique de confidentialité et données numériques</a>
+        </div>
+      </div>
     </footer>
   </div>
 
@@ -396,14 +412,12 @@
   </div>
 
   <script>
-    /* ── Nav scroll ── */
     const mainNav = document.getElementById('mainNav');
     const heroEl = document.getElementById('accueil');
     window.addEventListener('scroll', () => {
       mainNav.classList.toggle('scrolled', window.scrollY >= heroEl.offsetHeight - 10);
     }, { passive: true });
 
-    /* ── Fond animé ── */
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
     let t = 0;
@@ -418,7 +432,6 @@
     }
     draw();
 
-    /* ── Count-up ── */
     function easeOutQuart(x) { return 1 - Math.pow(1-x, 4); }
     function animateCountUp(el, target, prefix, suffix, duration) {
       const numEl = el.querySelector('.stat-num');
@@ -442,7 +455,6 @@
       });
     }, { threshold: 0.3 }).observe(document.querySelector('.why'));
 
-    /* ── Cartes pop-up 0.2s ── */
     let cardsAnimated = false;
     new IntersectionObserver(entries => {
       entries.forEach(e => {
@@ -455,7 +467,6 @@
       });
     }, { threshold: 0.1 }).observe(document.querySelector('.cards'));
 
-    /* ── Modales services ── */
     const services = {
       couts:{tag:'Analyse financière',title:'Coût de production',intro:'Connaître vos coûts de production réels est essentiel pour assurer la rentabilité de votre entreprise avicole. Nous analysons l\'ensemble de vos revenus et dépenses pour vous donner un portrait financier complet et précis de votre exploitation.',bullets:['Établissement des revenus et des dépenses avicoles de votre entreprise.','Offre une comparaison avec votre secteur de production en détails. Poulet de chair, dinde de chair et oeufs de consommation.','Inclut une consultation en personne avec nos experts, avec rapport de coût de revient à l\'appuie.']},
       demarrage:{tag:'Relève agricole',title:'Programme de démarrage',intro:'Démarrer une entreprise avicole au Québec implique de naviguer à travers plusieurs programmes d\'aide spécifiques à la relève. Nous vous guidons à chaque étape pour maximiser votre admissibilité et simplifier vos démarches.',bullets:['Assistance auprès de la relève agricole admissible au programme de démarrage des oeufs de consommation (PAD-6000).','Assistance auprès de la relève agricole admissible au programme de démarrage du poulet de chair (1000 m2 pour la relève non-apparenté).']},
@@ -469,32 +480,18 @@
     function closeModal(){document.getElementById('modalOverlay').classList.remove('active');}
     function closeModalOutside(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
 
-    /* ── Modales équipe ── */
     const team = [
-      { name:'Stéphane Grondines', title:'Agronome, Propriétaire', desc:'Fondateur de SAGA, Stéphane cumule plus de 20 ans d\'expérience dans le secteur avicole québécois. Il accompagne les producteurs avec rigueur et une connaissance approfondie des réalités du terrain.', bullets:['Analyse de coûts de production','Planification financière agricole','Accompagnement relève et démarrage','Consultant en gestion avicole'], photo:null },
-      { name:'Marc-Olivier Laprise', title:'Agronome', desc:'Agronome passionné par le développement des entreprises avicoles, Marc-Olivier apporte une expertise technique et financière précieuse à chaque dossier qu\'il prend en charge.', bullets:['Coûts de production et rentabilité','Budgets et plans d\'affaires','Subventions et programmes gouvernementaux','Suivi de performance des élevages'], photo:null },
-      { name:'Alexandre Grondines', title:'Administrateur', desc:'Responsable de la coordination administrative et du développement des outils numériques de SAGA, Alexandre assure le bon fonctionnement de l\'équipe et la qualité des livrables.', bullets:['Gestion administrative et opérationnelle','Développement des outils et processus','Communication et marketing','Coordination des mandats clients'], photo:null },
-      { name:'Catherine Houle', title:'Technicienne Agricole', desc:'Catherine met son expertise technique au service des producteurs pour assurer une collecte rigoureuse des données et un suivi de qualité dans chaque dossier avicole.', bullets:['Collecte et analyse de données de production','Suivi technique des élevages','Préparation des rapports et dossiers','Support aux agronomes'], photo:null },
-      { name:'Lucie Pelchat', title:'Technicienne Comptable', desc:'Lucie assure la rigueur comptable de chaque dossier financier. Son attention au détail et sa maîtrise des programmes agricoles en font un atout essentiel pour l\'équipe.', bullets:['Tenue de livres et comptabilité agricole','Préparation des demandes de subventions','Analyse des états financiers','Support aux dossiers PIFVO et autres programmes'], photo:null }
+      {name:'Stéphane Grondines',title:'Agronome, Propriétaire',desc:'Fondateur de SAGA, Stéphane cumule plus de 20 ans d\'expérience dans le secteur avicole québécois. Il accompagne les producteurs avec rigueur et une connaissance approfondie des réalités du terrain.',bullets:['Analyse de coûts de production','Planification financière agricole','Accompagnement relève et démarrage','Consultant en gestion avicole'],photo:null},
+      {name:'Marc-Olivier Laprise',title:'Agronome',desc:'Agronome passionné par le développement des entreprises avicoles, Marc-Olivier apporte une expertise technique et financière précieuse à chaque dossier qu\'il prend en charge.',bullets:['Coûts de production et rentabilité','Budgets et plans d\'affaires','Subventions et programmes gouvernementaux','Suivi de performance des élevages'],photo:null},
+      {name:'Alexandre Grondines',title:'Administrateur',desc:'Responsable de la coordination administrative et du développement des outils numériques de SAGA, Alexandre assure le bon fonctionnement de l\'équipe et la qualité des livrables.',bullets:['Gestion administrative et opérationnelle','Développement des outils et processus','Communication et marketing','Coordination des mandats clients'],photo:null},
+      {name:'Catherine Houle',title:'Technicienne Agricole',desc:'Catherine met son expertise technique au service des producteurs pour assurer une collecte rigoureuse des données et un suivi de qualité dans chaque dossier avicole.',bullets:['Collecte et analyse de données de production','Suivi technique des élevages','Préparation des rapports et dossiers','Support aux agronomes'],photo:null},
+      {name:'Lucie Pelchat',title:'Technicienne Comptable',desc:'Lucie assure la rigueur comptable de chaque dossier financier. Son attention au détail et sa maîtrise des programmes agricoles en font un atout essentiel pour l\'équipe.',bullets:['Tenue de livres et comptabilité agricole','Préparation des demandes de subventions','Analyse des états financiers','Support aux dossiers PIFVO et autres programmes'],photo:null}
     ];
-    function openTeamModal(i) {
-      const m = team[i];
-      document.getElementById('tmName').textContent = m.name;
-      document.getElementById('tmTitle').textContent = m.title;
-      document.getElementById('tmDesc').textContent = m.desc;
-      const ul = document.getElementById('tmBullets');
-      ul.innerHTML = '';
-      m.bullets.forEach(b => { ul.innerHTML += `<li><div class="chk">${chkSVG()}</div><span>${b}</span></li>`; });
-      const photoEl = document.getElementById('tmPhoto');
-      photoEl.innerHTML = m.photo ? `<img src="${m.photo}" alt="${m.name}">` : 'Photo';
-      document.getElementById('teamModalOverlay').classList.add('active');
-    }
+    function openTeamModal(i){const m=team[i];document.getElementById('tmName').textContent=m.name;document.getElementById('tmTitle').textContent=m.title;document.getElementById('tmDesc').textContent=m.desc;const ul=document.getElementById('tmBullets');ul.innerHTML='';m.bullets.forEach(b=>{ul.innerHTML+=`<li><div class="chk">${chkSVG()}</div><span>${b}</span></li>`;});const p=document.getElementById('tmPhoto');p.innerHTML=m.photo?`<img src="${m.photo}" alt="${m.name}">`:'Photo';document.getElementById('teamModalOverlay').classList.add('active');}
     function closeTeamModal(){document.getElementById('teamModalOverlay').classList.remove('active');}
     function closeTeamModalOutside(e){if(e.target===document.getElementById('teamModalOverlay'))closeTeamModal();}
-
     document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeTeamModal();}});
 
-    /* ── Formulaire ── */
     async function envoyerEmail(){
       let valid=true;
       const nom=document.getElementById('formNom'),email=document.getElementById('formEmail'),tel=document.getElementById('formTel');
