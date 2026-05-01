@@ -40,6 +40,8 @@
     /* ── Hero ── */
     #accueil { position: relative; z-index: 5; height: 100vh; overflow: hidden; }
     .hero { position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 clamp(20px,5vw,40px); }
+    /* Décalage vers le haut pour équilibrer visuellement avec le bouton en bas */
+    .hero-content { display: flex; flex-direction: column; align-items: center; margin-bottom: clamp(40px,6vw,80px); }
     .hero-logo { width: clamp(60px,8vw,100px); height: auto; margin-bottom: clamp(16px,2vw,28px); }
     .hero h1 { font-size: clamp(26px,4vw,50px); font-weight: 700; line-height: 1.25; max-width: 700px; color: #0d2b6b; }
     .oaq-tag { position: absolute; top: clamp(72px,8vw,90px); right: clamp(16px,2vw,32px); display: inline-flex; align-items: center; gap: 6px; font-size: clamp(10px,1vw,12px); padding: 5px 14px; border-radius: 99px; background: rgba(187,222,251,0.6); color: #0d47a1; letter-spacing: 0.06em; z-index: 10; }
@@ -164,14 +166,19 @@
     .btn-close:hover { color: #333; }
 
     /* ── Footer ── */
-    footer { position: relative; z-index: 5; padding: clamp(20px,3vw,32px) clamp(20px,5vw,40px); background: #0d2b6b; }
-    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
-    .footer-copy { font-size: clamp(10px,0.9vw,11px); color: #90caf9; }
-    .footer-copy span { display: block; margin-bottom: 4px; }
-    .footer-politique { text-align: right; }
-    .footer-politique-title { font-size: clamp(9px,0.85vw,11px); color: #bbdefb; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 8px; }
-    .footer-politique a { display: block; font-size: clamp(10px,0.9vw,12px); color: #90caf9; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; margin-bottom: 4px; }
-    .footer-politique a:hover { color: #ffffff; }
+    footer { position: relative; z-index: 5; background: #0d2b6b; padding: clamp(32px,5vw,56px) clamp(20px,5vw,40px) clamp(20px,3vw,28px); }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(24px,4vw,48px); margin-bottom: clamp(24px,3vw,36px); padding-bottom: clamp(24px,3vw,36px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-col-title { font-size: clamp(9px,0.85vw,11px); color: #bbdefb; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 12px; }
+    .footer-col p { font-size: clamp(11px,1vw,13px); color: #90caf9; line-height: 1.8; margin-bottom: 2px; }
+    .footer-col a { display: block; font-size: clamp(11px,1vw,13px); color: #90caf9; text-decoration: none; line-height: 1.8; transition: color 0.2s; }
+    .footer-col a:hover { color: #ffffff; }
+    .footer-col a.underline { text-decoration: underline; text-underline-offset: 3px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 12px; }
+    .footer-social a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.1); transition: background 0.2s; text-decoration: none; }
+    .footer-social a:hover { background: rgba(255,255,255,0.22); }
+    .footer-social svg { width: 18px; height: 18px; fill: #ffffff; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom span { font-size: clamp(10px,0.9vw,11px); color: #5585b5; }
 
     /* ══ BREAKPOINTS ══ */
     @media (max-width: 900px) {
@@ -181,6 +188,7 @@
       .why-globe { max-width: 320px; }
       .team-modal-body { grid-template-columns: 1fr; }
       .team-modal-photo-wrap { width: 100%; height: 200px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
       .nav-links { gap: 12px; }
@@ -188,8 +196,7 @@
       .form-grid { grid-template-columns: 1fr; }
       .why-stats { grid-template-columns: 1fr 1fr; }
       .why-globe { max-width: 260px; }
-      .footer-inner { flex-direction: column; gap: 20px; }
-      .footer-politique { text-align: left; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
       .nav-right .btn-wave { display: none; }
       .oaq-tag { font-size: 10px; padding: 4px 10px; right: 16px; }
     }
@@ -229,8 +236,10 @@
           <div class="check"><svg viewBox="0 0 8 8" fill="none"><polyline points="1,4 3,6 7,2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           Membre de l'Ordre des Agronomes du Québec
         </div>
-        <img class="hero-logo" src="logos/BLEU3-GROS.png" alt="Logo SAGA">
-        <h1>Votre projet avicole prend vie ici</h1>
+        <div class="hero-content">
+          <img class="hero-logo" src="logos/BLEU3-GROS.png" alt="Logo SAGA">
+          <h1>Votre projet avicole prend vie ici</h1>
+        </div>
         <div class="hero-cta">
           <a class="btn-wave" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Commencer</a>
           <div class="hero-arrow">
@@ -364,15 +373,36 @@
     </div>
 
     <footer>
-      <div class="footer-inner">
-        <div class="footer-copy">
-          <span>© 2026 Services Avicoles Grondines Associés</span>
-          <span>Québec, Canada</span>
+      <div class="footer-grid">
+        <!-- Nous joindre -->
+        <div class="footer-col">
+          <div class="footer-col-title">Nous joindre</div>
+          <a href="mailto:info@sagaconseils.ca">info@sagaconseils.ca</a>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61576423725690" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
         </div>
-        <div class="footer-politique">
-          <div class="footer-politique-title">Protection des renseignements personnels</div>
-          <a href="politique.html">Politique de confidentialité et données numériques</a>
+
+        <!-- Siège social -->
+        <div class="footer-col">
+          <div class="footer-col-title">Siège social</div>
+          <p>132 rue Léon-Vachon, Locale C</p>
+          <p>Saint-Lambert-de-Lauzon (Québec)</p>
+          <p>G0S 2W0</p>
         </div>
+
+        <!-- Protection des renseignements -->
+        <div class="footer-col">
+          <div class="footer-col-title">Protection des renseignements personnels</div>
+          <a href="politique.html" class="underline">Politique de confidentialité et données numériques</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Services Avicoles Grondines Associés</span>
+        <span>Québec, Canada</span>
       </div>
     </footer>
   </div>
