@@ -22,7 +22,7 @@
     /* ── Navigation ── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: transparent; transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease; }
     nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); box-shadow: 0 1px 0 rgba(13,71,161,0.08); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(24px,4vw,60px); }
+    .nav-inner { max-width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(16px,2vw,32px); }
     .nav-logo { font-size: clamp(20px,2.2vw,30px); font-weight: 700; letter-spacing: 0.1em; background: linear-gradient(115deg,#0d47a1 0%,#0d47a1 20%,#90caf9 35%,#42a5f5 45%,#90caf9 55%,#0d47a1 70%,#0d47a1 80%,#42a5f5 90%,#bbdefb 96%,#0d47a1 100%); background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: logoSpotlight 14s ease-in-out infinite; animation-delay: 3s; flex-shrink: 0; }
     @keyframes logoSpotlight { 0%{background-position:0% 80%}20%{background-position:90% 10%}40%{background-position:15% 95%}60%{background-position:100% 30%}80%{background-position:45% 60%}100%{background-position:0% 80%} }
     .nav-right { display: flex; align-items: center; gap: clamp(16px,2.5vw,36px); }
@@ -94,82 +94,6 @@
     .logo-box img { width: 100%; height: 100%; object-fit: contain; }
     .collab-name { font-size: clamp(11px,1vw,13px); color: #ffffff; font-weight: 600; }
     @keyframes defilement { 0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
-
-    /* ══ SECTION LUMIÈRE ══ */
-    #lumiere-section {
-      position: relative;
-      z-index: 5;
-      background: #ffffff;
-      padding: clamp(60px,8vw,100px) clamp(32px,5vw,64px) clamp(60px,8vw,100px);
-      overflow: hidden;
-    }
-    #mots-zone {
-      width: 100%;
-      text-align: justify;
-      line-height: 3.0;
-      font-size: clamp(15px,1.6vw,20px);
-      font-weight: 600;
-      color: #1565c0;
-      position: relative;
-      z-index: 2;
-      pointer-events: none;
-      word-spacing: 10px;
-    }
-    .mot {
-      display: inline;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.08s ease;
-    }
-    /* Centre block avec titre + bouton */
-    .lumiere-centre {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: clamp(24px,4vw,40px) 0;
-      pointer-events: none;
-    }
-    .lumiere-titre {
-      display: block;
-      font-size: clamp(22px,2.6vw,34px);
-      font-weight: 700;
-      color: #0d2b6b;
-      margin-bottom: clamp(20px,2.5vw,28px);
-      pointer-events: none;
-    }
-    .lumiere-btn-wrap {
-      display: block;
-      pointer-events: all;
-    }
-
-    /* Bouton lumière — bleu par défaut, ghost après clic */
-    #btn-lumiere {
-      position: relative;
-      z-index: 10;
-    }
-    #btn-lumiere.ghost {
-      background: transparent !important;
-      animation: none !important;
-      border: 2px solid #1565c0 !important;
-      color: #1565c0 !important;
-      -webkit-text-fill-color: #1565c0 !important;
-      opacity: 1 !important;
-      box-shadow: none !important;
-    }
-    #btn-lumiere.ghost:hover {
-      background: rgba(21,101,192,0.06) !important;
-      opacity: 1 !important;
-    }
-
-    /* Animations onde */
-    @keyframes ondeExplosion {
-      0% { transform: translate(-50%,-50%) scale(0); opacity: 1; }
-      100% { transform: translate(-50%,-50%) scale(1); opacity: 0; }
-    }
-    @keyframes flashPulse {
-      0% { transform: translate(-50%,-50%) scale(0.3); opacity: 1; }
-      100% { transform: translate(-50%,-50%) scale(3); opacity: 0; }
-    }
 
     /* ── Équipe ── */
     .team { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: rgba(255,255,255,0.82); }
@@ -369,11 +293,6 @@
       </div>
     </div>
 
-    <!-- ══ SECTION LUMIÈRE ══ -->
-    <div id="lumiere-section">
-      <div id="mots-zone"></div>
-    </div>
-
     <div id="equipe">
       <div class="team">
         <div class="inner">
@@ -494,167 +413,6 @@
         }
       });
     }, { threshold: 0.1 }).observe(document.querySelector('.cards'));
-
-    /* ══ SECTION LUMIÈRE ══ */
-    const MOTS_DEBUT = [
-      'quota','rentabilité','troupeau','poussin','moulée','dinde',
-      'assurance','croissance','fonds de roulement','revenu brut',
-      'amortissement','subvention','relève','coût de production',
-      'flux de trésorerie','endettement','patrimoine','couvoir',
-      'densité','mise en marché','contingent','bénéfice','dépréciation',
-      'investissement','plan d\'affaires','financement','ponte',
-      'bâtiment','ventilation','PIFVO','démarrage','marge brute',
-      'capital','aviculture','biosécurité','abattoir','équipement',
-      'réforme','cycle de production','FCR','mortalité','élevage'
-    ];
-    const MOTS_FIN = [
-      'grille tarifaire','revenu net','passif','actif','intérêts',
-      'marge nette','poulet de chair','dinde de chair','taux d\'intérêt',
-      'PAD-6000','seuil de rentabilité','roulement','pesée',
-      'liquidité','budget','ferme','succession','valeur nette',
-      'transition','conversion alimentaire','gain moyen',
-      'charge opérationnelle','planification','agronomie',
-      'développement','stratégie','expansion','optimisation',
-      'performance','diagnostic','accompagnement','producteur',
-      'éleveur','consultant','croissance d\'entreprise',
-      'financement agricole','gestion du risque','programme de relève',
-      'quota de production','coopérative agricole','patrimoine familial',
-      'poulet','volaille','chair','expertise','analyse'
-    ];
-
-    const lumiereSection = document.getElementById('lumiere-section');
-    const motsZone = document.getElementById('mots-zone');
-    const isMobile = () => !window.matchMedia('(hover: hover)').matches;
-
-    let motElements = [];
-    let lampX = -9999, lampY = -9999;
-    let illuminated = false;
-    let autoT = 0;
-    let lampLoopId = null;
-    let btnLumiere = null;
-
-    function buildMots() {
-      motsZone.innerHTML = '';
-      motElements = [];
-
-      // Première moitié
-      MOTS_DEBUT.forEach((mot, i) => {
-        const span = document.createElement('span');
-        span.className = 'mot';
-        span.textContent = mot;
-        motsZone.appendChild(span);
-        motsZone.appendChild(document.createTextNode('    '));
-        motElements.push(span);
-      });
-
-      // Bloc central : titre + bouton
-      const centre = document.createElement('span');
-      centre.className = 'lumiere-centre';
-      centre.innerHTML = `
-        <span class="lumiere-titre">Laissez-nous vous éclairer</span>
-        <span class="lumiere-btn-wrap">
-          <button class="btn-wave" id="btn-lumiere" onclick="illuminerTout()">Commencer</button>
-        </span>
-      `;
-      motsZone.appendChild(centre);
-      btnLumiere = centre.querySelector('#btn-lumiere');
-
-      // Deuxième moitié
-      MOTS_FIN.forEach((mot, i) => {
-        motsZone.appendChild(document.createTextNode('    '));
-        const span = document.createElement('span');
-        span.className = 'mot';
-        span.textContent = mot;
-        motsZone.appendChild(span);
-        motElements.push(span);
-      });
-    }
-
-    function lampLoop() {
-      if (illuminated) return;
-      const radius = 160;
-      let lx, ly;
-      if (isMobile()) {
-        autoT += 0.007;
-        const sr = lumiereSection.getBoundingClientRect();
-        lx = sr.left + sr.width  * (0.5 + 0.44 * Math.sin(autoT * 1.1 + 0.3));
-        ly = sr.top  + sr.height * (0.5 + 0.38 * Math.sin(autoT * 0.73 + 1.2));
-      } else {
-        lx = lampX;
-        ly = lampY;
-      }
-      motElements.forEach(el => {
-        const r = el.getBoundingClientRect();
-        const cx = r.left + r.width / 2;
-        const cy = r.top  + r.height / 2;
-        const dist = Math.sqrt((cx - lx) ** 2 + (cy - ly) ** 2);
-        const bright = Math.max(0, 1 - dist / radius);
-        el.style.opacity = bright > 0 ? (bright * 0.92) : 0;
-      });
-      lampLoopId = requestAnimationFrame(lampLoop);
-    }
-
-    window.illuminerTout = function() {
-      if (illuminated) {
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-      illuminated = true;
-      if (lampLoopId) cancelAnimationFrame(lampLoopId);
-
-      // Bouton devient ghost
-      btnLumiere.classList.add('ghost');
-
-      const sectRect = lumiereSection.getBoundingClientRect();
-      const btnRect = btnLumiere.getBoundingClientRect();
-      const bx = btnRect.left + btnRect.width / 2 - sectRect.left;
-      const by = btnRect.top  + btnRect.height / 2 - sectRect.top;
-
-      const maxDist = Math.max(
-        Math.sqrt(bx**2 + by**2),
-        Math.sqrt((lumiereSection.offsetWidth - bx)**2 + by**2),
-        Math.sqrt(bx**2 + (lumiereSection.offsetHeight - by)**2),
-        Math.sqrt((lumiereSection.offsetWidth - bx)**2 + (lumiereSection.offsetHeight - by)**2)
-      );
-
-      // Flash central
-      const flash = document.createElement('div');
-      flash.style.cssText = `position:absolute;left:${bx}px;top:${by}px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,192,0.75) 0%,rgba(21,101,192,0.3) 40%,transparent 70%);transform:translate(-50%,-50%);pointer-events:none;z-index:9;animation:flashPulse 0.55s ease-out forwards;`;
-      lumiereSection.appendChild(flash);
-      setTimeout(() => flash.remove(), 700);
-
-      // 3 ondes expansives
-      for (let i = 0; i < 3; i++) {
-        setTimeout(() => {
-          const onde = document.createElement('div');
-          const size = maxDist * 2.5;
-          onde.style.cssText = `position:absolute;left:${bx}px;top:${by}px;width:${size}px;height:${size}px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,192,0.42) 0%,rgba(21,101,192,0.18) 30%,rgba(21,101,192,0.05) 58%,transparent 72%);transform:translate(-50%,-50%) scale(0);pointer-events:none;z-index:8;animation:ondeExplosion ${1.5 + i * 0.14}s ease-out forwards;`;
-          lumiereSection.appendChild(onde);
-          setTimeout(() => onde.remove(), 1800);
-        }, i * 170);
-      }
-
-      // Mots s'illuminent en vague
-      const sectRect2 = lumiereSection.getBoundingClientRect();
-      const waveSpeed = 700;
-      motElements.forEach(el => {
-        const r = el.getBoundingClientRect();
-        const wx = r.left + r.width / 2 - sectRect2.left;
-        const wy = r.top  + r.height / 2 - sectRect2.top;
-        const dist = Math.sqrt((wx - bx)**2 + (wy - by)**2);
-        setTimeout(() => {
-          el.style.transition = 'opacity 0.5s ease';
-          el.style.opacity = '0.92';
-        }, (dist / waveSpeed) * 1000);
-      });
-
-      setTimeout(() => {
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-      }, 2100);
-    };
-
-    document.addEventListener('mousemove', e => { lampX = e.clientX; lampY = e.clientY; });
-    window.addEventListener('load', () => { buildMots(); lampLoop(); });
 
     /* ── Modales ── */
     const services = {
