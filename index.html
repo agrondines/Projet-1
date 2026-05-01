@@ -27,8 +27,10 @@
     @keyframes logoSpotlight { 0%{background-position:0% 80%}20%{background-position:90% 10%}40%{background-position:15% 95%}60%{background-position:100% 30%}80%{background-position:45% 60%}100%{background-position:0% 80%} }
     .nav-right { display: flex; align-items: center; gap: clamp(16px,2.5vw,36px); }
     .nav-links { display: flex; gap: clamp(16px,2vw,32px); }
-    .nav-links a { font-size: clamp(13px,1.1vw,15px); color: #444; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'Sora', sans-serif; white-space: nowrap; }
-    .nav-links a:hover { color: #0d47a1; }
+    .nav-links a { font-size: clamp(13px,1.1vw,15px); color: #ffffff; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'Sora', sans-serif; white-space: nowrap; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+    .nav-links a:hover { color: #90caf9; }
+    nav.scrolled .nav-links a { color: #444; text-shadow: none; }
+    nav.scrolled .nav-links a:hover { color: #0d47a1; }
 
     /* ── Bouton wave ── */
     .btn-wave { display: inline-block; padding: clamp(9px,1vw,12px) clamp(20px,2.5vw,32px); border-radius: 8px; font-size: clamp(12px,1.1vw,14px); font-weight: 700; font-family: 'Sora', sans-serif; color: #ffffff; text-decoration: none; cursor: pointer; border: none; background: linear-gradient(115deg,#1565c0 0%,#1565c0 20%,#42a5f5 32%,#90caf9 42%,#42a5f5 52%,#1565c0 68%,#1976d2 80%,#64b5f6 90%,#1565c0 100%); background-size: 600% 600%; animation: btnSpotlight 12s ease-in-out infinite; animation-delay: 1.5s; transition: opacity 0.3s ease; white-space: nowrap; }
@@ -36,13 +38,22 @@
     @keyframes btnSpotlight { 0%{background-position:0% 80%}20%{background-position:85% 15%}38%{background-position:20% 90%}55%{background-position:100% 25%}72%{background-position:40% 65%}88%{background-position:75% 10%}100%{background-position:0% 80%} }
 
     /* ── Hero ── */
-    #accueil { position: relative; z-index: 5; height: 100vh; overflow: hidden; }
-    .hero { position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 clamp(20px,5vw,40px); }
-    .hero-logo { width: clamp(60px,8vw,100px); height: auto; margin-bottom: clamp(16px,2vw,28px); }
-    .hero h1 { font-size: clamp(26px,4vw,50px); font-weight: 700; line-height: 1.25; max-width: 700px; color: #0d2b6b; }
-    .oaq-tag { position: absolute; top: clamp(72px,8vw,90px); right: clamp(16px,2vw,32px); display: inline-flex; align-items: center; gap: 6px; font-size: clamp(10px,1vw,12px); padding: 5px 14px; border-radius: 99px; background: rgba(187,222,251,0.6); color: #0d47a1; letter-spacing: 0.06em; z-index: 10; }
-    .oaq-tag .check { width: 14px; height: 14px; border-radius: 50%; background: #0d47a1; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    #accueil { position: relative; z-index: 5; height: 100vh; overflow: hidden; background: #0d2b6b; }
+
+    /* Vidéo YouTube en arrière-plan */
+    #yt-bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+    #yt-player { position: absolute; top: 50%; left: 50%; width: 177.78vh; /* 16/9 ratio */ height: 100%; min-width: 100%; min-height: 56.25vw; transform: translate(-50%, -50%); pointer-events: none; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,30,80,0.45) 0%, rgba(10,30,80,0.30) 50%, rgba(10,30,80,0.55) 100%); z-index: 1; }
+
+    .hero { position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 clamp(20px,5vw,40px); z-index: 2; }
+    .hero-logo { width: clamp(60px,8vw,100px); height: auto; margin-bottom: clamp(16px,2vw,28px); filter: brightness(0) invert(1); }
+    .hero h1 { font-size: clamp(26px,4vw,50px); font-weight: 700; line-height: 1.25; max-width: 700px; color: #ffffff; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+
+    .oaq-tag { position: absolute; top: clamp(72px,8vw,90px); right: clamp(16px,2vw,32px); display: inline-flex; align-items: center; gap: 6px; font-size: clamp(10px,1vw,12px); padding: 5px 14px; border-radius: 99px; background: rgba(255,255,255,0.18); backdrop-filter: blur(6px); color: #ffffff; letter-spacing: 0.06em; z-index: 10; border: 1px solid rgba(255,255,255,0.3); }
+    .oaq-tag .check { width: 14px; height: 14px; border-radius: 50%; background: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .oaq-tag .check svg { width: 8px; height: 8px; }
+    .oaq-tag .check svg polyline { stroke: #0d47a1; }
+
     .hero-cta { position: absolute; bottom: clamp(32px,5vw,60px); left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; animation: floatUpDown 3.5s ease-in-out infinite; }
     @keyframes floatUpDown { 0%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}100%{transform:translateX(-50%) translateY(0)} }
     .hero-arrow svg { width: 22px; height: 22px; display: block; }
@@ -194,9 +205,15 @@
     </nav>
 
     <div id="accueil">
+      <!-- Vidéo YouTube en arrière-plan -->
+      <div id="yt-bg-wrap">
+        <div id="yt-player"></div>
+      </div>
+      <div class="hero-overlay"></div>
+
       <div class="hero">
         <div class="oaq-tag">
-          <div class="check"><svg viewBox="0 0 8 8" fill="none"><polyline points="1,4 3,6 7,2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="check"><svg viewBox="0 0 8 8" fill="none"><polyline points="1,4 3,6 7,2" stroke="#0d47a1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           Membre de l'Ordre des Agronomes du Québec
         </div>
         <img class="hero-logo" src="logos/BLEU3-GROS.png" alt="Logo SAGA">
@@ -204,7 +221,7 @@
         <div class="hero-cta">
           <a class="btn-wave" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Commencer</a>
           <div class="hero-arrow">
-            <svg viewBox="0 0 22 22" fill="none"><path d="M11 4v14M4 11l7 7 7-7" stroke="#1565c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 22 22" fill="none"><path d="M11 4v14M4 11l7 7 7-7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
       </div>
@@ -354,7 +371,45 @@
     </div>
   </div>
 
+  <!-- YouTube IFrame API -->
   <script>
+    /* ── YouTube background ── */
+    const YT_IDS = ['kDBfGjMKQBc', 'syRAvOA6dd8', 'Df-fq1LrpfM'];
+    let ytPlayer, currentVideo = 0;
+
+    window.onYouTubeIframeAPIReady = function() {
+      ytPlayer = new YT.Player('yt-player', {
+        videoId: YT_IDS[0],
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          disablekb: 1,
+          fs: 0,
+          iv_load_policy: 3,
+          loop: 0,
+          modestbranding: 1,
+          playsinline: 1,
+          rel: 0,
+          showinfo: 0,
+          origin: window.location.origin
+        },
+        events: {
+          onStateChange: function(e) {
+            if (e.data === YT.PlayerState.ENDED) {
+              currentVideo = (currentVideo + 1) % YT_IDS.length;
+              ytPlayer.loadVideoById(YT_IDS[currentVideo]);
+            }
+          }
+        }
+      });
+    };
+
+    // Charger l'API YouTube
+    const ytScript = document.createElement('script');
+    ytScript.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(ytScript);
+
     /* ── Nav scroll ── */
     const mainNav = document.getElementById('mainNav');
     const heroEl = document.getElementById('accueil');
@@ -362,7 +417,7 @@
       mainNav.classList.toggle('scrolled', window.scrollY >= heroEl.offsetHeight - 10);
     }, { passive: true });
 
-    /* ── Fond animé ── */
+    /* ── Fond animé (hors hero) ── */
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
     let t = 0;
