@@ -22,7 +22,7 @@
     /* ── Navigation ── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: transparent; transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease; }
     nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); box-shadow: 0 1px 0 rgba(13,71,161,0.08); }
-    .nav-inner { max-width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(16px,2vw,32px); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(24px,4vw,60px); }
     .nav-logo { font-size: clamp(20px,2.2vw,30px); font-weight: 700; letter-spacing: 0.1em; background: linear-gradient(115deg,#0d47a1 0%,#0d47a1 20%,#90caf9 35%,#42a5f5 45%,#90caf9 55%,#0d47a1 70%,#0d47a1 80%,#42a5f5 90%,#bbdefb 96%,#0d47a1 100%); background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: logoSpotlight 14s ease-in-out infinite; animation-delay: 3s; flex-shrink: 0; }
     @keyframes logoSpotlight { 0%{background-position:0% 80%}20%{background-position:90% 10%}40%{background-position:15% 95%}60%{background-position:100% 30%}80%{background-position:45% 60%}100%{background-position:0% 80%} }
     .nav-right { display: flex; align-items: center; gap: clamp(16px,2.5vw,36px); }
@@ -102,43 +102,50 @@
       background: #ffffff;
       padding: clamp(60px,8vw,100px) clamp(32px,5vw,64px) clamp(60px,8vw,100px);
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: clamp(40px,6vw,64px);
-    }
-    .lumiere-titre {
-      font-size: clamp(22px,2.6vw,34px);
-      font-weight: 700;
-      color: #0d2b6b;
-      text-align: center;
-      position: relative;
-      z-index: 10;
-      pointer-events: none;
     }
     #mots-zone {
       width: 100%;
       text-align: justify;
-      line-height: 2.8;
+      line-height: 3.0;
       font-size: clamp(15px,1.6vw,20px);
       font-weight: 600;
       color: #1565c0;
       position: relative;
       z-index: 2;
       pointer-events: none;
-      word-spacing: 8px;
+      word-spacing: 10px;
     }
     .mot {
       display: inline;
-      opacity: 0.05;
+      opacity: 0;
       pointer-events: none;
+      transition: opacity 0.08s ease;
+    }
+    /* Centre block avec titre + bouton */
+    .lumiere-centre {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: clamp(24px,4vw,40px) 0;
+      pointer-events: none;
+    }
+    .lumiere-titre {
+      display: block;
+      font-size: clamp(22px,2.6vw,34px);
+      font-weight: 700;
+      color: #0d2b6b;
+      margin-bottom: clamp(20px,2.5vw,28px);
+      pointer-events: none;
+    }
+    .lumiere-btn-wrap {
+      display: block;
+      pointer-events: all;
     }
 
     /* Bouton lumière — bleu par défaut, ghost après clic */
     #btn-lumiere {
       position: relative;
       z-index: 10;
-      transition: background 0.4s ease, color 0.4s ease, border 0.4s ease, opacity 0.4s ease !important;
     }
     #btn-lumiere.ghost {
       background: transparent !important;
@@ -364,9 +371,7 @@
 
     <!-- ══ SECTION LUMIÈRE ══ -->
     <div id="lumiere-section">
-      <p class="lumiere-titre">Notre accompagnement vous fait voir plus loin</p>
       <div id="mots-zone"></div>
-      <button class="btn-wave" id="btn-lumiere" onclick="illuminerTout()">Commencer</button>
     </div>
 
     <div id="equipe">
@@ -491,7 +496,7 @@
     }, { threshold: 0.1 }).observe(document.querySelector('.cards'));
 
     /* ══ SECTION LUMIÈRE ══ */
-    const MOTS = [
+    const MOTS_DEBUT = [
       'quota','rentabilité','troupeau','poussin','moulée','dinde',
       'assurance','croissance','fonds de roulement','revenu brut',
       'amortissement','subvention','relève','coût de production',
@@ -500,7 +505,9 @@
       'investissement','plan d\'affaires','financement','ponte',
       'bâtiment','ventilation','PIFVO','démarrage','marge brute',
       'capital','aviculture','biosécurité','abattoir','équipement',
-      'réforme','cycle de production','FCR','mortalité','élevage',
+      'réforme','cycle de production','FCR','mortalité','élevage'
+    ];
+    const MOTS_FIN = [
       'grille tarifaire','revenu net','passif','actif','intérêts',
       'marge nette','poulet de chair','dinde de chair','taux d\'intérêt',
       'PAD-6000','seuil de rentabilité','roulement','pesée',
@@ -512,13 +519,11 @@
       'éleveur','consultant','croissance d\'entreprise',
       'financement agricole','gestion du risque','programme de relève',
       'quota de production','coopérative agricole','patrimoine familial',
-      'poulet','dinde','oeuf','volaille','poussin','chair','ponte',
-      'rentabiliser','analyse','expertise','accompagnement'
+      'poulet','volaille','chair','expertise','analyse'
     ];
 
     const lumiereSection = document.getElementById('lumiere-section');
     const motsZone = document.getElementById('mots-zone');
-    const btnLumiere = document.getElementById('btn-lumiere');
     const isMobile = () => !window.matchMedia('(hover: hover)').matches;
 
     let motElements = [];
@@ -526,18 +531,41 @@
     let illuminated = false;
     let autoT = 0;
     let lampLoopId = null;
+    let btnLumiere = null;
 
     function buildMots() {
       motsZone.innerHTML = '';
       motElements = [];
-      MOTS.forEach((mot, i) => {
+
+      // Première moitié
+      MOTS_DEBUT.forEach((mot, i) => {
         const span = document.createElement('span');
         span.className = 'mot';
         span.textContent = mot;
         motsZone.appendChild(span);
-        if (i < MOTS.length - 1) {
-          motsZone.appendChild(document.createTextNode('  '));
-        }
+        motsZone.appendChild(document.createTextNode('    '));
+        motElements.push(span);
+      });
+
+      // Bloc central : titre + bouton
+      const centre = document.createElement('span');
+      centre.className = 'lumiere-centre';
+      centre.innerHTML = `
+        <span class="lumiere-titre">Laissez-nous vous éclairer</span>
+        <span class="lumiere-btn-wrap">
+          <button class="btn-wave" id="btn-lumiere" onclick="illuminerTout()">Commencer</button>
+        </span>
+      `;
+      motsZone.appendChild(centre);
+      btnLumiere = centre.querySelector('#btn-lumiere');
+
+      // Deuxième moitié
+      MOTS_FIN.forEach((mot, i) => {
+        motsZone.appendChild(document.createTextNode('    '));
+        const span = document.createElement('span');
+        span.className = 'mot';
+        span.textContent = mot;
+        motsZone.appendChild(span);
         motElements.push(span);
       });
     }
@@ -547,10 +575,10 @@
       const radius = 160;
       let lx, ly;
       if (isMobile()) {
-        autoT += 0.009;
-        const sectRect = lumiereSection.getBoundingClientRect();
-        lx = sectRect.left + sectRect.width * (0.5 + 0.42 * Math.sin(autoT * 1.1));
-        ly = sectRect.top + sectRect.height * (0.5 + 0.38 * Math.sin(autoT * 0.75));
+        autoT += 0.007;
+        const sr = lumiereSection.getBoundingClientRect();
+        lx = sr.left + sr.width  * (0.5 + 0.44 * Math.sin(autoT * 1.1 + 0.3));
+        ly = sr.top  + sr.height * (0.5 + 0.38 * Math.sin(autoT * 0.73 + 1.2));
       } else {
         lx = lampX;
         ly = lampY;
@@ -558,15 +586,15 @@
       motElements.forEach(el => {
         const r = el.getBoundingClientRect();
         const cx = r.left + r.width / 2;
-        const cy = r.top + r.height / 2;
+        const cy = r.top  + r.height / 2;
         const dist = Math.sqrt((cx - lx) ** 2 + (cy - ly) ** 2);
         const bright = Math.max(0, 1 - dist / radius);
-        el.style.opacity = 0.05 + bright * 0.87;
+        el.style.opacity = bright > 0 ? (bright * 0.92) : 0;
       });
       lampLoopId = requestAnimationFrame(lampLoop);
     }
 
-    function illuminerTout() {
+    window.illuminerTout = function() {
       if (illuminated) {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         return;
@@ -580,7 +608,7 @@
       const sectRect = lumiereSection.getBoundingClientRect();
       const btnRect = btnLumiere.getBoundingClientRect();
       const bx = btnRect.left + btnRect.width / 2 - sectRect.left;
-      const by = btnRect.top + btnRect.height / 2 - sectRect.top;
+      const by = btnRect.top  + btnRect.height / 2 - sectRect.top;
 
       const maxDist = Math.max(
         Math.sqrt(bx**2 + by**2),
@@ -606,25 +634,24 @@
         }, i * 170);
       }
 
-      // Mots s'illuminent en vague depuis le bouton
-      const waveSpeed = 700;
+      // Mots s'illuminent en vague
       const sectRect2 = lumiereSection.getBoundingClientRect();
+      const waveSpeed = 700;
       motElements.forEach(el => {
         const r = el.getBoundingClientRect();
         const wx = r.left + r.width / 2 - sectRect2.left;
-        const wy = r.top + r.height / 2 - sectRect2.top;
+        const wy = r.top  + r.height / 2 - sectRect2.top;
         const dist = Math.sqrt((wx - bx)**2 + (wy - by)**2);
-        const delay = (dist / waveSpeed) * 1000;
         setTimeout(() => {
           el.style.transition = 'opacity 0.5s ease';
           el.style.opacity = '0.92';
-        }, delay);
+        }, (dist / waveSpeed) * 1000);
       });
 
       setTimeout(() => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
       }, 2100);
-    }
+    };
 
     document.addEventListener('mousemove', e => { lampX = e.clientX; lampY = e.clientY; });
     window.addEventListener('load', () => { buildMots(); lampLoop(); });
