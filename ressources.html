@@ -1,1 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ressources avicoles — SAGA Conseils</title>
+  <meta name="description" content="Ressources, nouvelles et informations importantes pour les producteurs avicoles du Québec. Articles rédigés par des agronomes membres de l'OAQ." />
+  <meta name="keywords" content="aviculture québec, PAD-6000, PIFVO, relève agricole, oeufs de consommation, poulet de chair, subvention agricole, programme démarrage" />
+  <meta name="author" content="Services Avicoles Grondines Associés" />
+  <meta property="og:title" content="Ressources avicoles — SAGA Conseils" />
+  <meta property="og:description" content="Informations et conseils d'experts agronomes pour les producteurs avicoles du Québec." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sagaconseils.ca/ressources.html" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Services Avicoles Grondines Associés","alternateName":"SAGA","url":"https://sagaconseils.ca","email":"info@sagaconseils.ca","address":{"@type":"PostalAddress","streetAddress":"132 rue Léon-Vachon, Locale C","addressLocality":"Saint-Lambert-de-Lauzon","addressRegion":"QC","postalCode":"G0S 2W0","addressCountry":"CA"},"description":"Firme de conseil spécialisée dans le secteur avicole québécois. Agronomes membres de l'Ordre des Agronomes du Québec.","sameAs":["https://www.facebook.com/profile.php?id=61576423725690"]}</script>
+  <style>
+    @font-face { font-family: 'Sora'; src: url('fonts/Sora-Variable.woff2') format('woff2-variations'); font-weight: 100 800; font-style: normal; font-display: swap; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { min-height: 100%; }
+    body { background: #f4f8ff; font-family: 'Sora', sans-serif; color: #1a1a2e; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); box-shadow: 0 1px 0 rgba(13,71,161,0.08); }
+    .nav-inner { max-width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 16px clamp(16px,2vw,32px); }
+    .nav-logo { font-size: clamp(20px,2.2vw,28px); font-weight: 700; letter-spacing: 0.1em; background: linear-gradient(115deg,#0d47a1 0%,#0d47a1 20%,#90caf9 35%,#42a5f5 45%,#90caf9 55%,#0d47a1 70%,#0d47a1 80%,#42a5f5 90%,#bbdefb 96%,#0d47a1 100%); background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: logoSpotlight 14s ease-in-out infinite; text-decoration: none; }
+    @keyframes logoSpotlight { 0%{background-position:0% 80%}20%{background-position:90% 10%}40%{background-position:15% 95%}60%{background-position:100% 30%}80%{background-position:45% 60%}100%{background-position:0% 80%} }
+    .nav-links-wrap { display: flex; align-items: center; gap: clamp(16px,2vw,32px); }
+    .nav-links { display: flex; gap: clamp(14px,1.5vw,28px); }
+    .nav-links a { font-size: clamp(13px,1.1vw,15px); color: #444; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'Sora', sans-serif; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: #0d47a1; font-weight: 600; }
+    .btn-wave { display: inline-block; padding: clamp(9px,1vw,12px) clamp(20px,2.5vw,32px); border-radius: 8px; font-size: clamp(12px,1.1vw,14px); font-weight: 700; font-family: 'Sora', sans-serif; color: #ffffff; text-decoration: none; cursor: pointer; border: none; background: linear-gradient(115deg,#1565c0 0%,#1565c0 20%,#42a5f5 32%,#90caf9 42%,#42a5f5 52%,#1565c0 68%,#1976d2 80%,#64b5f6 90%,#1565c0 100%); background-size: 600% 600%; animation: btnSpotlight 12s ease-in-out infinite; transition: opacity 0.3s ease; white-space: nowrap; }
+    .btn-wave:hover { opacity: 0.85; }
+    @keyframes btnSpotlight { 0%{background-position:0% 80%}20%{background-position:85% 15%}38%{background-position:20% 90%}55%{background-position:100% 25%}72%{background-position:40% 65%}88%{background-position:75% 10%}100%{background-position:0% 80%} }
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 100px clamp(20px,5vw,40px) 80px; }
+    .section-header { margin-bottom: 48px; }
+    .section-kicker { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 8px; }
+    .section-header h1 { font-size: clamp(24px,3vw,36px); font-weight: 700; color: #0d2b6b; margin-bottom: 12px; }
+    .section-header p { font-size: clamp(13px,1.2vw,16px); color: #5585b5; line-height: 1.7; max-width: 620px; }
+    .articles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,2vw,24px); }
+    .article-card { background: #ffffff; border: 1px solid #dce8f8; border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; display: flex; flex-direction: column; }
+    .article-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(21,101,192,0.12); border-color: #1565c0; }
+    .article-card-top { background: linear-gradient(135deg,#0d2b6b 0%,#1565c0 100%); padding: clamp(20px,2.5vw,28px); min-height: 120px; display: flex; flex-direction: column; justify-content: space-between; }
+    .article-category { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #90caf9; background: rgba(255,255,255,0.12); padding: 4px 10px; border-radius: 99px; margin-bottom: 10px; width: fit-content; }
+    .article-card-top h2 { font-size: clamp(14px,1.3vw,17px); font-weight: 700; color: #ffffff; line-height: 1.35; }
+    .article-card-body { padding: clamp(16px,2vw,22px); flex: 1; display: flex; flex-direction: column; gap: 12px; }
+    .article-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .article-meta-date { font-size: 11px; color: #90aac8; }
+    .article-meta-author { font-size: 11px; color: #1565c0; font-weight: 600; }
+    .article-meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #c8dcf5; }
+    .article-excerpt { font-size: clamp(12px,1.1vw,14px); color: #3a5068; line-height: 1.75; flex: 1; }
+    .article-read-more { font-size: 12px; color: #1565c0; font-weight: 700; }
+    .article-full { display: none; }
+    .article-full.open { display: block; }
+    .articles-list.hidden { display: none; }
+    .article-page { max-width: 780px; margin: 0 auto; }
+    .article-page-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #1565c0; cursor: pointer; margin-bottom: 32px; font-weight: 600; transition: color 0.2s; background: none; border: none; font-family: 'Sora', sans-serif; }
+    .article-page-back:hover { color: #0d2b6b; }
+    .article-page-kicker { font-size: 11px; color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 10px; }
+    .article-page h1 { font-size: clamp(22px,2.8vw,34px); font-weight: 700; color: #0d2b6b; line-height: 1.25; margin-bottom: 8px; }
+    .article-page h1 + h2 { font-size: clamp(15px,1.4vw,18px); font-weight: 500; color: #5585b5; margin-bottom: 20px; }
+    .article-page-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 2px solid #c8dcf5; flex-wrap: wrap; }
+    .article-page-meta span { font-size: 12px; color: #90aac8; }
+    .article-page-meta strong { font-size: 12px; color: #1565c0; font-weight: 700; }
+    .article-page-meta .sep { width: 3px; height: 3px; border-radius: 50%; background: #c8dcf5; }
+    .article-content { line-height: 1.85; }
+    .article-content p { font-size: clamp(14px,1.2vw,16px); color: #2a3a50; margin-bottom: 20px; }
+    .article-content .intro { font-size: clamp(15px,1.3vw,17px); color: #1a2a3e; font-weight: 500; margin-bottom: 28px; border-left: 4px solid #1565c0; padding-left: 18px; }
+    .article-content h2 { font-size: clamp(16px,1.6vw,20px); font-weight: 700; color: #0d2b6b; margin: 36px 0 14px; display: flex; align-items: center; gap: 10px; }
+    .article-content h2 .num { width: 28px; height: 28px; border-radius: 50%; background: #1565c0; color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .article-content .check-list { list-style: none; padding: 0; margin: 0 0 20px; }
+    .article-content .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: clamp(13px,1.1vw,15px); color: #2a3a50; line-height: 1.75; margin-bottom: 10px; padding: 10px 14px; background: #f0f6ff; border-radius: 8px; border-left: 3px solid #1565c0; }
+    .article-content .check-list li::before { content: '✓'; color: #1565c0; font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .article-content .warning-box { background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 0 8px 8px 0; padding: 16px 18px; margin: 24px 0; font-size: clamp(13px,1.1vw,14px); color: #7a5800; line-height: 1.7; }
+    .article-content .warning-box strong { font-weight: 700; }
+    .article-content .info-box { background: #e8f4fd; border-left: 4px solid #1565c0; border-radius: 0 8px 8px 0; padding: 16px 18px; margin: 24px 0; font-size: clamp(13px,1.1vw,14px); color: #0d2b6b; line-height: 1.7; }
+    .article-content .info-box strong { font-weight: 700; }
+    .article-content .cta-block { background: linear-gradient(135deg,#0d2b6b 0%,#1565c0 100%); border-radius: 14px; padding: clamp(24px,3vw,32px); margin-top: 40px; text-align: center; }
+    .article-content .cta-block p { color: #c8dcf5; font-size: clamp(13px,1.1vw,15px); margin-bottom: 18px; }
+    .article-content .cta-block strong { color: #ffffff; font-size: clamp(16px,1.6vw,20px); display: block; margin-bottom: 8px; }
+    footer { background: #0d2b6b; padding: clamp(24px,3vw,36px) clamp(20px,5vw,40px); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
+    .footer-left { display: flex; flex-direction: column; gap: 4px; }
+    .footer-left span { font-size: clamp(10px,0.9vw,12px); color: #90caf9; }
+    .footer-right { display: flex; gap: 20px; align-items: center; }
+    .footer-right a { font-size: clamp(10px,0.9vw,12px); color: #90caf9; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .footer-right a:hover { color: #ffffff; }
+    @media (max-width: 900px) { .articles-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px) { .articles-grid { grid-template-columns: 1fr; } .nav-links { display: none; } footer { flex-direction: column; text-align: center; } .footer-right { flex-direction: column; gap: 8px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">SAGA</a>
+      <div class="nav-links-wrap">
+        <div class="nav-links">
+          <a href="index.html">Accueil</a>
+          <a href="index.html#services">Services</a>
+          <a href="ressources.html" class="active">Ressources</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <a class="btn-wave" href="index.html#contact">Nous contacter</a>
+      </div>
+    </div>
+  </nav>
 
+  <div class="page-wrap">
+
+    <!-- Liste des articles -->
+    <div class="articles-list" id="articlesList">
+      <div class="section-header">
+        <div class="section-kicker">Ressources &amp; Actualités</div>
+        <h1>Informations pour les producteurs avicoles</h1>
+        <p>Articles rédigés par nos agronomes membres de l'Ordre des Agronomes du Québec. Une ressource fiable pour prendre les meilleures décisions pour votre entreprise.</p>
+      </div>
+      <div class="articles-grid">
+        <article class="article-card" onclick="openArticle('pad6000')" itemscope itemtype="https://schema.org/Article">
+          <meta itemprop="author" content="Services Avicoles Grondines Associés"/>
+          <meta itemprop="datePublished" content="2026-05-05"/>
+          <div class="article-card-top">
+            <span class="article-category">Relève agricole</span>
+            <h2 itemprop="headline">Êtes-vous admissible au PAD-6000 ? Le programme de démarrage pour nouveaux producteurs d'œufs</h2>
+          </div>
+          <div class="article-card-body">
+            <div class="article-meta">
+              <span class="article-meta-date">5 mai 2026</span>
+              <div class="article-meta-sep"></div>
+              <span class="article-meta-author">Agronomes SAGA</span>
+            </div>
+            <p class="article-excerpt" itemprop="description">Le PAD-6000 est une opportunité unique pour la relève avicole au Québec. Découvrez les critères d'admissibilité, les documents requis et comment maximiser vos chances.</p>
+            <div class="article-read-more">Lire l'article →</div>
+          </div>
+        </article>
+        <article class="article-card" style="opacity:0.55;cursor:default;">
+          <div class="article-card-top" style="background:linear-gradient(135deg,#3a5068 0%,#5585b5 100%);">
+            <span class="article-category">Programme fédéral</span>
+            <h2>PIFVO : maximisez votre financement pour l'équipement avicole</h2>
+          </div>
+          <div class="article-card-body">
+            <div class="article-meta"><span class="article-meta-date">À venir</span></div>
+            <p class="article-excerpt">Un guide complet pour comprendre le Programme d'investissement pour fermes de volailles et d'œufs et optimiser votre demande.</p>
+            <div class="article-read-more" style="color:#90aac8;">Bientôt disponible</div>
+          </div>
+        </article>
+        <article class="article-card" style="opacity:0.55;cursor:default;">
+          <div class="article-card-top" style="background:linear-gradient(135deg,#3a5068 0%,#5585b5 100%);">
+            <span class="article-category">Coûts de production</span>
+            <h2>Comment calculer son coût de production en poulet de chair au Québec</h2>
+          </div>
+          <div class="article-card-body">
+            <div class="article-meta"><span class="article-meta-date">À venir</span></div>
+            <p class="article-excerpt">Les éléments clés à surveiller pour avoir un portrait financier précis de votre élevage et rester compétitif dans votre secteur.</p>
+            <div class="article-read-more" style="color:#90aac8;">Bientôt disponible</div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Article complet PAD-6000 -->
+    <div class="article-full" id="art-pad6000">
+      <article class="article-page" itemscope itemtype="https://schema.org/Article">
+        <meta itemprop="author" content="Services Avicoles Grondines Associés"/>
+        <meta itemprop="datePublished" content="2026-05-05"/>
+        <button class="article-page-back" onclick="closeArticle()">← Retour aux ressources</button>
+        <div class="article-page-kicker">Relève agricole — Programme de démarrage</div>
+        <h1 itemprop="headline">Êtes-vous admissible au PAD-6000 ?</h1>
+        <h2>Programme de démarrage de nouveaux producteurs d'œufs de consommation</h2>
+        <div class="article-page-meta">
+          <span>5 mai 2026</span>
+          <div class="sep"></div>
+          <strong>Agronomes SAGA — Membres de l'OAQ</strong>
+          <div class="sep"></div>
+          <span>Relève agricole</span>
+        </div>
+        <div class="article-content" itemprop="articleBody">
+          <p class="intro">Le PAD-6000 est une porte d'entrée concrète pour les jeunes entrepreneurs qui souhaitent démarrer une entreprise de production d'œufs de consommation au Québec. Voici ce que vous devez savoir avant de déposer votre candidature.</p>
+
+          <h2><span class="num">1</span> Qui peut — et qui ne peut PAS — s'inscrire?</h2>
+          <p>L'un des critères les plus déterminants du programme concerne l'historique de contingent agricole. La règle est claire :</p>
+          <ul class="check-list">
+            <li>Vous ne devez jamais avoir <strong>détenu ou exploité</strong> un contingent dans l'une des productions contingentées au Québec : œufs de consommation, œufs d'incubation, poulet, dindon, lait ou acériculture.</li>
+            <li>Cela inclut les situations où vous avez <strong>exploité un contingent sans en être propriétaire</strong> — par exemple un élevage à forfait, ou l'exploitation de la terre et du contingent d'un tiers en acériculture.</li>
+            <li>Vous ne devez pas non plus être <strong>membre de la famille immédiate</strong> d'une personne qui détient ou exploite un quota d'œufs de consommation.</li>
+          </ul>
+          <div class="warning-box"><strong>Note importante :</strong> La production de bois fait exception à cette règle depuis 2007. Si vous détenez ou avez détenu un contingent forestier, cela ne vous disqualifie pas.</div>
+
+          <h2><span class="num">2</span> Les critères personnels d'admissibilité</h2>
+          <p>Pour être admissible, le candidat doit satisfaire l'ensemble des conditions suivantes :</p>
+          <ul class="check-list">
+            <li>Être âgé d'<strong>au moins 18 ans et d'au plus 40 ans</strong> au 31 mai de l'année de candidature.</li>
+            <li>Être <strong>domicilié au Québec</strong> et être citoyen canadien ou résident permanent.</li>
+            <li>Avoir le projet de démarrer une <strong>nouvelle entreprise de production d'œufs</strong> à laquelle vous participerez activement.</li>
+            <li>Posséder au minimum une <strong>formation collégiale en agriculture ou en gestion</strong> reconnue au niveau 1 ou 2 par le Programme d'appui financier à la relève agricole de La Financière agricole du Québec.</li>
+            <li>Détenir une <strong>expérience d'au moins 1 an</strong> comme travailleur dans une entreprise agricole, avec lettre de référence de l'employeur à l'appui.</li>
+            <li>Avoir fait approuver un <strong>plan d'affaires complet</strong> (financier, technique et environnemental) par une institution financière reconnue.</li>
+            <li>Posséder une <strong>attestation de conformité environnementale</strong>, incluant la grille agroenvironnementale signée par un agronome.</li>
+          </ul>
+
+          <h2><span class="num">3</span> Le terrain : une responsabilité du candidat</h2>
+          <p>La Fédération des producteurs d'œufs rappelle qu'il est de la <strong>responsabilité du candidat</strong> de s'assurer que son terrain est conforme avant de déposer sa candidature.</p>
+          <ul class="check-list">
+            <li>Contactez votre <strong>municipalité</strong> pour valider qu'un pondoir peut être érigé sur le terrain ciblé.</li>
+            <li>Le site de production doit être situé <strong>à l'extérieur de la région administrative</strong> du bénéficiaire du dernier tirage au sort. (Gagnant 2025 : Estrie — cette région est donc exclue pour le prochain tirage.)</li>
+            <li>Vous devrez vous engager à être <strong>propriétaire à 100 % de l'exploitation avicole</strong> au jour de l'attribution du droit d'utilisation.</li>
+          </ul>
+
+          <h2><span class="num">4</span> Documents à inclure dans votre dossier</h2>
+          <ul class="check-list">
+            <li>Copie du <strong>certificat de naissance</strong></li>
+            <li>Preuve de <strong>citoyenneté canadienne ou de résidence permanente</strong></li>
+            <li>Copie du <strong>diplôme</strong> et relevé de notes si applicable</li>
+            <li>Lettre de référence de l'<strong>employeur agricole</strong></li>
+            <li>Copie du <strong>plan d'affaires détaillé</strong> validé par une institution financière</li>
+            <li>Documents de propriété ou <strong>promesse d'achat</strong> du terrain</li>
+            <li>Grille agroenvironnementale signée par un <strong>agronome</strong></li>
+            <li>Chèque de <strong>250 $</strong> à l'attention de la Fédération des producteurs d'œufs du Québec</li>
+          </ul>
+
+          <div class="info-box"><strong>Conseil SAGA :</strong> La grille agroenvironnementale doit être remplie et signée par un agronome reconnu. Notre équipe peut vous accompagner dans cette étape ainsi que dans la préparation complète de votre dossier.</div>
+
+          <div class="cta-block">
+            <strong>Vous pensez être admissible au PAD-6000 ?</strong>
+            <p>Nos agronomes membres de l'OAQ vous accompagnent de A à Z dans la préparation de votre dossier de candidature.</p>
+            <a class="btn-wave" href="index.html#contact" style="display:inline-block;">Prendre rendez-vous</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-left">
+      <span>© 2026 Services Avicoles Grondines Associés</span>
+      <span>Québec, Canada · info@sagaconseils.ca</span>
+    </div>
+    <div class="footer-right">
+      <a href="index.html">← Retour au site principal</a>
+      <a href="politique.html">Politique de confidentialité</a>
+    </div>
+  </footer>
+
+  <script>
+    function openArticle(id){document.getElementById('articlesList').classList.add('hidden');document.getElementById('art-'+id).classList.add('open');window.scrollTo({top:0,behavior:'smooth'});}
+    function closeArticle(){document.querySelectorAll('.article-full').forEach(el=>el.classList.remove('open'));document.getElementById('articlesList').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+  </script>
+</body>
+</html>
