@@ -65,15 +65,15 @@
     .article-card { background: #ffffff; border: 1px solid #dce8f8; border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; display: flex; flex-direction: column; }
     .article-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(21,101,192,0.14); border-color: #1565c0; }
 
-    /* Tag au-dessus de l'image */
-    .article-card-tag-row { padding: 12px 14px 0; }
+    /* Tag au-dessus de l'image — en dehors */
+    .article-card-tag-row { padding: 14px 14px 8px; }
     .article-category { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1565c0; background: rgba(21,101,192,0.08); padding: 4px 10px; border-radius: 99px; }
 
-    /* Zone image avec titre overlay */
-    .article-card-image { position: relative; width: 100%; height: 160px; overflow: hidden; }
-    .article-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    /* Zone image — coins arrondis en haut seulement */
+    .article-card-image { position: relative; width: 100%; height: 160px; overflow: hidden; border-radius: 10px 10px 0 0; }
+    .article-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; border-radius: 10px 10px 0 0; }
     .article-card:hover .article-card-image img { transform: scale(1.05); }
-    .article-card-image-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,43,107,0.82) 0%, rgba(13,43,107,0.3) 55%, transparent 100%); display: flex; align-items: flex-end; padding: 14px; }
+    .article-card-image-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,43,107,0.82) 0%, rgba(13,43,107,0.3) 55%, transparent 100%); display: flex; align-items: flex-end; padding: 14px; border-radius: 10px 10px 0 0; }
     .article-card-image-overlay h2 { font-size: clamp(13px,1.2vw,15px); font-weight: 700; color: #ffffff; line-height: 1.35; }
 
     /* Corps sous l'image */
@@ -187,7 +187,7 @@
           <div class="article-card-image">
             <img src="logos/broiler.png" alt="Programme de démarrage poulet de chair" />
             <div class="article-card-image-overlay">
-              <h2 itemprop="headline">Programme de démarrage poulet de chair : une bonne nouvelle pour la relève</h2>
+              <h2 itemprop="headline">Programme d'aide à la relève - Production poulet de chair : c'est reparti !</h2>
             </div>
           </div>
           <div class="article-card-body">
@@ -256,8 +256,8 @@
         <div class="article-page-hero">
           <img src="logos/broiler.png" alt="Programme de démarrage poulet de chair" />
           <div class="article-page-hero-overlay">
-            <h1 itemprop="headline">Programme de démarrage poulet de chair : une bonne nouvelle pour la relève</h1>
-            <h2>Nouvelle version adoptée par la RMAAQ — Ce que vous devez savoir</h2>
+            <h1 itemprop="headline">Programme d'aide à la relève - Production poulet de chair : c'est reparti !</h1>
+            <h2>Approuvé par la RMAAQ le 27 avril — Ce que vous devez savoir</h2>
           </div>
         </div>
 
@@ -271,40 +271,40 @@
 
         <div class="article-content" itemprop="articleBody">
 
-          <p class="intro">C'est une excellente nouvelle pour la relève avicole québécoise : la nouvelle version du programme de démarrage en production de poulet de chair vient d'être officiellement adoptée par la Régie des marchés agricoles et alimentaires du Québec (RMAAQ). Après une absence de plus de trois ans, ce programme tant attendu fait son retour avec des modalités revues et une structure régionale claire. Pour les jeunes producteurs qui souhaitent se lancer dans l'industrie du poulet de chair, il s'agit d'une opportunité concrète à saisir sans tarder.</p>
+          <p class="intro">Bonne nouvelle pour la relève québécoise : la nouvelle version du programme d'aide à la relève en production de poulet de chair vient d'être officiellement approuvée par la Régie des marchés agricoles et alimentaires du Québec (RMAAQ) le 27 avril. Après une absence de plus de trois ans, ce programme tant attendu fait son retour avec des modalités revues et une structure régionale claire. Pour les jeunes producteurs déjà en production qui souhaitent consolider leur position dans l'industrie du poulet de chair, il s'agit d'une opportunité concrète à saisir sans tarder.</p>
 
           <h2><span class="num">1</span> Conditions essentielles à remplir</h2>
           <p>Avant d'aller plus loin, voici les deux conditions incontournables du programme. Ces critères sont non négociables et s'appliquent à tous les candidats :</p>
           <ul class="highlight-list">
-            <li>Posséder ou posséder d'ici le 10 juillet 2026 un minimum de 20 % des parts de l'entreprise dans laquelle le quota sera exploité.</li>
+            <li>Posséder un minimum de 20 % des parts de l'entreprise dans laquelle le quota sera exploité.</li>
             <li>Détenir un minimum de 300 m² de quota de poulet de chair au moment de la candidature.</li>
           </ul>
-          <p>Ces deux exigences constituent le socle de l'admissibilité. Si vous ne remplissez pas l'une ou l'autre, votre dossier ne pourra pas être retenu.</p>
+          <p>Ces deux exigences sont obligatoires pour être admissible au programme.</p>
 
           <h2><span class="num">2</span> Points à considérer</h2>
 
           <p><strong>Volume octroyé et répartition régionale</strong></p>
-          <p>Pour l'édition 2026, la Fédération des producteurs de poulet du Québec prévoit un octroi d'un minimum de 7 500 m² répartis entre l'ensemble des candidats retenus. Cela représente un minimum de 25 gagnants au total, soit 5 gagnants par région. Le Québec est divisé en 5 régions de production, ce qui assure une répartition équitable des nouvelles allocations sur l'ensemble du territoire.</p>
+          <p>Pour l'édition 2026, les Éleveurs de volaille du Québec (EVQ) prévoient un octroi d'un minimum de 7500 m² répartis pour l'ensemble des candidats retenus. Cela représente un minimum de 25 gagnants au total, soit 5 gagnants minimum par région. Le Québec est divisé en 5 régions de production, ce qui assure une répartition équitable des nouvelles allocations sur l'ensemble du territoire.</p>
 
           <p><strong>Critères personnels d'admissibilité</strong></p>
           <ul class="check-list">
-            <li>Être âgé d'au moins 18 ans et d'au plus 42 ans pour l'année 2026. <em>Attention : cette limite d'âge est propre à l'édition 2026 et sera modifiée pour 2027.</em></li>
+            <li>Être âgé d'au moins 18 ans et d'au plus 42 ans pour l'année 2026.
+              <div class="warning-box" style="margin-top:10px;"><strong>Note importante :</strong> La limite d'âge de 42 ans s'applique uniquement pour l'édition 2026 du programme. Les règles seront révisées pour 2027. Nous vous recommandons de ne pas attendre si vous êtes près de cette limite.</div>
+            </li>
             <li>Détenir une formation académique reconnue de niveau 1 ou 2 (Baccalauréat ou DEC en agriculture ou en gestion agricole) — OU démontrer une expérience de travail d'un minimum de 5 ans dans la production de poulet de chair, attestée par les feuillets T4 correspondants.</li>
           </ul>
 
-          <p><strong>Montant du prêt selon votre situation</strong></p>
+          <p><strong>Concernant le prêt à vie de quota</strong></p>
           <p>Le programme n'octroie pas un montant fixe identique pour tous les candidats. La quantité de quota accordée varie selon votre situation actuelle :</p>
           <ul class="check-list">
-            <li>Selon vos possessions actuelles de quota, ce programme pourrait vous permettre d'obtenir un prêt allant de 150 m² à 300 m² de quota supplémentaire.</li>
+            <li>Selon vos possessions actuelles de quota, ce programme pourrait vous permettre d'obtenir un prêt allant de 150 m² à 300 m² de quota.</li>
             <li>Pour les poulaillers exploités en location à long terme, le prêt maximal admissible est de 150 m².</li>
           </ul>
 
-          <div class="warning-box"><strong>Note importante :</strong> La limite d'âge de 42 ans s'applique uniquement pour l'édition 2026 du programme. Les règles seront révisées pour 2027. Nous vous recommandons de ne pas attendre si vous êtes près de cette limite.</div>
-
-          <div class="info-box"><strong>Conseil SAGA :</strong> La préparation d'un dossier solide fait toute la différence dans un programme aussi compétitif. Notre équipe d'agronomes peut vous accompagner dans la vérification de votre admissibilité, la constitution de votre dossier et toutes les démarches auprès des instances concernées. Chaque détail compte — ne laissez pas passer cette opportunité par manque de préparation.</div>
+          <div class="info-box"><strong>Conseil SAGA :</strong> La préparation d'un dossier solide fait toute la différence dans un programme aussi compétitif. Notre équipe d'agronomes peut vous accompagner dans la vérification de votre admissibilité, la constitution de votre dossier et toutes les démarches auprès des instances concernées.</div>
 
           <div class="cta-block">
-            <strong>Vous pensez être admissible au programme de démarrage poulet de chair ?</strong>
+            <strong>Vous pensez être admissible ?</strong>
             <p>Notre équipe d'experts vous accompagne de A à Z dans la vérification de votre admissibilité et la préparation de votre dossier de candidature. Ne laissez pas cette opportunité vous échapper.</p>
             <a class="btn-wave" href="index.html#contact" style="display:inline-block;">Prendre rendez-vous</a>
           </div>
