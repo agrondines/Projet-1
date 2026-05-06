@@ -27,21 +27,19 @@
     .btn-wave:hover { opacity: 0.85; animation-play-state: paused; }
     @keyframes btnSpotlight { 0%{background-position:0% 80%}20%{background-position:85% 15%}38%{background-position:20% 90%}55%{background-position:100% 25%}72%{background-position:40% 65%}88%{background-position:75% 10%}100%{background-position:0% 80%} }
     #accueil { position: relative; z-index: 5; height: 100vh; overflow: hidden; }
-    .hero { position: relative; height: 100%; display: flex; flex-direction: row; align-items: center; justify-content: flex-start; padding: 0 clamp(32px,7vw,100px); gap: clamp(40px,6vw,80px); }
+    .hero { position: relative; height: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 0 clamp(32px,7vw,100px); }
     .hero-content { display: flex; flex-direction: column; align-items: flex-start; }
-    .hero h1 { font-size: clamp(28px,4.5vw,58px); font-weight: 700; line-height: 1.08; color: #0d2b6b; text-align: left; text-transform: uppercase; letter-spacing: 0.01em; }
-    .hero h1 .hero-ici { font-size: clamp(48px,8vw,110px); line-height: 0.95; display: block; }
+    .hero h1 { font-size: clamp(28px,4.5vw,58px); font-weight: 700; line-height: 1.22; color: #0d2b6b; text-align: left; text-transform: uppercase; letter-spacing: 0.01em; }
+    .hero h1 .hero-ici { font-size: clamp(52px,9vw,120px); line-height: 1.0; display: block; margin-top: 4px; }
     .hero h1 .word { display: inline-block; opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
     .hero h1 .word.visible { opacity: 1; transform: translateY(0); }
     .hero h1 u { text-decoration: underline; text-decoration-color: #1565c0; text-underline-offset: 0.1em; text-decoration-thickness: 0.05em; }
-    .hero-logo { width: clamp(50px,5vw,72px); height: auto; margin-top: clamp(16px,2vw,24px); opacity: 0; transform: translateY(16px); transition: opacity 0.7s 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s 0.7s cubic-bezier(0.16,1,0.3,1); }
-    .hero-logo.visible { opacity: 1; transform: translateY(0); }
+    .hero-bottom { display: flex; align-items: center; gap: clamp(16px,2vw,28px); margin-top: clamp(24px,3vw,40px); opacity: 0; transform: translateY(16px); transition: opacity 0.7s 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .hero-bottom.visible { opacity: 1; transform: translateY(0); }
+    .hero-logo { width: clamp(50px,5vw,70px); height: auto; display: block; }
     .oaq-tag { position: absolute; top: clamp(72px,8vw,90px); right: clamp(16px,2vw,32px); display: inline-flex; align-items: center; gap: 6px; font-size: clamp(10px,1vw,12px); padding: 5px 14px; border-radius: 99px; background: rgba(187,222,251,0.6); color: #0d47a1; letter-spacing: 0.06em; z-index: 10; }
     .oaq-tag .check { width: 14px; height: 14px; border-radius: 50%; background: #0d47a1; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .oaq-tag .check svg { width: 8px; height: 8px; }
-    .hero-cta { display: flex; align-items: center; align-self: center; margin-top: clamp(20px,3vw,40px); opacity: 0; transform: translateY(16px); transition: opacity 0.7s 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.7s 0.9s cubic-bezier(0.16,1,0.3,1); flex-shrink: 0; }
-    .hero-cta.visible { opacity: 1; transform: translateY(0); }
-    @media (max-width: 600px) { .hero { flex-direction: column; align-items: flex-start; justify-content: center; gap: 24px; } .hero-cta { align-self: flex-start; } }
     .section { position: relative; z-index: 5; padding: clamp(36px,5vw,64px) clamp(20px,5vw,40px); background: #ffffff; }
     .section-label { font-size: clamp(10px,1vw,11px); color: #1565c0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
     .section-title { font-size: clamp(18px,2vw,24px); font-weight: 700; color: #0d2b6b; margin-bottom: clamp(18px,2.5vw,30px); }
@@ -172,10 +170,10 @@
         </div>
         <div class="hero-content">
           <h1 id="heroTitle"></h1>
-          <img class="hero-logo" id="heroLogo" src="logos/BLEU3-GROS.png" alt="Logo SAGA">
-        </div>
-        <div class="hero-cta" id="heroCta">
-          <a class="btn-wave" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Commencer</a>
+          <div class="hero-bottom" id="heroBottom">
+            <img class="hero-logo" src="logos/BLEU3-GROS.png" alt="Logo SAGA">
+            <a class="btn-wave" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Commencer</a>
+          </div>
         </div>
       </div>
     </div>
@@ -303,27 +301,37 @@
       h1.innerHTML = '';
 
       // Ligne 1 : VOTRE PROJET
-      const line1words = ['VOTRE', 'PROJET'];
-      line1words.forEach((w, wi) => {
+      const line1 = ['VOTRE', 'PROJET'];
+      line1.forEach((w, wi) => {
         const span = document.createElement('span');
         span.className = 'word';
         span.textContent = w;
         span.style.transitionDelay = (wi * 80 + 100) + 'ms';
         h1.appendChild(span);
-        if (wi < line1words.length - 1) h1.appendChild(document.createTextNode('\u00a0'));
+        if (wi < line1.length - 1) h1.appendChild(document.createTextNode('\u00a0'));
       });
 
       h1.appendChild(document.createElement('br'));
 
-      // Ligne 2 : AVICOLE PREND VIE
-      const line2words = ['AVICOLE', 'PREND', 'VIE'];
-      line2words.forEach((w, wi) => {
+      // Ligne 2 : AVICOLE (souligné) PREND VIE
+      const line2 = [
+        { text: 'AVICOLE', underline: true },
+        { text: 'PREND', underline: false },
+        { text: 'VIE', underline: false }
+      ];
+      line2.forEach((w, wi) => {
         const span = document.createElement('span');
         span.className = 'word';
-        span.textContent = w;
         span.style.transitionDelay = (wi * 80 + 260) + 'ms';
+        if (w.underline) {
+          const u = document.createElement('u');
+          u.textContent = w.text;
+          span.appendChild(u);
+        } else {
+          span.textContent = w.text;
+        }
         h1.appendChild(span);
-        if (wi < line2words.length - 1) h1.appendChild(document.createTextNode('\u00a0'));
+        if (wi < line2.length - 1) h1.appendChild(document.createTextNode('\u00a0'));
       });
 
       h1.appendChild(document.createElement('br'));
@@ -338,10 +346,8 @@
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           document.querySelectorAll('#heroTitle .word').forEach(w => w.classList.add('visible'));
-          const logo = document.getElementById('heroLogo');
-          const cta = document.getElementById('heroCta');
-          if (logo) logo.classList.add('visible');
-          if (cta) cta.classList.add('visible');
+          const bottom = document.getElementById('heroBottom');
+          if (bottom) bottom.classList.add('visible');
         });
       });
     })();
