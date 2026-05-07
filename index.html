@@ -222,7 +222,7 @@
             <div class="card" onclick="openModal('demarrage')"><div class="card-accent"></div><h3>Programme de démarrage</h3><p>Assistance auprès de la relève agricole pour les programmes de démarrage admissibles.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
             <div class="card" onclick="openModal('budget')"><div class="card-accent"></div><h3>Budget</h3><p>Planification budgétaire et gestion de croissance adaptées à votre exploitation avicole.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
             <div class="card" onclick="openModal('subvention')"><div class="card-accent"></div><h3>Subvention</h3><p>Identification et accompagnement dans vos demandes de subventions agricoles.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
-            <div class="card" onclick="openModal('pifvo')"><div class="card-accent"></div><h3>PIFVO</h3><p>Programme d'investissement pour fermes de volailles et d'œufs — jusqu'à 70% de remboursement.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
+            <div class="card" onclick="openModal('pifvo')"><div class="card-accent"></div><h3>PIFVO</h3><p>Programme d'investissement pour fermes de volailles et d'œufs — jusqu'à 85% de remboursement.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
             <div class="card" onclick="openModal('autres')"><div class="card-accent"></div><h3>Autres services</h3><p>Contactez-nous pour discuter de vos besoins spécifiques.</p><div class="card-clic">Cliquer pour en savoir plus →</div></div>
           </div>
         </div>
@@ -438,7 +438,7 @@
         { key:'demarrage', title:'Programme de démarrage', desc:'Assistance auprès de la relève agricole pour les programmes de démarrage admissibles.' },
         { key:'budget', title:'Budget', desc:'Planification budgétaire et gestion de croissance adaptées à votre exploitation avicole.' },
         { key:'subvention', title:'Subvention', desc:'Identification et accompagnement dans vos demandes de subventions agricoles.' },
-        { key:'pifvo', title:'PIFVO', desc:"Programme d'investissement pour fermes de volailles et d'œufs — jusqu'à 70% de remboursement." },
+        { key:'pifvo', title:'PIFVO', desc:"Programme d'investissement pour fermes de volailles et d'œufs — jusqu'à 85% de remboursement." },
         { key:'autres', title:'Autres services', desc:'Contactez-nous pour discuter de vos besoins spécifiques.' }
       ];
       const N = ringServices.length;
@@ -457,10 +457,10 @@
       });
       const stage = document.querySelector('.ring-stage');
       if (!stage) return;
-      let dragging=false, startX=0, dragOffset=0, dragOffsetStart=0;
+      let dragging=false, hasDragged=false, startX=0, dragOffset=0, dragOffsetStart=0;
       stage.style.cursor = 'grab';
-      stage.addEventListener('pointerdown', e => { dragging=true; startX=e.clientX; dragOffsetStart=dragOffset; stage.setPointerCapture(e.pointerId); stage.style.cursor='grabbing'; });
-      stage.addEventListener('pointermove', e => { if(!dragging) return; dragOffset=dragOffsetStart+(e.clientX-startX)*0.4; ringEl.style.animation='none'; ringEl.style.transform=`rotateY(${dragOffset}deg)`; });
+      stage.addEventListener('pointerdown', e => { dragging=true; hasDragged=false; startX=e.clientX; dragOffsetStart=dragOffset; stage.style.cursor='grabbing'; });
+      stage.addEventListener('pointermove', e => { if(!dragging) return; if(!hasDragged && Math.abs(e.clientX-startX)>5){ hasDragged=true; stage.setPointerCapture(e.pointerId); } if(!hasDragged) return; dragOffset=dragOffsetStart+(e.clientX-startX)*0.4; ringEl.style.animation='none'; ringEl.style.transform=`rotateY(${dragOffset}deg)`; });
       function endDrag(){ if(!dragging) return; dragging=false; stage.style.cursor='grab'; const dur=32; let n=((dragOffset%360)+360)%360; const p=(360-n)/360; ringEl.style.transform=''; ringEl.style.animation=''; ringEl.style.animationDelay=`-${(p*dur).toFixed(3)}s`; }
       stage.addEventListener('pointerup', endDrag); stage.addEventListener('pointercancel', endDrag);
       setTimeout(() => { const w=document.getElementById('heroRingWrap'); if(w) w.classList.add('visible'); }, 800);
