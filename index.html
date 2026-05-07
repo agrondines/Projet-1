@@ -53,10 +53,11 @@
       .ring-card h3 { font-size: 11px; }
       .ring-card p { font-size: 9px; }
       .ring-card .ring-cta { font-size: 9px; }
+      .ring-wrap-inner { top: 74%; }
     }
     /* ── Ring 3D ── */
     .ring-stage { position: absolute; inset: 0; perspective: 1800px; perspective-origin: 50% 42%; }
-    .ring-wrap-inner { position: absolute; left: 50%; top: 54%; width: 0; height: 0; transform: translate(-50%,-50%) rotateZ(-8deg) rotateX(14deg); transform-style: preserve-3d; }
+    .ring-wrap-inner { position: absolute; left: 50%; top: 64%; width: 0; height: 0; transform: translate(-50%,-50%) rotateZ(-8deg) rotateX(14deg); transform-style: preserve-3d; }
     .ring-el { position: relative; width: 0; height: 0; transform-style: preserve-3d; animation: heroRingSpin 32s linear infinite; }
     @keyframes heroRingSpin { from{transform:rotateY(0deg)}to{transform:rotateY(-360deg)} }
     .ring-card { position: absolute; width: 260px; height: 170px; left: -130px; top: -85px; backface-visibility: hidden; will-change: transform; }
